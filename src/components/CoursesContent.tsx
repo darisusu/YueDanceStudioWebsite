@@ -15,7 +15,7 @@ export default function CoursesContent() {
     <>
       {/* ── Page hero ────────────────────────────────────────── */}
       <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
-        <p className="text-[10px] tracking-[0.25em] uppercase text-gold mb-4">
+        <p className="text-xs tracking-[0.25em] uppercase text-ink-light mb-4">
           {tr.label[language]}
         </p>
         <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] mb-6">
@@ -49,17 +49,17 @@ export default function CoursesContent() {
                 <h2 className="font-display text-[clamp(1.8rem,3.5vw,2.8rem)] leading-tight mb-2">
                   {course.name[language]}
                 </h2>
-                <p className="text-[10px] tracking-[0.18em] uppercase text-gold mb-6">
+                <p className="text-xs tracking-[0.18em] uppercase text-ink-light mb-6">
                   {tr.instructor[language]}: {course.instructor[language]}
                 </p>
-                <p className="text-ink-light text-sm leading-relaxed mb-8">
+                <p className="text-ink-light text-base leading-relaxed mb-8">
                   {course.description[language]}
                 </p>
                 <a
                   href={REGISTRATION_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="self-start text-[11px] tracking-[0.18em] uppercase text-gold hover:text-ink border-b border-gold/40 hover:border-ink pb-0.5 transition-colors duration-150"
+                  className="self-start text-xs tracking-[0.18em] uppercase text-ink-light hover:text-ink border-b border-ink-light/50 hover:border-ink pb-0.5 transition-colors duration-150"
                 >
                   {tr.register[language]}
                 </a>

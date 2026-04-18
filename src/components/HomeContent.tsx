@@ -52,7 +52,7 @@ export default function HomeContent() {
             </p>
             <Link
               href="/courses"
-              className="shrink-0 inline-flex items-center gap-2 bg-gold text-ink hover:bg-gold/80 px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-semibold transition-all duration-200 shadow-lg"
+              className="shrink-0 inline-flex items-center gap-2 bg-gold text-ink hover:bg-gold/80 px-8 py-3.5 text-xs tracking-[0.2em] uppercase font-semibold transition-all duration-200 shadow-lg"
             >
               {hero.cta[language]}
             </Link>
@@ -64,7 +64,7 @@ export default function HomeContent() {
       <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
-            <p className="text-[10px] tracking-[0.25em] uppercase text-gold mb-3">
+            <p className="text-xs tracking-[0.25em] uppercase text-ink-light mb-3">
               {courses.label[language]}
             </p>
             <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] leading-tight">
@@ -74,7 +74,7 @@ export default function HomeContent() {
           </div>
           <Link
             href="/courses"
-            className="shrink-0 text-[11px] tracking-[0.15em] uppercase text-gold hover:text-ink transition-colors duration-150"
+            className="shrink-0 text-xs tracking-[0.15em] uppercase text-ink-light underline underline-offset-4 decoration-ink-light/30 hover:text-gold hover:decoration-gold transition-colors duration-150"
           >
             {courses.viewAll[language]}
           </Link>
@@ -111,14 +111,14 @@ export default function HomeContent() {
       {/* ── Testimonial ──────────────────────────────────────── */}
       <section className="bg-ink py-24 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-gold mb-10">
+          <p className="text-xs tracking-[0.25em] uppercase text-ivory/60 mb-10">
             {testi.label[language]}
           </p>
           <div className="font-display text-gold text-8xl leading-none mb-4 select-none" aria-hidden="true">"</div>
           <blockquote className="font-display text-ivory text-[clamp(1.4rem,3vw,2.2rem)] leading-relaxed font-light italic mb-10">
             {testi.quote[language]}
           </blockquote>
-          <cite className="not-italic text-ivory/40 text-xs tracking-[0.2em] uppercase">
+          <cite className="not-italic text-ivory/60 text-xs tracking-[0.2em] uppercase">
             {testi.attribution[language]}
           </cite>
         </div>
@@ -140,7 +140,7 @@ export default function HomeContent() {
               <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] leading-tight mb-6">
                 {join.heading[language]}
               </h2>
-              <p className="text-ink-light text-sm leading-relaxed mb-10">
+              <p className="text-ink-light text-base leading-relaxed mb-10">
                 {join.sub[language]}
               </p>
               <div className="flex flex-wrap gap-4">
@@ -148,13 +148,13 @@ export default function HomeContent() {
                   href="https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-gold text-ink hover:bg-ink hover:text-ivory px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-medium transition-all duration-200"
+                  className="inline-flex items-center gap-2 bg-gold text-ink hover:bg-ink hover:text-ivory px-8 py-3.5 text-xs tracking-[0.2em] uppercase font-medium transition-all duration-200"
                 >
                   {join.primary[language]}
                 </a>
                 <Link
                   href="/schedule"
-                  className="inline-flex items-center gap-2 border border-ink text-ink hover:border-gold hover:text-gold px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase transition-all duration-200"
+                  className="inline-flex items-center gap-2 border border-ink text-ink hover:border-gold hover:text-gold px-8 py-3.5 text-xs tracking-[0.2em] uppercase transition-all duration-200"
                 >
                   {join.secondary[language]}
                 </Link>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -23,6 +23,9 @@ export default function Nav() {
   const { language, toggle }        = useLanguage();
   const pathname                    = usePathname();
   const isHome                      = pathname === '/';
+  const hamburgerRef                = useRef<HTMLButtonElement>(null);
+  const closeButtonRef              = useRef<HTMLButtonElement>(null);
+  const firstRender                 = useRef(true);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -33,6 +36,15 @@ export default function Nav() {
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (firstRender.current) { firstRender.current = false; return; }
+    if (menuOpen) {
+      closeButtonRef.current?.focus();
+    } else {
+      hamburgerRef.current?.focus();
+    }
   }, [menuOpen]);
 
   const onDark    = !scrolled && isHome;
@@ -95,9 +107,10 @@ export default function Nav() {
 
             {/* Hamburger — mobile only */}
             <button
+              ref={hamburgerRef}
               onClick={() => setMenuOpen(true)}
               aria-label="Open navigation menu"
-              className={`lg:hidden flex flex-col gap-[5px] p-1 transition-colors ${textColor}`}
+              className={`lg:hidden flex flex-col gap-[5px] p-3 -mr-3 transition-colors ${textColor}`}
             >
               <span className="block w-[22px] h-px bg-current" />
               <span className="block w-[22px] h-px bg-current" />
@@ -112,6 +125,8 @@ export default function Nav() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
+        aria-hidden={!menuOpen || undefined}
+        ref={(el) => { if (el) (el as HTMLElement & { inert: boolean }).inert = !menuOpen; }}
         className={`fixed inset-0 z-[100] bg-ink flex flex-col p-8 transition-all duration-300 ease-in-out ${
           menuOpen
             ? 'opacity-100 pointer-events-auto'
@@ -130,6 +145,7 @@ export default function Nav() {
             />
           </Link>
           <button
+            ref={closeButtonRef}
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
             className="w-10 h-10 flex items-center justify-center text-ivory/60 hover:text-ivory transition-colors"
@@ -162,13 +178,14 @@ export default function Nav() {
         <div className="pt-8 border-t border-ivory/10 flex items-center justify-between">
           <button
             onClick={toggle}
+            aria-label={language === 'en' ? 'Switch to Chinese' : '切换为英文'}
             className="text-[11px] tracking-[0.15em] text-ivory/50"
           >
             <span className={language === 'en' ? 'text-gold' : 'text-ivory/50'}>EN</span>
             <span className="mx-2 text-ivory/20">/</span>
             <span className={language === 'zh' ? 'text-gold' : 'text-ivory/50'}>中文</span>
           </button>
-          <span className="text-[10px] tracking-widest text-ivory/20 uppercase">Xiang Yue Culture Arts</span>
+          <span className="text-[10px] tracking-widest text-ivory/40 uppercase">Xiang Yue Culture Arts</span>
         </div>
       </div>
     </>

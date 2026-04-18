@@ -12,7 +12,7 @@ export default function AboutContent() {
     <>
       {/* ── Page hero ────────────────────────────────────────── */}
       <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
-        <p className="text-[10px] tracking-[0.25em] uppercase text-gold mb-4">
+        <p className="text-xs tracking-[0.25em] uppercase text-ink-light mb-4">
           {ab.label[language]}
         </p>
         <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] whitespace-pre-line">
@@ -24,7 +24,7 @@ export default function AboutContent() {
       <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-24">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Text */}
-          <div className="space-y-6 text-ink-light leading-relaxed text-[0.95rem] lg:pt-8">
+          <div className="space-y-6 text-ink-light leading-relaxed text-base lg:pt-8 max-w-prose">
             <p>{ab.body1[language]}</p>
             <p>{ab.body2[language]}</p>
             <p>{ab.body3[language]}</p>
@@ -61,7 +61,7 @@ export default function AboutContent() {
           >
             悦
           </span>
-          <p className="text-[10px] tracking-[0.25em] uppercase text-gold mb-4">
+          <p className="text-xs tracking-[0.25em] uppercase text-ink-light mb-4">
             {ab.performances.label[language]}
           </p>
           <h2 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-tight">
@@ -100,15 +100,15 @@ export default function AboutContent() {
       <section className="pb-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
           {[
-            '/images/hero/hero-banner-1.jpeg',
-            '/images/hero/hero-banner-2.jpg',
-            '/images/hero/hero-banner-3.jpg',
-            '/images/about/about-performance-3.jpeg',
-          ].map((src, i) => (
+            { src: '/images/hero/hero-banner-1.jpeg',       alt: 'Dancers performing on stage at YUE showcase' },
+            { src: '/images/hero/hero-banner-2.jpg',         alt: 'YUE Dance Studio group performance' },
+            { src: '/images/hero/hero-banner-3.jpg',         alt: 'Contemporary dance performance by YUE students' },
+            { src: '/images/about/about-performance-3.jpeg', alt: 'YUE Dance Studio awards ceremony' },
+          ].map(({ src, alt }, i) => (
             <div key={i} className="relative aspect-square overflow-hidden">
               <Image
                 src={src}
-                alt="YUE Dance Studio performance"
+                alt={alt}
                 fill
                 sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover hover:scale-105 transition-transform duration-500"

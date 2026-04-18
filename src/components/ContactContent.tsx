@@ -14,7 +14,7 @@ export default function ContactContent() {
     <>
       {/* ── Page hero ────────────────────────────────────────── */}
       <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
-        <p className="text-[10px] tracking-[0.25em] uppercase text-gold mb-4">
+        <p className="text-xs tracking-[0.25em] uppercase text-ink-light mb-4">
           {tr.label[language]}
         </p>
         <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] mb-6">
@@ -30,7 +30,7 @@ export default function ContactContent() {
           <div className="bg-ivory p-10 lg:p-14 space-y-10">
             {/* Studio */}
             <div>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.studio[language]}
               </p>
               <address className="not-italic text-ink-light text-sm leading-relaxed">
@@ -41,7 +41,7 @@ export default function ContactContent() {
 
             {/* Admin */}
             <div>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.admin[language]}
               </p>
               <address className="not-italic text-ink-light text-sm leading-relaxed">
@@ -52,7 +52,7 @@ export default function ContactContent() {
 
             {/* Email */}
             <div>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.email[language]}
               </p>
               <a
@@ -65,7 +65,7 @@ export default function ContactContent() {
 
             {/* Phone */}
             <div>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.phone[language]}
               </p>
               <div className="space-y-1 text-sm text-ink-light">
@@ -87,7 +87,7 @@ export default function ContactContent() {
 
             {/* Social */}
             <div>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.social[language]}
               </p>
               <div className="flex gap-6 text-sm">
@@ -133,7 +133,7 @@ export default function ContactContent() {
                 href={REGISTRATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center border border-gold text-gold hover:bg-gold hover:text-ink px-8 py-4 text-[11px] tracking-[0.2em] uppercase transition-all duration-200"
+                className="inline-flex items-center border border-gold text-gold hover:bg-gold hover:text-ink px-8 py-4 text-xs tracking-[0.2em] uppercase transition-all duration-200"
               >
                 {tr.register.cta[language]}
               </a>
@@ -141,7 +141,7 @@ export default function ContactContent() {
 
             {/* JSON-LD hint for structured data — visible studio info */}
             <div className="border-t border-ivory/10 pt-8">
-              <p className="text-ivory/20 text-xs leading-relaxed">
+              <p className="text-ivory/50 text-xs leading-relaxed">
                 {language === 'en'
                   ? 'Enquiries are welcome via email or phone. We respond within 1–2 business days.'
                   : '欢迎通过电邮或电话联系我们，我们将在1至2个工作日内回复。'}

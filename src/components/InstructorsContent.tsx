@@ -12,7 +12,7 @@ export default function InstructorsContent() {
     <>
       {/* ── Page hero ────────────────────────────────────────── */}
       <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
-        <p className="text-[10px] tracking-[0.25em] uppercase text-gold mb-4">
+        <p className="text-xs tracking-[0.25em] uppercase text-ink-light mb-4">
           {tr.label[language]}
         </p>
         <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] whitespace-pre-line mb-6">
@@ -51,28 +51,28 @@ export default function InstructorsContent() {
                   )}
                 </div>
 
-                <p className="text-[10px] tracking-[0.18em] uppercase text-gold mb-5">
+                <p className="text-xs tracking-[0.18em] uppercase text-ink-light mb-5">
                   {profile.title[language]}
                 </p>
 
-                <p className="text-xs text-ink-light leading-relaxed mb-4">
+                <p className="text-sm text-ink-light leading-relaxed mb-4">
                   <span className="font-medium text-ink">{tr.teaches[language]}: </span>
                   {profile.teaches[language]}
                 </p>
 
-                <p className="text-sm text-ink-light leading-relaxed flex-1">
+                <p className="text-base text-ink-light leading-relaxed flex-1">
                   {profile.bio[language]}
                 </p>
 
                 {/* Qualifications (Angel Peng only) */}
                 {profile.qualifications && (
                   <div className="mt-6 pt-6 border-t border-ink/8">
-                    <p className="text-[10px] tracking-[0.18em] uppercase text-ink-light mb-3">
+                    <p className="text-xs tracking-[0.18em] uppercase text-ink-light mb-3">
                       {tr.qualifications[language]}
                     </p>
                     <ul className="space-y-1">
                       {profile.qualifications[language].map((q, i) => (
-                        <li key={i} className="text-xs text-ink-light flex gap-2">
+                        <li key={i} className="text-sm text-ink-light flex gap-2">
                           <span className="text-gold mt-0.5 shrink-0">—</span>
                           {q}
                         </li>

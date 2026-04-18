@@ -35,12 +35,12 @@ export default function Footer() {
               <span className="font-display text-lg text-ivory/80">翔悦文艺</span>
             </div>
             <p className="text-ivory/50 text-sm leading-relaxed">{tr.tagline[language]}</p>
-            <p className="text-ivory/30 text-xs tracking-widest uppercase">{tr.established[language]}</p>
+            <p className="text-ivory/50 text-xs tracking-widest uppercase">{tr.established[language]}</p>
           </div>
 
           {/* Pages */}
           <div>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-5">{tr.pages[language]}</p>
+            <p className="text-xs tracking-[0.2em] uppercase text-gold mb-5">{tr.pages[language]}</p>
             <ul className="space-y-2.5">
               {pageLinks.map(({ href, label }) => (
                 <li key={href}>
@@ -57,7 +57,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-5">{tr.contact[language]}</p>
+            <p className="text-xs tracking-[0.2em] uppercase text-gold mb-5">{tr.contact[language]}</p>
             <div className="space-y-3 text-sm text-ivory/50">
               <p>47 Beach Road, #02-04<br />Singapore 189683</p>
               <a
@@ -90,8 +90,8 @@ export default function Footer() {
 
         {/* Bottom rule */}
         <div className="border-t border-ivory/10 pt-8 flex flex-col sm:flex-row justify-between gap-3 items-start sm:items-center">
-          <p className="text-ivory/25 text-xs">{tr.copyright[language]}</p>
-          <Link href="/faq" className="text-ivory/25 hover:text-ivory/50 text-xs transition-colors duration-150">
+          <p className="text-ivory/50 text-xs">{tr.copyright[language]}</p>
+          <Link href="/faq" className="text-ivory/50 hover:text-ivory text-xs transition-colors duration-150">
             {t.nav.faq[language]}
           </Link>
         </div>

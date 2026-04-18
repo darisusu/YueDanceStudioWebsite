@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useId } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
 
@@ -12,19 +12,22 @@ function AccordionItem({
   answer: string;
 }) {
   const [open, setOpen] = useState(false);
+  const id = useId();
+  const panelId = `faq-panel-${id}`;
 
   return (
     <div className="border-b border-ink/10 last:border-0">
       <button
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-controls={panelId}
         className="w-full flex items-start justify-between gap-4 py-5 text-left group"
       >
-        <span className="text-sm text-ink group-hover:text-gold transition-colors duration-150 leading-relaxed">
+        <span className="text-base text-ink group-hover:text-gold transition-colors duration-150 leading-relaxed">
           {question}
         </span>
         <span
-          className={`shrink-0 mt-0.5 text-gold transition-transform duration-200 ${open ? 'rotate-45' : ''}`}
+          className={`shrink-0 mt-1 text-gold transition-transform duration-200 ${open ? 'rotate-45' : ''}`}
           aria-hidden="true"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -33,8 +36,8 @@ function AccordionItem({
         </span>
       </button>
       {open && (
-        <div className="pb-5 pr-8">
-          <p className="text-sm text-ink-light leading-relaxed">{answer}</p>
+        <div id={panelId} role="region" className="pb-5 pr-8">
+          <p className="text-base text-ink-light leading-relaxed">{answer}</p>
         </div>
       )}
     </div>
@@ -49,7 +52,7 @@ export default function FaqContent() {
     <>
       {/* ── Page hero ────────────────────────────────────────── */}
       <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
-        <p className="text-[10px] tracking-[0.25em] uppercase text-gold mb-4">
+        <p className="text-xs tracking-[0.25em] uppercase text-ink-light mb-4">
           {tr.label[language]}
         </p>
         <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] whitespace-pre-line mb-6">
