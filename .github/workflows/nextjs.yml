@@ -2,14 +2,9 @@
 #
 # To get started with Next.js see: https://nextjs.org/docs/getting-started
 #
-name: Deploy Next.js site to Pages
+name: Deprecated Next.js Pages workflow (disabled)
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -27,6 +22,7 @@ concurrency:
 jobs:
   # Build job
   build:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
