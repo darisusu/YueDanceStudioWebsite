@@ -14,7 +14,7 @@ export default function AboutContent() {
   return (
     <>
       {/* ── Full-bleed page hero ──────────────────────────────── */}
-      <section className="relative h-[70vh] flex items-end overflow-hidden grain">
+      <section className="relative h-[70vh] flex items-end overflow-hidden grain mt-16">
         <ParallaxHero
           src="/images/about/about-performance-1.jpg"
           alt="YUE Dance Studio founders"

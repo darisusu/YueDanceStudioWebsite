@@ -68,7 +68,7 @@ export default function HomeContent() {
               {hero.line1[language]}
             </span>
             {hero.line2[language] && (
-              <span className="block text-[clamp(4rem,11vw,10rem)] font-light pl-[6vw] text-ivory/70">
+              <span className="block text-[clamp(4rem,11vw,10rem)] font-light pl-[6vw] text-ivory/90">
                 {hero.line2[language]}
               </span>
             )}

@@ -45,7 +45,7 @@ export default function InstructorsContent() {
                       alt={`${profile.nameZh} — ${profile.title[language]}`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover object-top"
+                      className="object-cover object-[center_20%]"
                     />
                     {/* Vertical Chinese text on image */}
                     <p
