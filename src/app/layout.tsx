@@ -49,7 +49,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
           rel="stylesheet"
-          // @ts-expect-error — fetchPriority is valid HTML but not yet in React's TS types for <link>
           fetchPriority="low"
         />
       </head>
