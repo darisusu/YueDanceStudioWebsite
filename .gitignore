@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# internal / local-only docs
+CONTEXT.md
+context.md
+content-review.md
+
+# local AI tooling state
+.claude/
