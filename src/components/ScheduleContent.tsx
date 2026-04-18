@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
+import { scheduleClasses } from '@/data/schedule';
 
 const NUM_BANDS = 5;
 
@@ -10,19 +11,19 @@ export default function ScheduleContent() {
   const { language } = useLanguage();
   const tr = t.schedule;
 
-  const grid: (typeof tr.classes[number] | undefined)[][] = Array.from(
+  const grid: (typeof scheduleClasses[number] | undefined)[][] = Array.from(
     { length: NUM_BANDS },
     (_, band) =>
-      tr.days.map((_, day) => tr.classes.find(c => c.band === band && c.day === day)),
+      tr.days.map((_, day) => scheduleClasses.find(c => c.band === band && c.day === day)),
   );
 
   const activeDayIndices = tr.days
     .map((_, i) => i)
-    .filter(i => tr.classes.some(c => c.day === i));
+    .filter(i => scheduleClasses.some(c => c.day === i));
 
   const activeDays = activeDayIndices.map(i => ({
     day: tr.days[i],
-    classes: tr.classes.filter(c => c.day === i).sort((a, b) => a.band - b.band),
+    classes: scheduleClasses.filter(c => c.day === i).sort((a, b) => a.band - b.band),
   }));
 
   return (

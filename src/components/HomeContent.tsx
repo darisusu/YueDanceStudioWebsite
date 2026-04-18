@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
+import { courses as courseList } from '@/data/courses';
 
 export default function HomeContent() {
   const { language } = useLanguage();
@@ -81,7 +82,7 @@ export default function HomeContent() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10">
-          {t.courses.items.map((course) => (
+          {courseList.map((course) => (
             <Link
               key={course.name.en}
               href="/courses"

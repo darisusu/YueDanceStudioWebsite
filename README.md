@@ -1,6 +1,6 @@
 # YUE Dance Studio — Website Revamp
 
-A custom-built website for **Xiang Yue Culture Arts / YUE Dance Studio**, replacing the existing Wix site with a fully static, self-hosted Next.js application.
+A custom-built website for **Xiang Yue Culture Arts / YUE Dance Studio**, a fully static, self-hosted Next.js application.
 
 ## Stack
 
@@ -30,6 +30,34 @@ A custom-built website for **Xiang Yue Culture Arts / YUE Dance Studio**, replac
 - `/schedule` — Class timetable
 - `/contact` — Address, contact details, registration form
 - `/faq` — Accordion FAQ (4 categories)
+
+## Content Architecture
+
+Site content is split into two layers:
+
+| Layer | Location | What goes here |
+|---|---|---|
+| **UI strings** | `src/lib/translations.ts` | Nav labels, page headings, button text, FAQ copy — anything that is part of the UI chrome |
+| **Content data** | `src/data/` | Structured records that change independently of the UI |
+
+### Data files
+
+| File | Type | Description |
+|---|---|---|
+| `src/data/instructors.ts` | `Instructor[]` | Instructor profiles: name, title, bio, photo path, qualifications |
+| `src/data/courses.ts` | `Course[]` | Course listings: name, instructor, description, image |
+| `src/data/schedule.ts` | `ScheduleClass[]` | Timetable entries: day (0–6), time band (0–4), time string, name, instructor |
+| `src/data/performances.ts` | `Performance[]` | Past performances & awards listed on the About page |
+
+### How to make common updates
+
+**Add or edit an instructor** — edit `src/data/instructors.ts`. Each entry is a typed `Instructor` object; TypeScript will flag missing fields at build time.
+
+**Change the schedule** — edit `src/data/schedule.ts`. `day` is 0 (Mon) – 6 (Sun); `band` is a time-row index 0 (morning) – 4 (evening).
+
+**Add a new course** — append a `Course` entry to `src/data/courses.ts`. The home page course grid and the `/courses` page both read from this file.
+
+**Add a performance** — prepend a `Performance` entry to `src/data/performances.ts`.
 
 ## Features
 

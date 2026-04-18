@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
+import { instructors } from '@/data/instructors';
 
 export default function InstructorsContent() {
   const { language } = useLanguage();
@@ -24,7 +25,7 @@ export default function InstructorsContent() {
       {/* ── Instructor cards ─────────────────────────────────── */}
       <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10">
-          {tr.profiles.map((profile) => (
+          {instructors.map((profile) => (
             <article
               key={profile.name}
               className="bg-ivory flex flex-col"

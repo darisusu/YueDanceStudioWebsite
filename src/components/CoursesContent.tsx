@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
+import { courses } from '@/data/courses';
 
 const REGISTRATION_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
@@ -27,7 +28,7 @@ export default function CoursesContent() {
       {/* ── Course cards ─────────────────────────────────────── */}
       <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-24">
         <div className="space-y-px bg-ink/10">
-          {tr.items.map((course, i) => (
+          {courses.map((course, i) => (
             <article
               key={course.name.en}
               className="bg-ivory grid grid-cols-1 lg:grid-cols-2"

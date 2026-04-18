@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
+import { performances } from '@/data/performances';
 
 export default function AboutContent() {
   const { language } = useLanguage();
@@ -75,7 +76,7 @@ export default function AboutContent() {
           <div className="absolute left-[3.25rem] top-0 bottom-0 w-px bg-ink/10 hidden sm:block" />
 
           <ul className="space-y-0">
-            {ab.performances.items.map((item, i) => (
+            {performances.map((item, i) => (
               <li
                 key={i}
                 className="relative flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 py-6 border-b border-ink/8 last:border-0"
