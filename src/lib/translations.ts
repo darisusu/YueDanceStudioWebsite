@@ -30,7 +30,7 @@ export const t = {
     testimonial: {
       label:       { en: 'In Their Words', zh: '学员心声' },
       quote:       { en: '"So grateful for the meticulous teachings, I thoroughly enjoyed tonight\'s class & learnt so much from Lao Shi！"', zh: '「非常感谢老师今晚的细心指导，我非常享受今晚的课程，从老师身上学到了很多！」' },
-      attribution: { en: 'Sumini · Chinese Belly Dance, July 2020', zh: 'Sumini · 中国舞，2020年7月' },
+      attribution: { en: 'Sumini · Chinese Belly Dance', zh: 'Sumini · 中国舞，2020年7月' },
     },
     join: {
       heading:   { en: 'Ready to Begin?', zh: '准备好开始了吗？' },
