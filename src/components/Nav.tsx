@@ -54,6 +54,7 @@ export default function Nav() {
   return (
     <>
       <header
+        style={{ viewTransitionName: 'site-nav' }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           onDark
             ? 'bg-transparent'
