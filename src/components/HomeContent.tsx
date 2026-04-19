@@ -9,6 +9,7 @@ import { instructors } from '@/data/instructors';
 import ParallaxHero from '@/components/ParallaxHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import Marquee from '@/components/Marquee';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 const REGISTRATION_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
@@ -33,6 +34,28 @@ export default function HomeContent() {
   const perf    = t.home.performances;
   const testi   = t.home.testimonial;
   const join    = t.home.join;
+
+  const [testiIndex, setTestiIndex] = useState(0);
+  const testiItems = testi.items;
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startInterval = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(
+      () => setTestiIndex(i => (i + 1) % testiItems.length),
+      7000
+    );
+  }, [testiItems.length]);
+
+  useEffect(() => {
+    startInterval();
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [startInterval]);
+
+  const goToTesti = useCallback((next: number) => {
+    setTestiIndex((next + testiItems.length) % testiItems.length);
+    startInterval();
+  }, [testiItems.length, startInterval]);
 
   return (
     <>
@@ -341,7 +364,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Testimonial ──────────────────────────────────────── */}
-      <section className="relative bg-ink min-h-[70vh] flex items-center px-6 lg:px-12 overflow-hidden grain">
+      <section className="relative bg-ink py-20 lg:py-28 px-6 lg:px-12 overflow-hidden grain">
         {/* background performance image */}
         <div className="absolute inset-0 opacity-10">
           <Image
@@ -355,21 +378,68 @@ export default function HomeContent() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full">
-          <ScrollReveal>
-            <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-10">
-              {testi.label[language]}
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={100}>
-            <blockquote className="font-display text-ivory text-[clamp(1.8rem,4vw,3.5rem)] leading-[1.2] font-light italic max-w-3xl mb-10">
-              {testi.quote[language]}
-            </blockquote>
-          </ScrollReveal>
-          <ScrollReveal delay={200}>
-            <cite className="not-italic text-ivory/35 text-xs tracking-[0.22em] uppercase">
-              {testi.attribution[language]}
-            </cite>
-          </ScrollReveal>
+          {/* Carousel */}
+          <div className="relative flex items-center gap-8">
+            {/* Prev arrow */}
+            <button
+              onClick={() => goToTesti(testiIndex - 1)}
+              aria-label="Previous testimonial"
+              className="flex-shrink-0 -ml-1 w-10 h-10 flex items-center justify-center text-2xl text-ivory/30 hover:text-gold transition-colors duration-300"
+            >
+              ‹
+            </button>
+
+            {/* Quote column — fixed height prevents reflow between slides */}
+            <div className="flex-1 flex flex-col">
+              <ScrollReveal>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-10">
+                  {testi.label[language]}
+                </p>
+              </ScrollReveal>
+
+              {/* Absolutely-positioned slide stack — all slides in DOM, only active one visible */}
+              <div className="relative h-[38rem] lg:h-[26rem]">
+                {testiItems.map((item, i) => (
+                  <div
+                    key={i}
+                    aria-hidden={i !== testiIndex}
+                    className="absolute inset-0 flex flex-col justify-start transition-opacity duration-700 ease-in-out"
+                    style={{ opacity: i === testiIndex ? 1 : 0 }}
+                  >
+                    <blockquote className="font-display text-ivory text-[clamp(1.2rem,2.8vw,2.4rem)] leading-[1.4] font-light italic max-w-3xl mb-8">
+                      {item.quote[language]}
+                    </blockquote>
+                    <div className="w-8 h-px bg-gold/50 mb-4" />
+                    <cite className="not-italic text-ivory/40 text-xs tracking-[0.22em] uppercase">
+                      {item.attribution[language]}
+                    </cite>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Next arrow */}
+            <button
+              onClick={() => goToTesti(testiIndex + 1)}
+              aria-label="Next testimonial"
+              className="flex-shrink-0 -mr-1 w-10 h-10 flex items-center justify-center text-2xl text-ivory/30 hover:text-gold transition-colors duration-300"
+            >
+              ›
+            </button>
+          </div>
+
+          {/* Dot indicators — aligned with quote (offset by arrow width + gap) */}
+          <div className="flex gap-2 mt-8" style={{ paddingLeft: 'calc(2.5rem + 2rem)' }}>
+            {testiItems.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goToTesti(i)}
+                aria-label={`Go to testimonial ${i + 1}`}
+                style={{ transition: 'width 400ms ease, background-color 400ms ease' }}
+                className={`h-1.5 rounded-full ${i === testiIndex ? 'w-6 bg-gold' : 'w-1.5 bg-ivory/25'}`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Vertical accent */}

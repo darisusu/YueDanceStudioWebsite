@@ -29,9 +29,25 @@ export const t = {
       viewAll:  { en: 'View all courses →',                         zh: '查看全部课程 →' },
     },
     testimonial: {
-      label:       { en: 'In Their Words', zh: '学员心声' },
-      quote:       { en: '"I am deeply grateful for the meticulous guidance provided by Lao Shi. The class was both highly engaging and incredibly insightful."', zh: '「非常感谢老师今晚的细心指导，我非常享受今晚的课程，从老师身上学到了很多！」' },
-      attribution: { en: 'Sumini · Chinese Belly Dance', zh: 'Sumini · 华族舞，2020年7月' },
+      label: { en: 'In Their Words', zh: '学员心声' },
+      items: [
+        {
+          quote:       { en: '"I am deeply grateful for the meticulous guidance provided by Lao Shi. The class was both highly engaging and incredibly insightful."', zh: '「非常感谢老师今晚的细心指导，我非常享受今晚的课程，从老师身上学到了很多！」' },
+          attribution: { en: 'Sumini · Chinese Belly Dance, July 2020', zh: 'Sumini · 华族舞，2020年7月' },
+        },
+        {
+          quote:       { en: '"Thank you, Teacher Daniel, for the meticulously choreographed dances and your endless patient guidance — even students like us with no dance background were able to perform on stage. It really built up our confidence enormously."', zh: '「谢谢Daniel老师精心编排的舞蹈，以及不厌其烦的耐心指导，让我们这些没有舞蹈基础的同学也能登台表演，大大的树立了我们的信心。」' },
+          attribution: { en: 'A Ling · Dance Colour Class, Sep 2019', zh: '阿玲 · 舞色舞味班，2019年9月' },
+        },
+        {
+          quote:       { en: '"From the moment we finished filming, my heart has not been able to settle — I have watched the video again and again, and it moves me deeply... I am so grateful to our wonderful teacher, who always guides our each dance move with professionalism and patience. The road of dance holds only the beauty you work to achieve — and that beauty is made possible by our teacher\'s guidance."', zh: '「从拍完视频至今，我的内心还是久久不能平复，视频看了一遍又一遍，让我感触良多……一份努力一份收获，在此我非常感谢我们帅气的老师，总是非常专业、有耐心地指导我们每一个标准的舞蹈动作，让我们这些舞蹈爱好者受益良多。舞蹈的路上只有努力跳出来的美丽，当然更少不了专业老师的指导，新的一期，好期待老师的新作品！」' },
+          attribution: { en: 'Ms Chen · Chinese Dance Class, Jul 2019', zh: '陈小姐 · 中国舞班，2019年7月' },
+        },
+        {
+          quote:       { en: '"I love the ballet-modern piece Teacher choreographed — Hawthorn Tree Melody — graceful and flowing like a gentle stream, it soothed my restless heart during those stay-home days. Sincerely looking forward to more learning and growth. Thank you again, Teacher Daniel & Teacher Lin Jing!"', zh: '「十分喜欢老师编教的这支芭蕾现代舞～山楂树舞曲，柔美像股清流，缓和了这居家郁闷心情。衷心期待更多的学习与进步。再次谢谢Daniel&林晶老师！」' },
+          attribution: { en: 'Wen Fei · Cloud Dance Online Class, Jun 2021', zh: '雯妃 · 云舞网课，2021年6月' },
+        },
+      ],
     },
     join: {
       heading:   { en: 'Ready to Begin?', zh: '准备好开始了吗？' },
@@ -80,8 +96,8 @@ export const t = {
 
   instructors: {
     label:          { en: 'Our Team',              zh: '导师团队' },
-    heading:        { en: 'Meet the\nInstructors', zh: '认识\n我们的导师' },
-    sub:            { en: 'Accomplished artists. Patient teachers. Passionate practitioners.', zh: '技艺精湛、耐心教导、热爱舞蹈的专业导师团队。' },
+    heading:        { en: 'Meet the\nInstructors', zh: '我们的导师' },
+    sub:            { en: 'Accomplished artists. Patient teachers. Passionate practitioners.', zh: '技艺精湛、耐心教导、热爱舞蹈的专业导师团队' },
     teaches:        { en: 'Teaches',               zh: '教授课程' },
     qualifications: { en: 'Qualifications',        zh: '专业资质' },
   },
