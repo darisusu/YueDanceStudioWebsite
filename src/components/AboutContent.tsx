@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
-import { performances } from '@/data/performances';
+import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import ParallaxHero from '@/components/ParallaxHero';
 
@@ -72,9 +72,9 @@ export default function AboutContent() {
         <div className="border-t border-ink/10" />
       </div>
 
-      {/* ── Performances & Awards ────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
-        <ScrollReveal className="mb-16 relative">
+      {/* ── Performances link ────────────────────────────────── */}
+      <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
+        <ScrollReveal className="relative">
           <span
             className="font-display absolute -top-8 right-0 text-[12rem] leading-none text-ink/[0.04] select-none pointer-events-none hidden lg:block"
             aria-hidden="true"
@@ -84,53 +84,21 @@ export default function AboutContent() {
           <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-4">
             {ab.performances.label[language]}
           </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.95]">
+          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] mb-6">
             {ab.performances.heading[language]}
           </h2>
+          <p className="text-ink-light text-base leading-relaxed max-w-xl mb-8">
+            {language === 'en'
+              ? 'From Chingay Parade to the Singapore Golden Lion Cup — browse our full stage history.'
+              : '从妆艺大游行到新加坡金狮奖——浏览翔悦完整的舞台足迹。'}
+          </p>
+          <Link
+            href="/performances"
+            className="inline-flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-gold hover:text-ink border-b border-gold/50 hover:border-ink pb-0.5 transition-colors duration-150"
+          >
+            {language === 'en' ? 'See full history →' : '了解演出历史 →'}
+          </Link>
         </ScrollReveal>
-
-        {/* Timeline */}
-        <div className="relative">
-          <div className="absolute left-[3.5rem] top-0 bottom-0 w-px bg-gold/20 hidden sm:block" />
-
-          <ul className="space-y-0">
-            {performances.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 40} as="li" className="relative flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 py-7 border-b border-ink/8 last:border-0">
-                {/* Year */}
-                <span className="sm:w-28 shrink-0 font-display text-2xl text-gold relative z-10">
-                  {item.year}
-                  <span className="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-[calc(100%+1.5rem)] w-2 h-2 rounded-full bg-gold/60" />
-                </span>
-                {/* Description */}
-                <p className="text-ink text-sm leading-relaxed sm:pl-8">
-                  {item[language]}
-                </p>
-              </ScrollReveal>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ── Performance image grid ───────────────────────────── */}
-      <section className="pb-24 px-6 lg:px-12 max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-1">
-          {[
-            { src: '/images/hero/hero-banner-1.jpeg',         alt: 'YUE Dance Studio stage performance' },
-            { src: '/images/about/about-performance-5.jpeg',  alt: 'YUE dancers in performance' },
-            { src: '/images/hero/hero-banner-3.jpg',          alt: 'Classical dance by YUE students' },
-            { src: '/images/about/about-performance-4.jpeg',  alt: 'YUE Dance Studio awards ceremony' },
-          ].map(({ src, alt }, i) => (
-            <ScrollReveal key={i} delay={i * 80} className="relative aspect-square overflow-hidden group">
-              <Image
-                src={src}
-                alt={alt}
-                fill
-                sizes="(max-width: 1024px) 50vw, 25vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-600"
-              />
-            </ScrollReveal>
-          ))}
-        </div>
       </section>
     </>
   );

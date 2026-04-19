@@ -8,13 +8,14 @@ import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
 
 const navLinks = [
-  { href: '/',            label: t.nav.home },
-  { href: '/about',       label: t.nav.about },
-  { href: '/instructors', label: t.nav.instructors },
-  { href: '/courses',     label: t.nav.courses },
-  { href: '/schedule',    label: t.nav.schedule },
-  { href: '/contact',     label: t.nav.contact },
-  { href: '/faq',         label: t.nav.faq },
+  { href: '/',               label: t.nav.home },
+  { href: '/about',          label: t.nav.about },
+  { href: '/instructors',    label: t.nav.instructors },
+  { href: '/courses',        label: t.nav.courses },
+  { href: '/performances',   label: t.nav.performances },
+  { href: '/schedule',       label: t.nav.schedule },
+  { href: '/contact',        label: t.nav.contact },
+  { href: '/faq',            label: t.nav.faq },
 ];
 
 export default function Nav() {

@@ -14,11 +14,11 @@ const REGISTRATION_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
 
 const marqueeItems = [
-  'Movement as language',
+  'Movement as Language',
   '以舞为语',
-  'Artistry lives here',
+  'Living within Artistry',
   '艺在其中',
-  'Find beauty through dance',
+  'Finding Beauty through Dance',
   '以舞寻美',
   'All are welcome',
   '翔悦欢迎你',
@@ -30,6 +30,7 @@ export default function HomeContent() {
   const { language } = useLanguage();
   const hero    = t.home.hero;
   const courses = t.home.courses;
+  const perf    = t.home.performances;
   const testi   = t.home.testimonial;
   const join    = t.home.join;
 
@@ -227,7 +228,7 @@ export default function HomeContent() {
           <ScrollReveal delay={100}>
             <blockquote className="font-display text-ivory text-[clamp(2.2rem,5vw,4.5rem)] leading-[1.1] font-light italic max-w-3xl">
               {language === 'en'
-                ? 'Dance is not performance. It is how we remember what it means to be alive.'
+                ? 'Dance is not just a performance.\nBut exploring what it means to be alive.'
                 : '舞蹈不是表演，而是我们感受生命、寻回自我的方式。'}
             </blockquote>
           </ScrollReveal>
@@ -307,6 +308,36 @@ export default function HomeContent() {
             {language === 'en' ? 'Meet all instructors →' : '认识全体导师 →'}
           </Link>
         </ScrollReveal>
+      </section>
+
+      {/* ── Performances teaser ──────────────────────────────── */}
+      <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto">
+        <ScrollReveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div>
+            <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
+              {perf.label[language]}
+            </p>
+            <h2 className="font-display text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[0.95]">
+              {perf.heading[language]}
+            </h2>
+          </div>
+          <Link
+            href="/performances"
+            className="shrink-0 text-[11px] tracking-[0.15em] uppercase text-gold hover:text-ink transition-colors duration-150"
+          >
+            {perf.cta[language]}
+          </Link>
+        </ScrollReveal>
+
+        <div className="border-t border-b border-ink/10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-ink/10">
+          {perf.items.map((item, i) => (
+            <ScrollReveal key={item.title.en} delay={i * 80} className="py-8 px-0 sm:px-8 first:pl-0 last:pr-0">
+              <p className="text-[10px] tracking-widest uppercase text-gold mb-2">{item.year}</p>
+              <h3 className="font-display text-xl leading-tight mb-2">{item.title[language]}</h3>
+              <p className="text-ink-light text-sm leading-relaxed">{item.note[language]}</p>
+            </ScrollReveal>
+          ))}
+        </div>
       </section>
 
       {/* ── Testimonial ──────────────────────────────────────── */}

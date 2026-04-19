@@ -3,13 +3,14 @@ export type Bilingual = { en: string; zh: string };
 
 export const t = {
   nav: {
-    home:        { en: 'Home',        zh: '主页' },
-    about:       { en: 'About',       zh: '关于我们' },
-    instructors: { en: 'Instructors', zh: '导师团队' },
-    courses:     { en: 'Courses',     zh: '舞蹈课程' },
-    schedule:    { en: 'Schedule',    zh: '课程表' },
-    contact:     { en: 'Contact',     zh: '联系我们' },
-    faq:         { en: 'FAQ',         zh: '常见问题' },
+    home:         { en: 'Home',         zh: '主页' },
+    about:        { en: 'About',        zh: '关于我们' },
+    instructors:  { en: 'Instructors',  zh: '导师团队' },
+    courses:      { en: 'Courses',      zh: '舞蹈课程' },
+    performances: { en: 'Performances', zh: '演出历史' },
+    schedule:     { en: 'Schedule',     zh: '课程表' },
+    contact:      { en: 'Contact',      zh: '联系我们' },
+    faq:          { en: 'FAQ',          zh: '常见问题' },
   },
 
   home: {
@@ -29,7 +30,7 @@ export const t = {
     },
     testimonial: {
       label:       { en: 'In Their Words', zh: '学员心声' },
-      quote:       { en: '"So grateful for the meticulous teachings, I thoroughly enjoyed tonight\'s class & learnt so much from Lao Shi！"', zh: '「非常感谢老师今晚的细心指导，我非常享受今晚的课程，从老师身上学到了很多！」' },
+      quote:       { en: '"I am deeply grateful for the meticulous guidance provided by Lao Shi. The class was both highly engaging and incredibly insightful."', zh: '「非常感谢老师今晚的细心指导，我非常享受今晚的课程，从老师身上学到了很多！」' },
       attribution: { en: 'Sumini · Chinese Belly Dance', zh: 'Sumini · 中国舞，2020年7月' },
     },
     join: {
@@ -38,11 +39,36 @@ export const t = {
       primary:   { en: 'Register Now',    zh: '立即报名' },
       secondary: { en: 'View Schedule',   zh: '查看课表' },
     },
+    performances: {
+      label:   { en: 'Performances & Awards', zh: '演出与荣誉' },
+      heading: { en: 'We Take the Stage',     zh: '我们登上舞台' },
+      cta:     { en: 'See full history →',    zh: '了解演出历史 →' },
+      items: [
+        {
+          year: '2020',
+          title: { en: 'Chingay Parade',    zh: '妆艺大游行' },
+          note:  { en: 'Featured by Straits Times. Shared by PM Lee Hsien Loong on social media.',
+                   zh: '获《海峡时报》报道，由李显龙总理于社交媒体转发分享。' },
+        },
+        {
+          year: '2021',
+          title: { en: 'River Hong Bao',    zh: '新春河畔嘉年华' },
+          note:  { en: 'Best Live Performance Award.',
+                   zh: '荣获最佳现场演出奖。' },
+        },
+        {
+          year: '2018',
+          title: { en: 'Singapore Golden Lion Cup', zh: '新加坡金狮奖' },
+          note:  { en: 'Gold Award — Music & Dance Competition.',
+                   zh: '音乐舞蹈赛金奖。' },
+        },
+      ],
+    },
   },
 
   about: {
     label:   { en: 'Our Story',            zh: '我们的故事' },
-    heading: { en: 'Born from a\nLove of Dance', zh: '因热爱\n而生' },
+    heading: { en: 'Born from a\nLove of Dance', zh: '热爱舞蹈而生' },
     body1:   { en: 'Founded in 2018, Xiang Yue Culture Arts — known to our students as YUE Dance Studio — was born from a simple belief: that dance is for everyone, at every stage of life.', zh: '翔悦文艺成立于2018年，始终秉持一个简单的信念：舞蹈属于每一个人，无论年龄，无论起点。' },
     body2:   { en: 'We began as a small community studio in Singapore, built on word of mouth and a genuine passion for movement. Today, we bring together adult learners of all backgrounds under the guidance of experienced, accomplished instructors — in classes that range from Chinese classical dance and ballet to folk dance and contemporary forms.', zh: '我们从新加坡的一间小小社区舞室起步，凭借口碑与对舞蹈艺术的热忱，逐渐成长壮大。如今，翔悦文艺汇聚了来自各行各业的成人学员，在专业导师的带领下，共同探索现当代舞、民族民间舞、芭蕾舞、华族舞、古典舞的世界。' },
     body3:   { en: 'We are not a studio that trains competitors. We are a place where working adults, retirees, and lifelong learners come to find rhythm, community, and the quiet joy of movement. Many of our students have never danced before. Many have danced their whole lives. All of them are welcome here.', zh: '我们不是培养竞技选手的训练机构，而是一个让职场人士、退休人员及终身学习者寻回节奏、融入社群、感受律动之美的地方。这里有初学者，有资深舞者，每一位都在翔悦找到属于自己的位置。' },
@@ -176,6 +202,12 @@ export const t = {
         ],
       },
     ],
+  },
+
+  performances: {
+    label:   { en: 'Stage History',          zh: '舞台足迹' },
+    heading: { en: 'Performances\n& Awards', zh: '演出\n与荣誉' },
+    sub:     { en: 'From national parades to charity galas — our students take the stage.', zh: '从国家级游行到慈善晚会，翔悦学员走上真实的舞台。' },
   },
 
   footer: {
