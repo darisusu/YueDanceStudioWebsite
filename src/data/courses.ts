@@ -27,9 +27,9 @@ export const courses: Course[] = [
     image: '/images/courses/course-13.jpeg',
   },
   {
-    name:        { en: 'Chinese Dance',               zh: '中国舞' },
+    name:        { en: 'Chinese Dance',               zh: '华族舞' },
     instructor:  { en: 'Daniel · Chang Hsiao-Min',   zh: 'Daniel · 张晓明' },
-    description: { en: 'A rich tradition of Chinese dance forms — from lyrical Han-style movements to expressive contemporary Chinese choreography, led by two complementary instructors.', zh: '涵盖抒情汉族风格至当代中国舞编排的丰富舞蹈传统，由两位导师各展所长，相辅相成。' },
+    description: { en: 'A rich tradition of Chinese dance forms — from lyrical Han-style movements to expressive contemporary Chinese choreography, led by two complementary instructors.', zh: '涵盖抒情汉族风格至当代华族舞编排的丰富舞蹈传统，由两位导师各展所长，相辅相成。' },
     image: '/images/hero/hero-banner-1.jpeg',
   },
   {

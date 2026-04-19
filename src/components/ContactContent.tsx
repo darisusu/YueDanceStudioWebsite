@@ -39,17 +39,6 @@ export default function ContactContent() {
               </address>
             </div>
 
-            {/* Admin */}
-            <div>
-              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
-                {tr.admin[language]}
-              </p>
-              <address className="not-italic text-ink-light text-sm leading-relaxed">
-                21 Tyrwhitt Road, #05-06<br />
-                Foochow Building, Singapore 207530
-              </address>
-            </div>
-
             {/* Email */}
             <div>
               <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
@@ -76,7 +65,7 @@ export default function ContactContent() {
                   </a>
                 </p>
                 <p>
-                  Vicki:{' '}
+                  Vicky:{' '}
                   <a href="tel:+6594253833" className="text-ink hover:text-gold transition-colors duration-150">
                     +65 9425 3833
                   </a>

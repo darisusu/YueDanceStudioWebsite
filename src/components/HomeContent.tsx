@@ -305,7 +305,7 @@ export default function HomeContent() {
             href="/instructors"
             className="text-[11px] tracking-[0.18em] uppercase text-gold hover:text-ink border-b border-gold/50 hover:border-ink pb-0.5 transition-colors duration-150"
           >
-            {language === 'en' ? 'Meet all instructors →' : '认识全体导师 →'}
+            {language === 'en' ? 'Meet our instructors →' : '认识我们的导师 →'}
           </Link>
         </ScrollReveal>
       </section>

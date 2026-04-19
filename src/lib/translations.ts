@@ -31,7 +31,7 @@ export const t = {
     testimonial: {
       label:       { en: 'In Their Words', zh: '学员心声' },
       quote:       { en: '"I am deeply grateful for the meticulous guidance provided by Lao Shi. The class was both highly engaging and incredibly insightful."', zh: '「非常感谢老师今晚的细心指导，我非常享受今晚的课程，从老师身上学到了很多！」' },
-      attribution: { en: 'Sumini · Chinese Belly Dance', zh: 'Sumini · 中国舞，2020年7月' },
+      attribution: { en: 'Sumini · Chinese Belly Dance', zh: 'Sumini · 华族舞，2020年7月' },
     },
     join: {
       heading:   { en: 'Ready to Begin?', zh: '准备好开始了吗？' },
@@ -138,7 +138,7 @@ export const t = {
         items: [
           {
             q: { en: 'I do not have experience in dance. What courses are suitable for me?', zh: '我没有舞蹈经验，适合参加哪些课程？' },
-            a: { en: 'Mixed Style Dance and Chinese Dance Basics are popular among new dancers. However, feel free to try out other classes and let our instructors know if you wish to have basic steps explained along the way.', zh: '综合风格舞及中国舞基础深受初学者喜爱。当然，您也可以尝试其他课程，只需告知导师希望同步讲解基础步骤即可。' },
+            a: { en: 'Mixed Style Dance and Chinese Dance Basics are popular among new dancers. However, feel free to try out other classes and let our instructors know if you wish to have basic steps explained along the way.', zh: '综合风格舞及华族舞基础深受初学者喜爱。当然，您也可以尝试其他课程，只需告知导师希望同步讲解基础步骤即可。' },
           },
           {
             q: { en: 'Can I still join other courses if I do not have experience?', zh: '没有舞蹈经验，可以参加其他课程吗？' },
@@ -193,7 +193,7 @@ export const t = {
           },
           {
             q: { en: 'How do I get the chance to perform?', zh: '如何获得演出机会？' },
-            a: { en: 'There are regular performance opportunities through Foochow Association events for students of Chinese Dance Basics courses.', zh: '中国舞基础课程学员可通过福州会馆活动获得定期演出机会。' },
+            a: { en: 'We regularly offer performance opportunities for our students. Regular students will have chances to take the stage throughout the year.', zh: '我们定期为学员提供演出机会，常规学员全年均有机会登上舞台。' },
           },
           {
             q: { en: 'Do I have to pay for performance costumes?', zh: '演出服装需要自己付费吗？' },
@@ -206,7 +206,7 @@ export const t = {
 
   performances: {
     label:   { en: 'Stage History',          zh: '舞台足迹' },
-    heading: { en: 'Performances\n& Awards', zh: '演出\n与荣誉' },
+    heading: { en: 'Performances\n& Awards', zh: '演出与荣誉' },
     sub:     { en: 'From national parades to charity galas — our students take the stage.', zh: '从国家级游行到慈善晚会，翔悦学员走上真实的舞台。' },
   },
 
