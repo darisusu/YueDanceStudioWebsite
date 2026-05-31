@@ -40,11 +40,11 @@ export const t = {
           attribution: { en: 'A Ling · Dance Colour Class, Sep 2019', zh: '阿玲 · 舞色舞味班，2019年9月' },
         },
         {
-          quote:       { en: '"From the moment we finished filming, my heart has not been able to settle — I have watched the video again and again, and it moves me deeply... I am so grateful to our wonderful teacher, who always guides our each dance move with professionalism and patience. The road of dance holds only the beauty you work to achieve — and that beauty is made possible by our teacher\'s guidance."', zh: '「从拍完视频至今，我的内心还是久久不能平复，视频看了一遍又一遍，让我感触良多……一份努力一份收获，在此我非常感谢我们帅气的老师，总是非常专业、有耐心地指导我们每一个标准的舞蹈动作，让我们这些舞蹈爱好者受益良多。舞蹈的路上只有努力跳出来的美丽，当然更少不了专业老师的指导，新的一期，好期待老师的新作品！」' },
+          quote:       { en: '"From the moment we finished filming, my heart has not been able to settle. I have watched the video again and again, and it moves me deeply... I am so grateful to our wonderful teacher, who always guides our each dance move with professionalism and patience. The road of dance holds only the beauty you work to achieve, and that beauty is made possible by our teacher\'s guidance."', zh: '「从拍完视频至今，我的内心还是久久不能平复，视频看了一遍又一遍，让我感触良多……一份努力一份收获，在此我非常感谢我们帅气的老师，总是非常专业、有耐心地指导我们每一个标准的舞蹈动作，让我们这些舞蹈爱好者受益良多。舞蹈的路上只有努力跳出来的美丽，当然更少不了专业老师的指导，新的一期，好期待老师的新作品！」' },
           attribution: { en: 'Ms Chen · Chinese Dance Class, Jul 2019', zh: '陈小姐 · 中国舞班，2019年7月' },
         },
         {
-          quote:       { en: '"I love the ballet-modern piece Teacher choreographed — Hawthorn Tree Melody — graceful and flowing like a gentle stream, it soothed my restless heart during those stay-home days. Sincerely looking forward to more learning and growth. Thank you again, Teacher Daniel & Teacher Lin Jing!"', zh: '「十分喜欢老师编教的这支芭蕾现代舞～山楂树舞曲，柔美像股清流，缓和了这居家郁闷心情。衷心期待更多的学习与进步。再次谢谢Daniel&林晶老师！」' },
+          quote:       { en: '"I love the ballet-modern piece Teacher choreographed, Hawthorn Tree Melody, graceful and flowing like a gentle stream, it soothed my restless heart during those stay-home days. Sincerely looking forward to more learning and growth. Thank you again, Teacher Daniel & Teacher Lin Jing!"', zh: '「十分喜欢老师编教的这支芭蕾现代舞～山楂树舞曲，柔美像股清流，缓和了这居家郁闷心情。衷心期待更多的学习与进步。再次谢谢Daniel&林晶老师！」' },
           attribution: { en: 'Wen Fei · Cloud Dance Online Class, Jun 2021', zh: '雯妃 · 云舞网课，2021年6月' },
         },
       ],
