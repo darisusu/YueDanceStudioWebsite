@@ -12,11 +12,11 @@ export interface Instructor {
 
 export const instructors: Instructor[] = [
   {
-    name:   'Daniel',
-    nameZh: 'Daniel',
+    name:   'Daniel Deng Yu',
+    nameZh: '邓宇',
     title:   { en: 'Artistic Director',             zh: '艺术总监' },
     teaches: { en: 'Contemporary Dance · Chinese Dance', zh: '当代舞 · 华族舞' },
-    photo:  '/images/instructors/instructor-1.png',
+    photo:  '/images/instructors/clear-daniel-deng-yu.jpeg',
     bio: {
       en: 'Daniel serves as Artistic Director of YUE Dance Studio and is an accomplished dance artist with deep mastery across contemporary and Chinese dance forms. His creative choreography has graced prestigious stages across Singapore, and his teaching — technically rigorous and expressively rich — has shaped the artistic identity of the studio since its founding.',
       zh: 'Daniel担任翔悦文艺艺术总监，是一位在当代舞与华族舞领域造诣深厚的舞蹈艺术家。其编排作品曾登上新加坡多个重要舞台，教学风格技术严谨、表达力丰沛，自建室以来深刻塑造着翔悦的艺术风格。',
@@ -28,7 +28,7 @@ export const instructors: Instructor[] = [
     nameZh: '张晓明',
     title:   { en: 'Chinese Dance Instructor', zh: '华族舞导师' },
     teaches: { en: 'Chinese Dance',            zh: '华族舞' },
-    photo:  '/images/instructors/instructor-2.png',
+    photo:  '/images/instructors/clear-chang-hsiao-min.jpeg',
     bio: {
       en: 'Chang Hsiao-Min is a dedicated Chinese dance practitioner with a rich performance background spanning cultural events and major stage productions. Her deep knowledge of Chinese movement vocabulary brings elegance and cultural depth to every class she leads.',
       zh: '张晓明专注于华族舞的艺术实践，拥有丰富的演出经历，参与过众多文化活动及大型舞台演出。她对华族舞蹈语汇有深刻的理解，教学典雅从容，文化内涵深厚。',
@@ -52,7 +52,7 @@ export const instructors: Instructor[] = [
     nameZh: '沈芷华',
     title:   { en: 'Ballet Instructor',    zh: '芭蕾导师' },
     teaches: { en: 'Adult Ballet / Basic', zh: '成人基础芭蕾' },
-    photo:  '/images/instructors/instructor-4.png',
+    photo:  '/images/instructors/clear-shen-zhihua.jpeg',
     bio: {
       en: 'Shen Zhihua brings professional ballet training to adult learners of all backgrounds. Her patient, encouraging approach makes ballet accessible and enjoyable, focusing on posture, grace, and the fundamentals of classical technique — skills that benefit dancers across every discipline.',
       zh: '沈芷华为各背景成人学员提供专业芭蕾舞训练。她耐心温和、循循善诱，致力于让芭蕾舞教学变得亲切愉悦，重点培养仪态、优雅气质及古典技法基础，这些能力对各类舞蹈皆有裨益。',
@@ -64,7 +64,7 @@ export const instructors: Instructor[] = [
     nameZh: '彭若丹',
     title:   { en: 'Chinese Classical Dance Instructor', zh: '中国古典舞导师' },
     teaches: { en: 'Chinese Classical Dance',           zh: '中国古典舞' },
-    photo:  '/images/instructors/Angela.jpeg',
+    photo:  '/images/instructors/clear-angel.jpeg',
     bio: {
       en: 'After graduating from the Dance Department of Shenyang Music Conservatory, Angel Peng has spent over a decade moving between the classroom and the stage. She maintains an active love for dance, continuing to perform alongside her teaching career. Her approach centres on cultivating a genuine feel for movement, developing physical coordination, and unlocking authentic inner expression — through gentle, focused guidance that lets students grow at their own pace.',
       zh: '彭若丹毕业于沈阳音乐学院舞蹈系，从事舞蹈领域教学十余年，行走于课堂与舞台之间。始终保持对舞蹈的热爱，并持续参与舞台演出。教学中关注舞感的生成、身体的协调与内在表达，在温和而专注的引导中，让学员于从容的节奏里提升能力，体会舞蹈所带来的力量与喜悦。',

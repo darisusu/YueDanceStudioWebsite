@@ -8,14 +8,18 @@ interface Props {
   alt: string;
   objectPosition?: string;
   priority?: boolean;
+  imgClassName?: string;
 }
 
-export default function ParallaxHero({ src, alt, objectPosition = 'center', priority = false }: Props) {
+export default function ParallaxHero({ src, alt, objectPosition = 'center', priority = false, imgClassName = '' }: Props) {
   const imgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = imgRef.current;
     if (!el) return;
+
+    // Respect reduced-motion: skip the scroll-driven parallax translate entirely.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     let ticking = false;
 
@@ -43,8 +47,10 @@ export default function ParallaxHero({ src, alt, objectPosition = 'center', prio
         alt={alt}
         fill
         priority={priority}
+        quality={90}
         sizes="100vw"
-        className={`object-cover object-[${objectPosition}]`}
+        className={`object-cover ${imgClassName}`}
+        style={{ objectPosition }}
       />
     </div>
   );

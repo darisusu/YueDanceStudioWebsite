@@ -5,7 +5,6 @@ import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
-import ParallaxHero from '@/components/ParallaxHero';
 
 export default function AboutContent() {
   const { language } = useLanguage();
@@ -14,16 +13,62 @@ export default function AboutContent() {
   return (
     <>
       {/* ── Full-bleed page hero ──────────────────────────────── */}
-      <section className="relative h-[70vh] flex items-end overflow-hidden grain mt-16">
-        <ParallaxHero
-          src="/images/about/about-performance-1.jpg"
-          alt="YUE Dance Studio founders"
-          objectPosition="center top"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/30 to-ink/10 z-[1]" />
+      <section className="relative h-[75vh] flex items-end overflow-hidden grain mt-16">
 
-        {/* Vertical text */}
+        {/* Split founder portraits */}
+        <div className="absolute inset-0 flex">
+
+          {/* Lin Jing — left */}
+          <div className="relative flex-1 overflow-hidden">
+            <Image
+              src="/images/instructors/clear-lin-jing.jpeg"
+              alt="Lin Jing, Co-founder of YUE Dance Studio"
+              fill
+              sizes="(max-width: 768px) 50vw, 50vw"
+              className="object-cover object-center"
+              priority
+            />
+            {/* top vignette for name legibility */}
+            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/65 to-transparent" />
+            {/* bottom gradient for headline legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+            {/* Founder name — top of panel */}
+            <div className="absolute top-5 left-5 lg:left-8 z-[2]">
+              <p className="text-[7px] lg:text-[8px] tracking-[0.4em] uppercase text-gold/90 mb-1">
+                {language === 'zh' ? '联合创办人' : 'Co-Founder'}
+              </p>
+              <p className="font-display text-ivory text-sm lg:text-base leading-none">Lin Jing</p>
+            </div>
+          </div>
+
+          {/* Thin gold divider */}
+          <div className="w-px bg-gold/20 flex-shrink-0 z-10" />
+
+          {/* Han Tao — right */}
+          <div className="relative flex-1 overflow-hidden">
+            <Image
+              src="/images/instructors/clear-han-tao.jpeg"
+              alt="Han Tao, Co-founder of YUE Dance Studio"
+              fill
+              sizes="(max-width: 768px) 50vw, 50vw"
+              className="object-cover object-top"
+              priority
+            />
+            {/* top vignette for name legibility */}
+            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/65 to-transparent" />
+            {/* bottom gradient for headline legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+            {/* Founder name — top of panel */}
+            <div className="absolute top-5 left-5 lg:left-8 z-[2]">
+              <p className="text-[7px] lg:text-[8px] tracking-[0.4em] uppercase text-gold/90 mb-1">
+                {language === 'zh' ? '联合创办人' : 'Co-Founder'}
+              </p>
+              <p className="font-display text-ivory text-sm lg:text-base leading-none">Han Tao</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Vertical text — desktop only */}
         <p
           className="text-vertical absolute left-8 bottom-12 font-display text-[10px] tracking-[0.4em] text-ivory/25 select-none hidden lg:block z-[2]"
           aria-hidden="true"

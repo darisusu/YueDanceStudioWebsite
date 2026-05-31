@@ -25,7 +25,7 @@ const marqueeItems = [
   '翔悦欢迎你',
 ];
 
-const featuredInstructors = [instructors[0], instructors[4]];
+const featuredInstructors = [instructors[0], instructors[2]];
 
 export default function HomeContent() {
   const { language } = useLanguage();
@@ -61,16 +61,29 @@ export default function HomeContent() {
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="relative min-h-dvh flex items-end overflow-hidden grain">
-        {/* Parallax image with extra height for the parallax offset */}
+        {/* Parallax image — grayscale-normalised so the warm-tone layers below read consistently */}
         <ParallaxHero
-          src="/images/hero/hero-banner-1.jpeg"
-          alt="YUE Dance Studio performance"
-          objectPosition="center 70%"
+          src="/images/hero/hero-dancer.jpg"
+          alt="Dancer with arms outstretched in a dramatic spotlight"
+          objectPosition="center 35%"
+          imgClassName="grayscale"
           priority
         />
 
-        {/* Gradient: transparent top → strong dark at bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/10 z-[1]" />
+        {/* Warm-tone duotone: tints the grayscale photo toward a warm sepia-ink monochrome */}
+        <div className="absolute inset-0 bg-[#4a3b2b] mix-blend-color opacity-40 z-[1]" />
+
+        {/* Subtle gold vignette glow — warmth & depth, centred on the figure */}
+        <div
+          className="absolute inset-0 z-[1]"
+          style={{
+            background:
+              'radial-gradient(60% 55% at 50% 40%, rgba(184,148,90,0.10), transparent 70%)',
+          }}
+        />
+
+        {/* Legibility gradient: transparent top → strong warm dark at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/15 z-[1]" />
 
         {/* 悦 ghost character — structural anchor */}
         <span
@@ -197,7 +210,7 @@ export default function HomeContent() {
 
           {/* Bottom row — remaining courses */}
           {courseList.slice(3).map((course, i) => (
-            <ScrollReveal key={course.name.en} delay={i * 80} className="lg:col-span-4 bg-ivory group overflow-hidden relative">
+            <ScrollReveal key={course.name.en} delay={i * 80} className="lg:col-span-6 bg-ivory group overflow-hidden relative">
               <Link href="/courses" className="block">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -282,7 +295,7 @@ export default function HomeContent() {
             <ScrollReveal key={instructor.name} delay={i * 100}>
               <article className={`bg-ivory grid grid-cols-1 lg:grid-cols-2 min-h-[460px] ${i % 2 === 1 ? '' : ''}`}>
                 {/* Image */}
-                <div className={`relative overflow-hidden ${i % 2 === 1 ? 'lg:order-last' : ''}`}>
+                <div className={`relative overflow-hidden aspect-[4/5] lg:aspect-auto ${i % 2 === 1 ? 'lg:order-last' : ''}`}>
                   <Image
                     src={instructor.photo}
                     alt={instructor.nameZh}
@@ -335,44 +348,48 @@ export default function HomeContent() {
 
       {/* ── Performances teaser ──────────────────────────────── */}
       <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto">
-        <ScrollReveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-          <div>
-            <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
-              {perf.label[language]}
-            </p>
-            <h2 className="font-display text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[0.95]">
-              {perf.heading[language]}
-            </h2>
-          </div>
-          <Link
-            href="/performances"
-            className="shrink-0 text-[11px] tracking-[0.15em] uppercase text-gold hover:text-ink transition-colors duration-150"
-          >
-            {perf.cta[language]}
-          </Link>
+        <ScrollReveal className="mb-10">
+          <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
+            {perf.label[language]}
+          </p>
+          <h2 className="font-display text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[0.95] whitespace-pre-line">
+            {perf.heading[language]}
+          </h2>
         </ScrollReveal>
 
-        <div className="border-t border-b border-ink/10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-ink/10">
+        <div className="border-t border-ink/10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-ink/10">
           {perf.items.map((item, i) => (
             <ScrollReveal key={item.title.en} delay={i * 80} className="py-8 px-0 sm:px-8 first:pl-0 last:pr-0">
-              <p className="text-[10px] tracking-widest uppercase text-gold mb-2">{item.year}</p>
               <h3 className="font-display text-xl leading-tight mb-2">{item.title[language]}</h3>
               <p className="text-ink-light text-sm leading-relaxed">{item.note[language]}</p>
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal className="border-t border-ink/10 pt-8 mt-0 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <p className="text-ink-light text-sm leading-relaxed max-w-md">
+            {perf.sub[language]}
+          </p>
+          <Link
+            href="/performances"
+            className="shrink-0 text-[11px] tracking-[0.15em] uppercase text-gold hover:text-ink border-b border-gold/50 hover:border-ink pb-0.5 transition-colors duration-150"
+          >
+            {perf.cta[language]}
+          </Link>
+        </ScrollReveal>
       </section>
 
       {/* ── Testimonial ──────────────────────────────────────── */}
       <section className="relative bg-ink py-20 lg:py-28 px-6 lg:px-12 overflow-hidden grain">
         {/* background performance image */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-[0.12]">
           <Image
-            src="/images/hero/hero-banner-2.jpg"
+            src="/images/featured/featured-chinese-dance-4.jpg"
             alt=""
             fill
             sizes="100vw"
             className="object-cover"
+            objectPosition="center 40%"
             aria-hidden="true"
           />
         </div>

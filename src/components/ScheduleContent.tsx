@@ -129,7 +129,7 @@ export default function ScheduleContent() {
       {/* ── Note ─────────────────────────────────────────────── */}
       <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-24">
         <div className="border border-ink/10 p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-          <p className="text-ink-light text-base leading-relaxed max-w-xl">
+          <p className="text-ink-light text-base leading-relaxed">
             {tr.note[language]}
           </p>
           <Link

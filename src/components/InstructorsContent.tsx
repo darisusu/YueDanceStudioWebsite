@@ -36,16 +36,16 @@ export default function InstructorsContent() {
         <div className="space-y-px bg-ink/8">
           {instructors.map((profile, i) => (
             <ScrollReveal key={profile.name} delay={0} className="bg-ivory">
-              <article className={`grid grid-cols-1 lg:grid-cols-2 min-h-[540px]`}>
+              <article className={`grid grid-cols-1 min-h-[540px] ${i % 2 === 1 ? 'lg:grid-cols-[5fr_2fr]' : 'lg:grid-cols-[2fr_5fr]'}`}>
                 {/* Portrait */}
                 <div className={`relative overflow-hidden ${i % 2 === 1 ? 'lg:order-last' : ''}`}>
-                  <div className="relative h-full min-h-[400px] lg:min-h-full">
+                  <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full lg:min-h-full">
                     <Image
                       src={profile.photo}
                       alt={`${profile.nameZh} — ${profile.title[language]}`}
                       fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover object-[center_20%]"
+                      sizes="(max-width: 1024px) 100vw, 29vw"
+                      className="object-cover object-top"
                     />
                     {/* Vertical Chinese text on image */}
                     <p
