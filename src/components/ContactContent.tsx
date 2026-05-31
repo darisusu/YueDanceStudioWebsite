@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
 
@@ -12,62 +11,29 @@ export default function ContactContent() {
   const tr = t.contact;
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* ── Cinematic photo background ────────────────────────── */}
-      <div className="absolute inset-0 -z-10">
-        {/* Mobile: portrait crop */}
-        <Image
-          src="/images/contact/contact-bg-portrait.jpg"
-          alt="Xiang Yue dancers performing at golden hour"
-          fill
-          priority
-          quality={85}
-          sizes="100vw"
-          className="object-cover md:hidden"
-          style={{ objectPosition: 'center' }}
-        />
-        {/* Desktop: widescreen crop, framed to keep the dancers */}
-        <Image
-          src="/images/contact/contact-bg-wide.jpg"
-          alt=""
-          fill
-          priority
-          quality={85}
-          sizes="100vw"
-          className="hidden object-cover md:block"
-          style={{ objectPosition: '62% center' }}
-        />
-
-        {/* Scrim — vertical darkening for overall legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink/85" />
-        {/* Scrim — left bias so the heading reads over the bright sky */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/25 to-transparent" />
-        {/* Film grain for texture continuity with the rest of the site */}
-        <div className="grain absolute inset-0" />
-      </div>
-
+    <>
       {/* ── Page hero ────────────────────────────────────────── */}
       <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
-        <p className="text-xs tracking-[0.25em] uppercase text-gold mb-4">
+        <p className="text-xs tracking-[0.25em] uppercase text-ink-light mb-4">
           {tr.label[language]}
         </p>
-        <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] mb-6 text-ivory">
+        <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] mb-6">
           {tr.heading[language]}
         </h1>
-        <p className="text-ivory/70 text-sm">{tr.sub[language]}</p>
+        <p className="text-ink-light text-sm">{tr.sub[language]}</p>
       </section>
 
       {/* ── Contact details + registration ───────────────────── */}
       <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-24">
-        <div className="grid lg:grid-cols-2 gap-px bg-ivory/10">
-          {/* Left — Contact info (frosted glass) */}
-          <div className="bg-ink/30 backdrop-blur-md p-10 lg:p-14 space-y-10">
+        <div className="grid lg:grid-cols-2 gap-px bg-ink/10">
+          {/* Left — Contact info */}
+          <div className="bg-ivory p-10 lg:p-14 space-y-10">
             {/* Studio */}
             <div>
-              <p className="text-xs tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.studio[language]}
               </p>
-              <address className="not-italic text-ivory/70 text-sm leading-relaxed">
+              <address className="not-italic text-ink-light text-sm leading-relaxed">
                 47 Beach Road, #02-04<br />
                 Singapore 189683
               </address>
@@ -75,12 +41,12 @@ export default function ContactContent() {
 
             {/* Email */}
             <div>
-              <p className="text-xs tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.email[language]}
               </p>
               <a
                 href="mailto:xiangyue.culturearts@gmail.com"
-                className="text-sm text-ivory hover:text-gold transition-colors duration-150 break-all"
+                className="text-sm text-ink hover:text-gold transition-colors duration-150 break-all"
               >
                 xiangyue.culturearts@gmail.com
               </a>
@@ -88,29 +54,29 @@ export default function ContactContent() {
 
             {/* Phone */}
             <div>
-              <p className="text-xs tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.phone[language]}
               </p>
-              <div className="space-y-1 text-sm text-ivory/70">
+              <div className="space-y-1 text-sm text-ink-light">
                 <p>
                   Janelle:{' '}
-                  <a href="tel:+6596885938" className="text-ivory hover:text-gold transition-colors duration-150">
+                  <a href="tel:+6596885938" className="text-ink hover:text-gold transition-colors duration-150">
                     +65 9688 5938
                   </a>
                 </p>
                 <p>
                   Vicky:{' '}
-                  <a href="tel:+6594253833" className="text-ivory hover:text-gold transition-colors duration-150">
+                  <a href="tel:+6594253833" className="text-ink hover:text-gold transition-colors duration-150">
                     +65 9425 3833
                   </a>
                 </p>
-                <p className="text-xs text-ivory/40 mt-2">{tr.adminNote[language]}</p>
+                <p className="text-xs text-ink/40 mt-2">{tr.adminNote[language]}</p>
               </div>
             </div>
 
             {/* Social */}
             <div>
-              <p className="text-xs tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.social[language]}
               </p>
               <div className="flex gap-6 text-sm">
@@ -118,7 +84,7 @@ export default function ContactContent() {
                   href="https://www.facebook.com/xiangyue.dance/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ivory hover:text-gold transition-colors duration-150"
+                  className="text-ink hover:text-gold transition-colors duration-150"
                 >
                   Facebook
                 </a>
@@ -126,7 +92,7 @@ export default function ContactContent() {
                   href="https://www.instagram.com/xiangyue100/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ivory hover:text-gold transition-colors duration-150"
+                  className="text-ink hover:text-gold transition-colors duration-150"
                 >
                   Instagram
                 </a>
@@ -134,7 +100,7 @@ export default function ContactContent() {
                   href="https://www.douyin.com/user/MS4wLjABAAAALKE5By-qugkaCLezzyXgNVuTrykNIq7o10JPMKQwwMxHk7-3D_DZYeLdco5DcWVn"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ivory hover:text-gold transition-colors duration-150"
+                  className="text-ink hover:text-gold transition-colors duration-150"
                 >
                   抖音
                 </a>
@@ -143,7 +109,7 @@ export default function ContactContent() {
           </div>
 
           {/* Right — Registration */}
-          <div className="bg-ink/80 backdrop-blur-sm text-ivory p-10 lg:p-14 flex flex-col justify-between gap-16">
+          <div className="bg-ink text-ivory p-10 lg:p-14 flex flex-col justify-between gap-16">
             <div>
               <div className="w-8 h-px bg-gold mb-8" />
               <h2 className="font-display text-[clamp(2rem,4vw,3rem)] leading-tight text-ivory mb-6">
@@ -173,6 +139,6 @@ export default function ContactContent() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
