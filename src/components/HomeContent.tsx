@@ -172,7 +172,7 @@ export default function HomeContent() {
                     <h3 className="font-display text-ivory text-[clamp(1.8rem,3.5vw,3rem)] leading-tight">
                       {courseList[0].name[language]}
                     </h3>
-                    <p className="text-ivory/60 text-xs tracking-widest uppercase mt-2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400">
+                    <p className="text-ivory/60 text-xs tracking-widest uppercase mt-2 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400">
                       {t.courses.instructor[language]}: {courseList[0].instructor[language]}
                     </p>
                   </div>
@@ -199,7 +199,7 @@ export default function HomeContent() {
                       <h3 className="font-display text-ivory text-xl leading-tight">
                         {course.name[language]}
                       </h3>
-                      <p className="text-ivory/55 text-[10px] tracking-widest uppercase mt-1 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400">
+                      <p className="text-ivory/55 text-[10px] tracking-widest uppercase mt-1 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-3 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400">
                         {t.courses.instructor[language]}: {course.instructor[language]}
                       </p>
                     </div>
@@ -227,7 +227,7 @@ export default function HomeContent() {
                     <h3 className="font-display text-ivory text-xl leading-tight">
                       {course.name[language]}
                     </h3>
-                    <p className="text-ivory/55 text-[10px] tracking-widest uppercase mt-1 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400">
+                    <p className="text-ivory/55 text-[10px] tracking-widest uppercase mt-1 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-3 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400">
                       {t.courses.instructor[language]}: {course.instructor[language]}
                     </p>
                   </div>

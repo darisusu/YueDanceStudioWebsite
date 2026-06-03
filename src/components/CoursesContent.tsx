@@ -50,7 +50,7 @@ export default function CoursesContent() {
                   {/* Image */}
                   <div
                     className={`relative overflow-hidden ${
-                      isFeature ? 'aspect-[21/9]' : `aspect-[4/3] lg:aspect-auto lg:min-h-80 ${i % 2 === 1 ? 'lg:order-last' : ''}`
+                      isFeature ? 'aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]' : `aspect-[4/3] lg:aspect-auto lg:min-h-80 ${i % 2 === 1 ? 'lg:order-last' : ''}`
                     }`}
                   >
                     <Image

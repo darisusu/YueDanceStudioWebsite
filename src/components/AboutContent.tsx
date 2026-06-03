@@ -15,8 +15,8 @@ export default function AboutContent() {
       {/* ── Full-bleed page hero ──────────────────────────────── */}
       <section className="relative h-[75vh] flex items-end overflow-hidden grain mt-16">
 
-        {/* Split founder portraits */}
-        <div className="absolute inset-0 flex">
+        {/* Split founder portraits — stacked on mobile, side-by-side from lg */}
+        <div className="absolute inset-0 flex flex-col lg:flex-row">
 
           {/* Lin Jing — left */}
           <div className="relative flex-1 overflow-hidden">
@@ -34,15 +34,15 @@ export default function AboutContent() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
             {/* Founder name — top of panel */}
             <div className="absolute top-5 left-5 lg:left-8 z-[2]">
-              <p className="text-[7px] lg:text-[8px] tracking-[0.4em] uppercase text-gold/90 mb-1">
+              <p className="text-[9px] lg:text-[8px] tracking-[0.4em] uppercase text-gold/90 mb-1">
                 {language === 'zh' ? '联合创办人' : 'Co-Founder'}
               </p>
               <p className="font-display text-ivory text-sm lg:text-base leading-none">Lin Jing</p>
             </div>
           </div>
 
-          {/* Thin gold divider */}
-          <div className="w-px bg-gold/20 flex-shrink-0 z-10" />
+          {/* Thin gold divider — horizontal when stacked, vertical from lg */}
+          <div className="w-full h-px lg:w-px lg:h-auto bg-gold/20 flex-shrink-0 z-10" />
 
           {/* Han Tao — right */}
           <div className="relative flex-1 overflow-hidden">
@@ -60,7 +60,7 @@ export default function AboutContent() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
             {/* Founder name — top of panel */}
             <div className="absolute top-5 left-5 lg:left-8 z-[2]">
-              <p className="text-[7px] lg:text-[8px] tracking-[0.4em] uppercase text-gold/90 mb-1">
+              <p className="text-[9px] lg:text-[8px] tracking-[0.4em] uppercase text-gold/90 mb-1">
                 {language === 'zh' ? '联合创办人' : 'Co-Founder'}
               </p>
               <p className="font-display text-ivory text-sm lg:text-base leading-none">Han Tao</p>
