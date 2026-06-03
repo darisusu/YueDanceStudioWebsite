@@ -6,6 +6,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
 import { courses as courseList } from '@/data/courses';
 import { instructors } from '@/data/instructors';
+import { featuredTestimonials } from '@/data/testimonials';
 import ParallaxHero from '@/components/ParallaxHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import Marquee from '@/components/Marquee';
@@ -36,7 +37,7 @@ export default function HomeContent() {
   const join    = t.home.join;
 
   const [testiIndex, setTestiIndex] = useState(0);
-  const testiItems = testi.items;
+  const testiItems = featuredTestimonials;
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startInterval = useCallback(() => {
