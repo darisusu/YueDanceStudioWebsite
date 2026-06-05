@@ -13,7 +13,7 @@ export default function ContactContent() {
   return (
     <>
       {/* ── Page hero ────────────────────────────────────────── */}
-      <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-32 pb-6 lg:pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
         <p className="text-xs tracking-[0.25em] uppercase text-ink-light mb-4">
           {tr.label[language]}
         </p>
@@ -27,7 +27,7 @@ export default function ContactContent() {
       <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-24">
         <div className="grid lg:grid-cols-2 gap-px bg-ink/10">
           {/* Left — Contact info */}
-          <div className="bg-ivory p-10 lg:p-14 space-y-10">
+          <div className="bg-ivory px-0 pt-2 pb-10 lg:p-14 space-y-10">
             {/* Studio */}
             <div>
               <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">

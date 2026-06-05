@@ -78,21 +78,21 @@ export default function HomeContent() {
 
         <div className="relative z-[3] max-w-7xl mx-auto px-6 lg:px-12 w-full pb-20 lg:pb-28">
           {/* Label */}
-          <p className="text-[11px] tracking-[0.3em] uppercase text-ivory/60 mb-8">
+          <p className="text-[11px] tracking-[0.3em] uppercase text-ivory/85 mb-8 [text-shadow:0_1px_8px_rgba(0,0,0,0.85)]">
             {hero.label[language]}
           </p>
 
           {/* Headline — massive, overlapping the image */}
-          <h1 className="font-display text-ivory leading-[0.9] mb-10 [text-shadow:0_2px_16px_rgba(0,0,0,0.4)]">
-            <span className="block text-[clamp(4rem,11vw,10rem)] font-light">
+          <h1 className="font-display text-ivory leading-[0.95] lg:leading-[0.9] mb-10 [text-shadow:0_2px_16px_rgba(0,0,0,0.4)]">
+            <span className="block text-[clamp(3rem,12vw,10rem)] font-light">
               {hero.line1[language]}
             </span>
             {hero.line2[language] && (
-              <span className="block text-[clamp(4rem,11vw,10rem)] font-light pl-[6vw] text-ivory/90">
+              <span className="block text-[clamp(3rem,12vw,10rem)] font-light lg:pl-[6vw] text-ivory/90">
                 {hero.line2[language]}
               </span>
             )}
-            <span className="block text-[clamp(4rem,11vw,10rem)] font-light pl-[12vw] italic">
+            <span className="block text-[clamp(3rem,12vw,10rem)] font-light lg:pl-[12vw] italic">
               {hero.line3[language]}
             </span>
           </h1>

@@ -34,9 +34,11 @@ export default function InstructorsContent() {
       {/* ── Instructor profiles ───────────────────────────────── */}
       <section className="pb-28">
         <div className="space-y-px bg-ink/8">
-          {instructors.map((profile, i) => (
+          {instructors.map((profile, i) => {
+            const isReversed = i % 2 === 1;
+            return (
             <ScrollReveal key={profile.name} delay={0} className="bg-ivory">
-              <article className={`grid grid-cols-1 min-h-[540px] ${i % 2 === 1 ? 'lg:grid-cols-[5fr_2fr]' : 'lg:grid-cols-[2fr_5fr]'}`}>
+              <article className={`grid grid-cols-1 min-h-[540px] ${isReversed ? 'lg:grid-cols-[5fr_2fr]' : 'lg:grid-cols-[2fr_5fr]'}`}>
                 {/* Portrait */}
                 <div className={`relative overflow-hidden ${i % 2 === 1 ? 'lg:order-last' : ''}`}>
                   <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full lg:min-h-full">
@@ -58,7 +60,7 @@ export default function InstructorsContent() {
                 </div>
 
                 {/* Content */}
-                <div className={`px-10 py-14 lg:px-16 lg:py-20 flex flex-col justify-center relative overflow-hidden`}>
+                <div className={`px-10 py-14 lg:px-16 lg:py-20 flex flex-col justify-center relative overflow-hidden ${isReversed ? 'lg:items-end' : 'lg:items-start'}`}>
                   {/* Ghost first character */}
                   <span
                     className="absolute -bottom-6 right-0 font-display text-[10rem] leading-none text-ink/[0.04] select-none pointer-events-none"
@@ -67,8 +69,8 @@ export default function InstructorsContent() {
                     {profile.nameZh.charAt(0)}
                   </span>
 
-                  <div className="relative">
-                    <div className="w-8 h-px bg-gold mb-8" />
+                  <div className={`relative max-w-xl ${isReversed ? 'lg:text-right' : ''}`}>
+                    <div className={`w-8 h-px bg-gold mb-8 ${isReversed ? 'lg:ml-auto' : ''}`} />
 
                     {/* Name block */}
                     <div className="mb-6">
@@ -87,7 +89,7 @@ export default function InstructorsContent() {
                       {profile.teaches[language]}
                     </p>
 
-                    <p className="text-ink-light text-base leading-relaxed mb-6 max-w-prose">
+                    <p className="text-ink-light text-base leading-relaxed mb-6">
                       {profile.bio[language]}
                     </p>
 
@@ -99,7 +101,7 @@ export default function InstructorsContent() {
                         </p>
                         <ul className="space-y-2">
                           {profile.qualifications[language].map((q, qi) => (
-                            <li key={qi} className="text-sm text-ink-light flex gap-3 items-start">
+                            <li key={qi} className={`text-sm text-ink-light flex gap-3 items-start ${isReversed ? 'lg:flex-row-reverse lg:text-right' : ''}`}>
                               <span className="text-gold shrink-0 mt-0.5">—</span>
                               {q}
                             </li>
@@ -111,7 +113,8 @@ export default function InstructorsContent() {
                 </div>
               </article>
             </ScrollReveal>
-          ))}
+            );
+          })}
         </div>
       </section>
     </>
