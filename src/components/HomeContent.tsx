@@ -10,10 +10,6 @@ import { featuredTestimonials } from '@/data/testimonials';
 import ParallaxHero from '@/components/ParallaxHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import Marquee from '@/components/Marquee';
-import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
-
-// useLayoutEffect on the client, useEffect on the server (avoids the SSR warning)
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const REGISTRATION_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
@@ -42,49 +38,6 @@ export default function HomeContent() {
   const testi   = t.home.testimonial;
   const join    = t.home.join;
   const visit   = t.home.visit;
-
-  const [testiIndex, setTestiIndex] = useState(0);
-  const testiItems = featuredTestimonials;
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const startInterval = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(
-      () => setTestiIndex(i => (i + 1) % testiItems.length),
-      7000
-    );
-  }, [testiItems.length]);
-
-  useEffect(() => {
-    startInterval();
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [startInterval]);
-
-  const goToTesti = useCallback((next: number) => {
-    setTestiIndex((next + testiItems.length) % testiItems.length);
-    startInterval();
-  }, [testiItems.length, startInterval]);
-
-  // Swipe support for the testimonial carousel on touch devices
-  const touchStartX = useRef<number | null>(null);
-  const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(dx) > 40) goToTesti(testiIndex + (dx < 0 ? 1 : -1));
-    touchStartX.current = null;
-  };
-
-  // Fit the carousel to the active quote's height (animated) so short quotes
-  // don't leave a tall empty gap above the content that follows.
-  const activeSlideRef = useRef<HTMLDivElement>(null);
-  const [carouselH, setCarouselH] = useState<number>();
-  useIsomorphicLayoutEffect(() => {
-    const measure = () => { if (activeSlideRef.current) setCarouselH(activeSlideRef.current.offsetHeight); };
-    measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
-  }, [testiIndex, language]);
 
   return (
     <>
@@ -180,26 +133,6 @@ export default function HomeContent() {
           </Link>
         </ScrollReveal>
 
-        {/* At a glance — scannable index of every discipline (esp. useful on mobile) */}
-        <ScrollReveal className="mb-12">
-          <ul className="flex flex-wrap gap-2.5">
-            {courseList.map((course) => (
-              <li key={course.name.en}>
-                <Link
-                  href="/courses"
-                  className="inline-flex items-center h-11 px-4 border border-ink/15 hover:border-gold hover:text-gold transition-colors duration-150"
-                >
-                  <span className="font-display text-base leading-none">{course.name[language]}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="flex items-center gap-2.5 text-ink-light text-xs mt-5">
-            <span className="w-5 h-px bg-gold shrink-0" />
-            {courses.glanceNote[language]}
-          </p>
-        </ScrollReveal>
-
         {/* Editorial asymmetric grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-ink/10">
           {/* Feature card — spans 8 columns */}
@@ -215,14 +148,17 @@ export default function HomeContent() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
-                    <div className="w-8 h-px bg-gold mb-4" />
-                    <h3 className="font-display text-ivory text-[clamp(1.8rem,3.5vw,3rem)] leading-tight">
-                      {courseList[0].name[language]}
-                    </h3>
-                    <p className="text-ivory/60 text-xs tracking-widest uppercase mt-2 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400">
-                      {t.courses.instructor[language]}: {courseList[0].instructor[language]}
-                    </p>
+                  <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10 flex items-end justify-between gap-4">
+                    <div>
+                      <div className="w-8 h-px bg-gold mb-4" />
+                      <h3 className="font-display text-ivory text-[clamp(1.8rem,3.5vw,3rem)] leading-tight">
+                        {courseList[0].name[language]}
+                      </h3>
+                      <p className="text-ivory/60 text-xs tracking-widest uppercase mt-2 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400">
+                        {t.courses.instructor[language]}: {courseList[0].instructor[language]}
+                      </p>
+                    </div>
+                    <span className="shrink-0 text-ivory/60 text-xl lg:hidden">→</span>
                   </div>
                 </div>
               </Link>
@@ -243,13 +179,16 @@ export default function HomeContent() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/10 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="font-display text-ivory text-xl leading-tight">
-                        {course.name[language]}
-                      </h3>
-                      <p className="text-ivory/55 text-[10px] tracking-widest uppercase mt-1 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-3 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400">
-                        {t.courses.instructor[language]}: {course.instructor[language]}
-                      </p>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between gap-4">
+                      <div>
+                        <h3 className="font-display text-ivory text-xl leading-tight">
+                          {course.name[language]}
+                        </h3>
+                        <p className="text-ivory/55 text-[10px] tracking-widest uppercase mt-1 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-3 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400">
+                          {t.courses.instructor[language]}: {course.instructor[language]}
+                        </p>
+                      </div>
+                      <span className="shrink-0 text-ivory/60 text-xl lg:hidden">→</span>
                     </div>
                   </div>
                 </Link>
@@ -270,14 +209,17 @@ export default function HomeContent() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/10 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="w-5 h-px bg-gold mb-3" />
-                    <h3 className="font-display text-ivory text-xl leading-tight">
-                      {course.name[language]}
-                    </h3>
-                    <p className="text-ivory/55 text-[10px] tracking-widest uppercase mt-1 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-3 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400">
-                      {t.courses.instructor[language]}: {course.instructor[language]}
-                    </p>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between gap-4">
+                    <div>
+                      <div className="w-5 h-px bg-gold mb-3" />
+                      <h3 className="font-display text-ivory text-xl leading-tight">
+                        {course.name[language]}
+                      </h3>
+                      <p className="text-ivory/55 text-[10px] tracking-widest uppercase mt-1 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-3 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400">
+                        {t.courses.instructor[language]}: {course.instructor[language]}
+                      </p>
+                    </div>
+                    <span className="shrink-0 text-ivory/60 text-xl lg:hidden">→</span>
                   </div>
                 </div>
               </Link>
@@ -428,10 +370,10 @@ export default function HomeContent() {
         </ScrollReveal>
       </section>
 
-      {/* ── Testimonial ──────────────────────────────────────── */}
+      {/* ── Testimonials — wall of voices ────────────────────── */}
       <section className="relative bg-ink py-20 lg:py-28 px-6 lg:px-12 overflow-hidden grain">
         {/* background performance image */}
-        <div className="absolute inset-0 opacity-[0.12]">
+        <div className="absolute inset-0 opacity-[0.10]">
           <Image
             src="/images/featured/featured-chinese-dance-4.jpg"
             alt=""
@@ -444,100 +386,52 @@ export default function HomeContent() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full">
-          {/* Carousel */}
-          <div className="relative flex items-center gap-0 lg:gap-8">
-            {/* Prev arrow — desktop only (mobile uses swipe + controls below) */}
-            <button
-              onClick={() => goToTesti(testiIndex - 1)}
-              aria-label="Previous testimonial"
-              className="hidden lg:flex flex-shrink-0 -ml-1 w-11 h-11 items-center justify-center text-2xl text-ivory/30 hover:text-gold transition-colors duration-300"
-            >
-              ‹
-            </button>
+          {/* Header */}
+          <ScrollReveal className="max-w-2xl mb-14 lg:mb-16">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-5">
+              {testi.label[language]}
+            </p>
+            <h2 className="font-display text-ivory text-[clamp(2.4rem,5.5vw,4.2rem)] leading-[1.0] whitespace-pre-line mb-5">
+              {testi.heading[language]}
+            </h2>
+            <p className="text-ivory/55 text-sm leading-relaxed">
+              {testi.sub[language]}
+            </p>
+          </ScrollReveal>
 
-            {/* Quote column — swipeable on touch; height follows the active quote */}
-            <div
-              className="flex-1 flex flex-col"
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
-            >
-              <ScrollReveal>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-10">
-                  {testi.label[language]}
-                </p>
-              </ScrollReveal>
-
-              {/* Slides stacked absolutely (crossfade); container height animates to the active one */}
-              <div
-                className="relative transition-[height] duration-500 ease-in-out"
-                style={{ height: carouselH }}
+          {/* Even grid — two voices per pillar; equal-height cells keep it aligned */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-10 md:auto-rows-fr">
+            {featuredTestimonials.map((item, i) => (
+              <ScrollReveal
+                key={i}
+                as="figure"
+                delay={(i % 3) * 80}
+                className="flex flex-col border-t border-ivory/15 pt-6"
               >
-                {testiItems.map((item, i) => (
-                  <div
-                    key={i}
-                    ref={i === testiIndex ? activeSlideRef : undefined}
-                    aria-hidden={i !== testiIndex}
-                    className="absolute inset-x-0 top-0 flex flex-col justify-start transition-opacity duration-700 ease-in-out"
-                    style={{ opacity: i === testiIndex ? 1 : 0 }}
-                  >
-                    <blockquote className="font-display text-ivory text-[clamp(1.2rem,2.8vw,2.4rem)] leading-[1.4] font-light italic max-w-3xl mb-8">
-                      {item.quote[language]}
-                    </blockquote>
-                    <div className="w-8 h-px bg-gold/50 mb-4" />
-                    <cite className="not-italic text-ivory/40 text-xs tracking-[0.22em] uppercase">
-                      {item.attribution[language]}
-                    </cite>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Next arrow — desktop only */}
-            <button
-              onClick={() => goToTesti(testiIndex + 1)}
-              aria-label="Next testimonial"
-              className="hidden lg:flex flex-shrink-0 -mr-1 w-11 h-11 items-center justify-center text-2xl text-ivory/30 hover:text-gold transition-colors duration-300"
-            >
-              ›
-            </button>
+                {item.tag && (
+                  <figcaption className="text-[9px] tracking-[0.28em] uppercase text-gold/80 mb-5">
+                    {item.tag[language]}
+                  </figcaption>
+                )}
+                <blockquote className="font-display text-ivory font-light italic leading-[1.45] text-xl lg:text-2xl">
+                  {(item.excerpt ?? item.quote)[language]}
+                </blockquote>
+                <cite className="not-italic block mt-auto pt-6 text-ivory/40 text-[11px] tracking-[0.2em] uppercase">
+                  {item.attribution[language]}
+                </cite>
+              </ScrollReveal>
+            ))}
           </div>
 
-          {/* Controls — mobile: arrows flank centred dots; desktop: dots aligned under quote */}
-          <div className="mt-8 flex items-center gap-3 lg:pl-[calc(2.75rem+2rem)]">
-            {/* Prev — mobile only */}
-            <button
-              onClick={() => goToTesti(testiIndex - 1)}
-              aria-label="Previous testimonial"
-              className="lg:hidden flex-shrink-0 -ml-3 w-11 h-11 flex items-center justify-center text-2xl text-ivory/40 hover:text-gold transition-colors duration-300"
+          {/* Read the full archive */}
+          <ScrollReveal className="mt-12 lg:mt-14">
+            <Link
+              href="/voices"
+              className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-gold hover:text-ivory border-b border-gold/40 hover:border-ivory pb-1 transition-colors duration-150"
             >
-              ‹
-            </button>
-
-            <div className="flex flex-1 justify-center items-center lg:flex-none lg:justify-start">
-              {testiItems.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => goToTesti(i)}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                  className="h-11 px-1.5 flex items-center group/dot"
-                >
-                  <span
-                    style={{ transition: 'width 400ms ease, background-color 400ms ease' }}
-                    className={`block h-1.5 rounded-full ${i === testiIndex ? 'w-6 bg-gold' : 'w-1.5 bg-ivory/25 group-hover/dot:bg-ivory/50'}`}
-                  />
-                </button>
-              ))}
-            </div>
-
-            {/* Next — mobile only */}
-            <button
-              onClick={() => goToTesti(testiIndex + 1)}
-              aria-label="Next testimonial"
-              className="lg:hidden flex-shrink-0 -mr-3 w-11 h-11 flex items-center justify-center text-2xl text-ivory/40 hover:text-gold transition-colors duration-300"
-            >
-              ›
-            </button>
-          </div>
+              {testi.cta[language]}
+            </Link>
+          </ScrollReveal>
         </div>
 
         {/* Vertical accent */}
@@ -560,14 +454,14 @@ export default function HomeContent() {
           </h2>
         </ScrollReveal>
 
-        <div className="grid gap-px bg-ink/10 sm:grid-cols-2">
+        <div className="grid sm:grid-cols-2 gap-x-10 lg:gap-x-20 gap-y-10">
           {/* Studio + directions (tap-to-map) */}
-          <ScrollReveal className="bg-ivory">
+          <ScrollReveal>
             <a
               href={MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block h-full p-8 lg:p-10"
+              className="group block h-full"
             >
               <p className="text-[10px] tracking-[0.22em] uppercase text-ink-light mb-4">
                 {visit.studio[language]}
@@ -575,15 +469,18 @@ export default function HomeContent() {
               <address className="not-italic font-display text-xl leading-snug text-ink mb-6">
                 47 Beach Road, #02-04<br />Singapore 189683
               </address>
-              <span className="inline-block text-[11px] tracking-[0.18em] uppercase text-gold group-hover:text-ink border-b border-gold/50 group-hover:border-ink pb-0.5 transition-colors duration-150">
+              <span className="inline-flex items-center gap-1.5 text-[11px] tracking-[0.18em] uppercase text-gold group-hover:text-ink border-b border-gold/50 group-hover:border-ink pb-0.5 transition-colors duration-150">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 shrink-0">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
                 {visit.directions[language]}
               </span>
             </a>
           </ScrollReveal>
 
           {/* Call + email (tap-to-call) */}
-          <ScrollReveal className="bg-ivory" delay={100}>
-            <div className="flex h-full flex-col p-8 lg:p-10">
+          <ScrollReveal delay={100}>
+            <div className="flex h-full flex-col">
               <p className="text-[10px] tracking-[0.22em] uppercase text-ink-light mb-4">
                 {visit.call[language]}
               </p>
@@ -617,8 +514,7 @@ export default function HomeContent() {
         </div>
 
         <ScrollReveal>
-          <p className="flex items-center gap-2.5 text-ink-light text-xs mt-6">
-            <span className="w-5 h-px bg-gold shrink-0" />
+          <p className="text-ink-light text-xs mt-10">
             {visit.note[language]}
           </p>
         </ScrollReveal>

@@ -13,6 +13,7 @@ const navLinks = [
   { href: '/instructors',    label: t.nav.instructors },
   { href: '/courses',        label: t.nav.courses },
   { href: '/performances',   label: t.nav.performances },
+  { href: '/voices',         label: t.nav.voices },
   { href: '/schedule',       label: t.nav.schedule },
   { href: '/contact',        label: t.nav.contact },
   { href: '/faq',            label: t.nav.faq },

@@ -3,9 +3,19 @@ import type { Bilingual } from '@/lib/translations';
 export interface Testimonial {
   quote: Bilingual;
   attribution: Bilingual;
-  /** Surfaced in the homepage carousel. The rest are kept as an archive. */
+  /** Surfaced in the homepage "wall of voices". The rest live on the /voices archive page. */
   featured?: boolean;
+  /** Small eyebrow on homepage cards spotlighting the pillar the quote demonstrates. */
+  tag?: Bilingual;
+  /** Punchy pull-quote for the homepage wall; the full `quote` still shows on /voices. */
+  excerpt?: Bilingual;
 }
+
+// Showcase tags — each homepage quote demonstrates one of our three pillars:
+// approachability for beginners, the calibre of teaching, and the beauty of dance.
+const TAG_BEGINNER: Bilingual = { en: 'No experience needed', zh: '零基础友好' };
+const TAG_GUIDANCE: Bilingual = { en: 'Expert guidance',      zh: '专业指导' };
+const TAG_BEAUTY:   Bilingual = { en: 'Finding beauty',        zh: '以舞寻美' };
 
 export const testimonials: Testimonial[] = [
   // ── Legacy testimonials ───────────────────────────────────────────────────
@@ -15,15 +25,26 @@ export const testimonials: Testimonial[] = [
       en: '"I am deeply grateful for the meticulous guidance provided by Lao Shi. The class was both highly engaging and incredibly insightful."',
       zh: '「非常感谢老师今晚的细心指导，我非常享受今晚的课程，从老师身上学到了很多！」',
     },
+    excerpt: {
+      en: '"Both deeply engaging and genuinely insightful."',
+      zh: '「非常享受这堂课，从老师身上学到了很多。」',
+    },
     attribution: { en: 'Sumini · Chinese Belly Dance, Jul 2020', zh: 'Sumini · 华族舞，2020年7月' },
+    featured: true,
+    tag: TAG_GUIDANCE,
   },
   {
     quote: {
       en: '"Thank you, Teacher Daniel, for the meticulously choreographed dances and your endless patient guidance — even students like us with no dance background were able to perform on stage. It really built up our confidence enormously."',
       zh: '「谢谢Daniel老师精心编排的舞蹈，以及不厌其烦的耐心指导，让我们这些没有舞蹈基础的同学也能登台表演，大大的树立了我们的信心。」',
     },
+    excerpt: {
+      en: '"Even with no dance background, we got to perform on stage."',
+      zh: '「没有舞蹈基础的我们，也能登上舞台。」',
+    },
     attribution: { en: 'A Ling · Dance Colour Class, Sep 2019', zh: '阿玲 · 舞色舞味班，2019年9月' },
     featured: true,
+    tag: TAG_BEGINNER,
   },
   {
     quote: {
@@ -37,8 +58,13 @@ export const testimonials: Testimonial[] = [
       en: '"I love the ballet-modern piece Teacher choreographed, Hawthorn Tree Melody — graceful and flowing like a gentle stream, it soothed my restless heart during those stay-home days. Sincerely looking forward to more learning and growth. Thank you again, Teacher Daniel & Teacher Lin Jing!"',
       zh: '「十分喜欢老师编教的这支芭蕾现代舞～山楂树舞曲，柔美像股清流，缓和了这居家郁闷心情。衷心期待更多的学习与进步。再次谢谢Daniel&林晶老师！」',
     },
+    excerpt: {
+      en: '"The piece Teacher choreographed — graceful as a gentle stream."',
+      zh: '「老师编的舞，柔美得像一股清流。」',
+    },
     attribution: { en: 'Wen Fei · Cloud Dance Online Class, Jun 2021', zh: '雯妃 · 云舞网课，2021年6月' },
     featured: true,
+    tag: TAG_GUIDANCE,
   },
 
   // ── Student voices ────────────────────────────────────────────────────────
@@ -49,14 +75,20 @@ export const testimonials: Testimonial[] = [
       zh: '「乐起心飞翔，舞动意愉悦。」',
     },
     attribution: { en: 'Wei Min', zh: '魏敏' },
+    tag: TAG_BEAUTY,
   },
   {
     quote: {
       en: '"Beauty in life makes ordinary days a little different."',
       zh: '「生活中因为有了美，而让平凡的日子有些不一样了。」',
     },
+    excerpt: {
+      en: '"Beauty in life makes ordinary days a little different."',
+      zh: '「生活有了美，平凡的日子也不一样了。」',
+    },
     attribution: { en: 'Vicky', zh: 'Vicky' },
     featured: true,
+    tag: TAG_BEAUTY,
   },
   {
     quote: {
@@ -92,15 +124,19 @@ export const testimonials: Testimonial[] = [
       zh: '「我是真的很喜爱跳舞。每当音乐响起，身体里的所有细胞都充满了喜悦，好像是和自己心灵在温柔对话。非常享受这种美妙的感觉。虽然我们已不再年轻，但每一次起舞都好像回到那青葱岁月。"每一个不曾起舞的日子，都是对生命的辜负。"我们不能决定我们生命的长度，但我们可以拓展我们生命的宽度。有生之年做自己喜欢的事情，开心最重要！」',
     },
     attribution: { en: 'Wei Min', zh: '魏敏' },
-    featured: true,
   },
   {
     quote: {
       en: '"Every step is a language — one that lets us hear wordless expression, feel the vitality of life. Every moment becomes vivid and unique, captivating the heart and mind."',
       zh: '「每一个舞步都是一种语言，可以让我们听到无声的表达，感受生命的活力，每个瞬间都变的灵动而独特，心驰神往。」',
     },
-    attribution: { en: 'Judy · Thursday Contemporary Dance', zh: '周四当代舞 Judy' },
+    excerpt: {
+      en: '"Every step is a language."',
+      zh: '「每一个舞步都是一种语言。」',
+    },
+    attribution: { en: 'Judy · Thursday Contemporary Dance', zh: 'Judy · 周四当代舞' },
     featured: true,
+    tag: TAG_BEAUTY,
   },
   {
     quote: {
@@ -128,8 +164,13 @@ export const testimonials: Testimonial[] = [
       en: '"I can feel Teacher\'s choreography getting more challenging — I love Teacher\'s spirit of \'the possible and the impossible, we can all try.\' That\'s exactly it: follow Teacher and try. I love that sense of freshness."',
       zh: '「感觉到了，老师的舞蹈有点难度了，喜欢老师的"可能的不可能的我们都可以去尝试"，就是这样，跟着老师去尝试，我喜欢有新鲜感。」',
     },
+    excerpt: {
+      en: '"The possible, the impossible — we can all try."',
+      zh: '「可能的，不可能的，我们都可以尝试。」',
+    },
     attribution: { en: 'La Mei', zh: '腊梅' },
     featured: true,
+    tag: TAG_BEGINNER,
   },
 
   // ── Poetry & prose ────────────────────────────────────────────────────────
@@ -189,7 +230,6 @@ export const testimonials: Testimonial[] = [
       zh: '「当一个人开始不再只为了"变瘦、变好看"而跳舞，而是真正感受到身体与音乐相遇的快乐时，舞蹈才慢慢从"要求自己"，变成"成全自己"。很多美，不是在镜子里出现的，而是在你终于忘记自己是否好看的那一刻，从身体里自然流出来。」',
     },
     attribution: { en: 'Chen Shuai', zh: '陈帅' },
-    featured: true,
   },
   {
     quote: {
@@ -218,9 +258,21 @@ export const testimonials: Testimonial[] = [
       zh: '「五月刚好是我进入舞蹈班学习舞蹈一周年，我学的第一支舞蹈是"六月茉莉"，让我回到了年轻的时候，找到了那个热爱舞蹈的自己，让我陶醉其中，韵律跳动逐渐回到身体里。半生已过，现在开始慢慢收获，为自己的新篇章喜。舞动的是灵魂，跳动的是人生！」',
     },
     attribution: { en: 'Ivy', zh: 'Ivy' },
-    featured: true,
   },
 ];
 
-/** Curated subset shown in the homepage carousel, in source order. */
-export const featuredTestimonials = testimonials.filter((t) => t.featured);
+/**
+ * Homepage "wall of voices" — two voices per pillar, interleaved so each grid
+ * column reads as one pillar: beginner-friendly · expert guidance · beauty.
+ */
+const featuredByTag = (tag: Bilingual) =>
+  testimonials.filter((item) => item.featured && item.tag === tag);
+
+const fBeginner = featuredByTag(TAG_BEGINNER);
+const fGuidance = featuredByTag(TAG_GUIDANCE);
+const fBeauty   = featuredByTag(TAG_BEAUTY);
+
+export const featuredTestimonials: Testimonial[] = [
+  fBeginner[0], fGuidance[0], fBeauty[0],
+  fBeginner[1], fGuidance[1], fBeauty[1],
+].filter((item): item is Testimonial => Boolean(item));

@@ -63,9 +63,9 @@ export default function FaqContent() {
 
       {/* ── Accordion categories ──────────────────────────────── */}
       <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-24">
-        <div className="grid lg:grid-cols-2 gap-px bg-ink/10">
+        <div className="grid lg:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-12">
           {tr.categories.map((category) => (
-            <div key={category.title.en} className="bg-ivory p-10">
+            <div key={category.title.en}>
               <div className="w-6 h-px bg-gold mb-5" />
               <h2 className="font-display text-2xl mb-6">{category.title[language]}</h2>
               <div>

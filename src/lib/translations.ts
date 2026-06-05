@@ -11,6 +11,7 @@ export const t = {
     schedule:     { en: 'Schedule',     zh: '课程表' },
     contact:      { en: 'Contact',      zh: '联系我们' },
     faq:          { en: 'FAQ',          zh: '常见问题' },
+    voices:       { en: 'Voices',       zh: '学员心声' },
   },
 
   home: {
@@ -39,7 +40,11 @@ export const t = {
       note:       { en: 'Drop by, call, or message — we respond within 1–2 business days.', zh: '欢迎到访、来电或留言，我们将在1至2个工作日内回复。' },
     },
     testimonial: {
-      label: { en: 'In Their Words', zh: '学员心声' },
+      label:   { en: 'In Their Words', zh: '学员心声' },
+      heading: { en: 'Why They Dance\nwith Us', zh: '他们为何\n选择翔悦' },
+      sub:     { en: 'Beginners and lifelong dancers alike — in their own words, on finding expert guidance, the beauty of dance, and a place to belong.',
+                 zh: '从零基础到资深舞者，听他们亲述：在这里遇见专业指导、舞蹈之美，与归属之所。' },
+      cta:     { en: 'Read all student voices →', zh: '阅读全部学员心声 →' },
     },
     join: {
       heading:   { en: 'Ready to Begin?', zh: '准备好开始了吗？' },
@@ -74,6 +79,15 @@ export const t = {
         },
       ],
     },
+  },
+
+  voices: {
+    label:      { en: 'Student Voices', zh: '学员心声' },
+    heading:    { en: 'In Their\nOwn Words', zh: '学员\n心声' },
+    intro:      { en: 'Over the years, our students have shared what dance has come to mean to them — in messages, reflections, and poems. We keep them here, just as they were written.',
+                  zh: '多年来，学员们以留言、随笔与诗作，记录下舞蹈于他们的意义。我们将这些文字原样珍藏于此。' },
+    ctaHeading: { en: 'Your story could be\nthe next one here.', zh: '下一个故事，\n或许就是你的。' },
+    cta:        { en: 'Explore Courses', zh: '探索课程' },
   },
 
   about: {
