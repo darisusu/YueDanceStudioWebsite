@@ -30,6 +30,11 @@ body {
   border-radius: 2px;
 }
 
+/* Remove the 300ms tap delay on controls without disabling page pinch-zoom */
+a, button, [role="button"], input, select, textarea, label, summary {
+  touch-action: manipulation;
+}
+
 /* ── Grain overlay ────────────────────────────────────── */
 .grain::after {
   content: '';

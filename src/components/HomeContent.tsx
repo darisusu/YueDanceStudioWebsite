@@ -58,6 +58,16 @@ export default function HomeContent() {
     startInterval();
   }, [testiItems.length, startInterval]);
 
+  // Swipe support for the testimonial carousel on touch devices
+  const touchStartX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 40) goToTesti(testiIndex + (dx < 0 ? 1 : -1));
+    touchStartX.current = null;
+  };
+
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
@@ -397,18 +407,22 @@ export default function HomeContent() {
 
         <div className="relative z-10 max-w-7xl mx-auto w-full">
           {/* Carousel */}
-          <div className="relative flex items-center gap-8">
-            {/* Prev arrow */}
+          <div className="relative flex items-center gap-0 lg:gap-8">
+            {/* Prev arrow — desktop only (mobile uses swipe + controls below) */}
             <button
               onClick={() => goToTesti(testiIndex - 1)}
               aria-label="Previous testimonial"
-              className="flex-shrink-0 -ml-1 w-10 h-10 flex items-center justify-center text-2xl text-ivory/30 hover:text-gold transition-colors duration-300"
+              className="hidden lg:flex flex-shrink-0 -ml-1 w-11 h-11 items-center justify-center text-2xl text-ivory/30 hover:text-gold transition-colors duration-300"
             >
               ‹
             </button>
 
-            {/* Quote column — fixed height prevents reflow between slides */}
-            <div className="flex-1 flex flex-col">
+            {/* Quote column — swipeable on touch; fixed height prevents reflow between slides */}
+            <div
+              className="flex-1 flex flex-col"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
               <ScrollReveal>
                 <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-10">
                   {testi.label[language]}
@@ -436,27 +450,51 @@ export default function HomeContent() {
               </div>
             </div>
 
-            {/* Next arrow */}
+            {/* Next arrow — desktop only */}
             <button
               onClick={() => goToTesti(testiIndex + 1)}
               aria-label="Next testimonial"
-              className="flex-shrink-0 -mr-1 w-10 h-10 flex items-center justify-center text-2xl text-ivory/30 hover:text-gold transition-colors duration-300"
+              className="hidden lg:flex flex-shrink-0 -mr-1 w-11 h-11 items-center justify-center text-2xl text-ivory/30 hover:text-gold transition-colors duration-300"
             >
               ›
             </button>
           </div>
 
-          {/* Dot indicators — aligned with quote (offset by arrow width + gap) */}
-          <div className="flex gap-2 mt-8" style={{ paddingLeft: 'calc(2.5rem + 2rem)' }}>
-            {testiItems.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goToTesti(i)}
-                aria-label={`Go to testimonial ${i + 1}`}
-                style={{ transition: 'width 400ms ease, background-color 400ms ease' }}
-                className={`h-1.5 rounded-full ${i === testiIndex ? 'w-6 bg-gold' : 'w-1.5 bg-ivory/25'}`}
-              />
-            ))}
+          {/* Controls — mobile: arrows flank centred dots; desktop: dots aligned under quote */}
+          <div className="mt-8 flex items-center gap-3 lg:pl-[calc(2.75rem+2rem)]">
+            {/* Prev — mobile only */}
+            <button
+              onClick={() => goToTesti(testiIndex - 1)}
+              aria-label="Previous testimonial"
+              className="lg:hidden flex-shrink-0 -ml-3 w-11 h-11 flex items-center justify-center text-2xl text-ivory/40 hover:text-gold transition-colors duration-300"
+            >
+              ‹
+            </button>
+
+            <div className="flex flex-1 justify-center items-center lg:flex-none lg:justify-start">
+              {testiItems.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goToTesti(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                  className="h-11 px-1.5 flex items-center group/dot"
+                >
+                  <span
+                    style={{ transition: 'width 400ms ease, background-color 400ms ease' }}
+                    className={`block h-1.5 rounded-full ${i === testiIndex ? 'w-6 bg-gold' : 'w-1.5 bg-ivory/25 group-hover/dot:bg-ivory/50'}`}
+                  />
+                </button>
+              ))}
+            </div>
+
+            {/* Next — mobile only */}
+            <button
+              onClick={() => goToTesti(testiIndex + 1)}
+              aria-label="Next testimonial"
+              className="lg:hidden flex-shrink-0 -mr-3 w-11 h-11 flex items-center justify-center text-2xl text-ivory/40 hover:text-gold transition-colors duration-300"
+            >
+              ›
+            </button>
           </div>
         </div>
 

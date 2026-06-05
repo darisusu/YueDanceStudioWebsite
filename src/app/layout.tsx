@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import HtmlRoot from '@/components/HtmlRoot';
@@ -33,6 +33,16 @@ export const metadata: Metadata = {
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
+};
+
+export const viewport: Viewport = {
+  // Let full-bleed hero imagery extend under the notch / Dynamic Island.
+  // Fixed elements compensate with env(safe-area-inset-*) padding.
+  viewportFit: 'cover',
+  // Tints mobile browser chrome to the warm ivory of the page surface.
+  themeColor: '#F5F0E8',
+  // width=device-width / initial-scale=1 are applied by Next automatically;
+  // zoom is intentionally left enabled for accessibility.
 };
 
 // TODO: ADD_GA4_MEASUREMENT_ID — create a GA4 property at analytics.google.com

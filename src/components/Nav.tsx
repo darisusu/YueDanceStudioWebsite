@@ -56,13 +56,13 @@ export default function Nav() {
     <>
       <header
         style={{ viewTransitionName: 'site-nav' }}
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 inset-x-0 z-50 pt-[env(safe-area-inset-top)] transition-all duration-300 ${
           onDark
             ? 'bg-transparent'
             : 'bg-ivory/95 backdrop-blur-sm border-b border-ink/10'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] lg:px-12 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="YUE Dance Studio home">
             <Image
@@ -100,7 +100,7 @@ export default function Nav() {
             <button
               onClick={toggle}
               aria-label={language === 'en' ? 'Switch to Chinese' : '切换为英文'}
-              className={`text-[11px] tracking-[0.15em] transition-colors duration-200 ${textColor} ${hoverColor}`}
+              className={`inline-flex items-center h-11 px-1 text-[11px] tracking-[0.15em] transition-colors duration-200 ${textColor} ${hoverColor}`}
             >
               <span className={language === 'en' ? 'text-gold font-semibold' : ''}>EN</span>
               <span className="mx-1.5 opacity-30">/</span>
@@ -129,7 +129,7 @@ export default function Nav() {
         aria-label="Navigation menu"
         aria-hidden={!menuOpen || undefined}
         ref={(el) => { if (el) (el as HTMLElement & { inert: boolean }).inert = !menuOpen; }}
-        className={`fixed inset-0 z-[100] bg-ink flex flex-col p-8 transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 z-[100] bg-ink flex flex-col p-8 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))] transition-all duration-300 ease-in-out ${
           menuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -181,7 +181,7 @@ export default function Nav() {
           <button
             onClick={toggle}
             aria-label={language === 'en' ? 'Switch to Chinese' : '切换为英文'}
-            className="text-[11px] tracking-[0.15em] text-ivory/50"
+            className="inline-flex items-center h-11 -my-2 text-[11px] tracking-[0.15em] text-ivory/50"
           >
             <span className={language === 'en' ? 'text-gold' : 'text-ivory/50'}>EN</span>
             <span className="mx-2 text-ivory/20">/</span>
