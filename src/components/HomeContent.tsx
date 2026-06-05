@@ -15,6 +15,9 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 const REGISTRATION_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
 
+const MAPS_URL =
+  'https://www.google.com/maps/search/?api=1&query=47%20Beach%20Road%20%2302-04%20Singapore%20189683';
+
 const marqueeItems = [
   'Movement as Language',
   '以舞为语',
@@ -35,6 +38,7 @@ export default function HomeContent() {
   const perf    = t.home.performances;
   const testi   = t.home.testimonial;
   const join    = t.home.join;
+  const visit   = t.home.visit;
 
   const [testiIndex, setTestiIndex] = useState(0);
   const testiItems = featuredTestimonials;
@@ -160,6 +164,26 @@ export default function HomeContent() {
           >
             {courses.viewAll[language]}
           </Link>
+        </ScrollReveal>
+
+        {/* At a glance — scannable index of every discipline (esp. useful on mobile) */}
+        <ScrollReveal className="mb-12">
+          <ul className="flex flex-wrap gap-2.5">
+            {courseList.map((course) => (
+              <li key={course.name.en}>
+                <Link
+                  href="/courses"
+                  className="inline-flex items-center h-11 px-4 border border-ink/15 hover:border-gold hover:text-gold transition-colors duration-150"
+                >
+                  <span className="font-display text-base leading-none">{course.name[language]}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="flex items-center gap-2.5 text-ink-light text-xs mt-5">
+            <span className="w-5 h-px bg-gold shrink-0" />
+            {courses.glanceNote[language]}
+          </p>
         </ScrollReveal>
 
         {/* Editorial asymmetric grid */}
@@ -505,6 +529,81 @@ export default function HomeContent() {
         >
           学员心声
         </p>
+      </section>
+
+      {/* ── Visit / Location ─────────────────────────────────── */}
+      <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+        <ScrollReveal>
+          <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-3">
+            {visit.label[language]}
+          </p>
+          <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] leading-[0.98] mb-10">
+            {visit.heading[language]}
+          </h2>
+        </ScrollReveal>
+
+        <div className="grid gap-px bg-ink/10 sm:grid-cols-2">
+          {/* Studio + directions (tap-to-map) */}
+          <ScrollReveal className="bg-ivory">
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block h-full p-8 lg:p-10"
+            >
+              <p className="text-[10px] tracking-[0.22em] uppercase text-ink-light mb-4">
+                {visit.studio[language]}
+              </p>
+              <address className="not-italic font-display text-xl leading-snug text-ink mb-6">
+                47 Beach Road, #02-04<br />Singapore 189683
+              </address>
+              <span className="inline-block text-[11px] tracking-[0.18em] uppercase text-gold group-hover:text-ink border-b border-gold/50 group-hover:border-ink pb-0.5 transition-colors duration-150">
+                {visit.directions[language]}
+              </span>
+            </a>
+          </ScrollReveal>
+
+          {/* Call + email (tap-to-call) */}
+          <ScrollReveal className="bg-ivory" delay={100}>
+            <div className="flex h-full flex-col p-8 lg:p-10">
+              <p className="text-[10px] tracking-[0.22em] uppercase text-ink-light mb-4">
+                {visit.call[language]}
+              </p>
+              <div className="flex flex-col gap-3 mb-8">
+                <a
+                  href="tel:+6596885938"
+                  className="group flex items-center justify-between gap-4 h-12 px-4 border border-ink/15 hover:border-gold transition-colors duration-150"
+                >
+                  <span className="font-display text-lg text-ink group-hover:text-gold transition-colors duration-150">Janelle</span>
+                  <span className="text-sm tracking-wide text-ink-light">+65 9688 5938</span>
+                </a>
+                <a
+                  href="tel:+6594253833"
+                  className="group flex items-center justify-between gap-4 h-12 px-4 border border-ink/15 hover:border-gold transition-colors duration-150"
+                >
+                  <span className="font-display text-lg text-ink group-hover:text-gold transition-colors duration-150">Vicky</span>
+                  <span className="text-sm tracking-wide text-ink-light">+65 9425 3833</span>
+                </a>
+              </div>
+              <p className="mt-auto text-[10px] tracking-[0.22em] uppercase text-ink-light mb-2">
+                {visit.email[language]}
+              </p>
+              <a
+                href="mailto:xiangyue.culturearts@gmail.com"
+                className="text-sm text-ink hover:text-gold break-all transition-colors duration-150"
+              >
+                xiangyue.culturearts@gmail.com
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        <ScrollReveal>
+          <p className="flex items-center gap-2.5 text-ink-light text-xs mt-6">
+            <span className="w-5 h-px bg-gold shrink-0" />
+            {visit.note[language]}
+          </p>
+        </ScrollReveal>
       </section>
 
       {/* ── Join CTA ─────────────────────────────────────────── */}

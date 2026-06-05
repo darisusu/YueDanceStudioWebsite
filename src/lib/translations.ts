@@ -27,6 +27,16 @@ export const t = {
       heading:  { en: 'Dance Courses',                              zh: '舞蹈课程' },
       sub:      { en: 'Led by experienced instructors across a range of styles.', zh: '由专业导师带领，涵盖多元舞蹈风格。' },
       viewAll:  { en: 'View all courses →',                         zh: '查看全部课程 →' },
+      glanceNote: { en: 'All levels welcome — no experience required.', zh: '欢迎各程度学员，无需舞蹈基础。' },
+    },
+    visit: {
+      label:      { en: 'Visit Us',                  zh: '到访我们' },
+      heading:    { en: 'Find Us in the City',       zh: '欢迎莅临工作室' },
+      studio:     { en: 'Studio',                    zh: '工作室' },
+      directions: { en: 'Get directions →',          zh: '查看路线 →' },
+      call:       { en: 'Call us',                   zh: '致电我们' },
+      email:      { en: 'Email',                     zh: '电邮' },
+      note:       { en: 'Drop by, call, or message — we respond within 1–2 business days.', zh: '欢迎到访、来电或留言，我们将在1至2个工作日内回复。' },
     },
     testimonial: {
       label: { en: 'In Their Words', zh: '学员心声' },
