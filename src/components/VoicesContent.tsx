@@ -19,22 +19,30 @@ function splitAttribution(att: Bilingual) {
 
 interface VoiceGroup {
   name: Bilingual;
-  items: { quote: Bilingual; context: Bilingual }[];
+  /** Class / date shown on the same line as the name, e.g. "Thursday Contemporary Dance". */
+  context: Bilingual;
+  items: { quote: Bilingual }[];
 }
 
-// One section per student — combine everyone's quotes so no name repeats.
+const EMPTY: Bilingual = { en: '', zh: '' };
+
+// One section per student — combine a named student's quotes so no name repeats.
+// Anonymous voices are different people, so each stays on its own.
 function groupByAuthor(): VoiceGroup[] {
   const groups: VoiceGroup[] = [];
   const indexByKey = new Map<string, number>();
-  for (const item of testimonials) {
+  testimonials.forEach((item, i) => {
     const { name, context } = splitAttribution(item.attribution);
-    const key = name.en;
+    const key = item.anonymous ? `__anon_${i}` : name.en;
     if (!indexByKey.has(key)) {
       indexByKey.set(key, groups.length);
-      groups.push({ name, items: [] });
+      groups.push({ name, context: EMPTY, items: [] });
     }
-    groups[indexByKey.get(key)!].items.push({ quote: item.quote, context });
-  }
+    const group = groups[indexByKey.get(key)!];
+    group.items.push({ quote: item.quote });
+    // First class/date we see for this student rides on the name line.
+    if (!group.context.en && context.en) group.context = context;
+  });
   return groups;
 }
 
@@ -73,27 +81,28 @@ export default function VoicesContent() {
         <div className="columns-1 md:columns-2 gap-8 lg:gap-14">
           {groups.map((group, gi) => (
             <ScrollReveal
-              key={group.name.en}
+              key={`${group.name.en}-${gi}`}
               as="figure"
               delay={(gi % 2) * 70}
               className="break-inside-avoid mb-8 lg:mb-12 border-t border-ink/10 pt-6"
             >
-              <cite className="not-italic block text-gold text-[11px] tracking-[0.22em] uppercase mb-6">
-                {group.name[language]}
+              <cite className="not-italic block text-[11px] tracking-[0.22em] uppercase mb-6">
+                <span className="text-gold">{group.name[language]}</span>
+                {group.context[language] && (
+                  <span className="text-ink-light/55"> · {group.context[language]}</span>
+                )}
               </cite>
               <div className="space-y-6">
                 {group.items.map((item, ii) => (
-                  <div key={ii} className={ii > 0 ? 'border-t border-ink/[0.07] pt-6' : ''}>
-                    {/* whitespace-pre-line preserves the line breaks in the poems */}
-                    <blockquote className="font-display text-ink text-lg leading-[1.5] font-light italic whitespace-pre-line">
-                      {item.quote[language]}
-                    </blockquote>
-                    {item.context[language] && (
-                      <p className="mt-3 text-ink-light/70 text-[10px] tracking-[0.18em] uppercase">
-                        {item.context[language]}
-                      </p>
-                    )}
-                  </div>
+                  <blockquote
+                    key={ii}
+                    // whitespace-pre-line keeps the poems' line breaks; single \n only, so no stray gaps
+                    className={`font-display text-ink text-lg leading-[1.5] font-light italic whitespace-pre-line${
+                      ii > 0 ? ' border-t border-ink/[0.07] pt-6' : ''
+                    }`}
+                  >
+                    {item.quote[language]}
+                  </blockquote>
                 ))}
               </div>
             </ScrollReveal>

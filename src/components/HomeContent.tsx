@@ -29,6 +29,7 @@ const marqueeItems = [
 ];
 
 const featuredInstructors = [instructors[0], instructors[2]];
+const moreInstructors = instructors.filter((ins) => !featuredInstructors.includes(ins));
 
 export default function HomeContent() {
   const { language } = useLanguage();
@@ -42,7 +43,7 @@ export default function HomeContent() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative min-h-dvh flex items-end overflow-hidden grain">
+      <section className="relative min-h-svh flex items-end overflow-hidden grain">
         {/* Parallax image — grayscale-normalised so the warm-tone layers below read consistently */}
         <ParallaxHero
           src="/images/hero/hero-dancer.jpg"
@@ -279,6 +280,11 @@ export default function HomeContent() {
           <h2 className="font-display text-[clamp(2.8rem,6vw,5rem)] leading-[0.95]">
             {t.instructors.heading[language]}
           </h2>
+          <p className="text-ink-light text-sm mt-4 max-w-md leading-relaxed">
+            {language === 'en'
+              ? `A faculty of ${instructors.length} — spanning ballet, Chinese classical, folk, and contemporary dance.`
+              : `${instructors.length} 位导师，涵盖芭蕾、中国古典舞、民族民间舞与当代舞。`}
+          </p>
         </ScrollReveal>
 
         <div className="space-y-px bg-ink/10">
@@ -327,12 +333,50 @@ export default function HomeContent() {
           ))}
         </div>
 
+        {/* Roster strip — the rest of the faculty, so it's clear there are more */}
+        {moreInstructors.length > 0 && (
+          <ScrollReveal className="mt-px">
+            <p className="text-[10px] tracking-[0.28em] uppercase text-ink-light mb-5">
+              {language === 'en' ? 'And more of our faculty' : '更多导师'}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-ink/10 border-t border-ink/10">
+              {moreInstructors.map((instructor) => (
+                <Link
+                  key={instructor.name}
+                  href="/instructors"
+                  className="group bg-ivory flex items-center gap-4 p-6 hover:bg-ink/[0.02] transition-colors duration-150"
+                >
+                  <div className="relative w-14 h-14 shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      src={instructor.photo}
+                      alt={instructor.nameZh}
+                      fill
+                      sizes="56px"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-display text-lg leading-tight group-hover:text-gold transition-colors duration-150">
+                      {instructor.nameZh}
+                    </p>
+                    <p className="text-[10px] tracking-[0.18em] uppercase text-gold/80 mt-1">
+                      {instructor.title[language]}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </ScrollReveal>
+        )}
+
         <ScrollReveal className="mt-8 flex justify-end">
           <Link
             href="/instructors"
             className="text-[11px] tracking-[0.18em] uppercase text-gold hover:text-ink border-b border-gold/50 hover:border-ink pb-0.5 transition-colors duration-150"
           >
-            {language === 'en' ? 'Meet our instructors →' : '认识我们的导师 →'}
+            {language === 'en'
+              ? `Meet all ${instructors.length} instructors →`
+              : `认识全部 ${instructors.length} 位导师 →`}
           </Link>
         </ScrollReveal>
       </section>

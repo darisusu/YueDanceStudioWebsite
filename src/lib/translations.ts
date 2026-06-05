@@ -84,8 +84,8 @@ export const t = {
   voices: {
     label:      { en: 'Student Voices', zh: '学员心声' },
     heading:    { en: 'In Their\nOwn Words', zh: '学员\n心声' },
-    intro:      { en: 'Over the years, our students have shared what dance has come to mean to them — in messages, reflections, and poems. We keep them here, just as they were written.',
-                  zh: '多年来，学员们以留言、随笔与诗作，记录下舞蹈于他们的意义。我们将这些文字原样珍藏于此。' },
+    intro:      { en: 'Over the years, our students have shared what dance has come to mean to them — in messages, reflections, and poems. A selection lives here, in their own words.',
+                  zh: '多年来，学员们以留言、随笔与诗作，记录下舞蹈于他们的意义。我们在此精选珍藏，呈现他们的心声。' },
     ctaHeading: { en: 'Your story could be\nthe next one here.', zh: '下一个故事，\n或许就是你的。' },
     cta:        { en: 'Explore Courses', zh: '探索课程' },
   },

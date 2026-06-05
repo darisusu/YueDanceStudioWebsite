@@ -42,7 +42,7 @@ export const instructors: Instructor[] = [
     teaches: { en: 'Folk Dance',             zh: '民族民间舞' },
     photo:  '/images/instructors/instructor-3.png',
     bio: {
-      en: 'Bai Ying Wen is a specialist in folk dance with a joyful, energetic approach to teaching. Her classes draw on the rich traditions of Chinese and Asian folk dance forms, blending cultural heritage with accessible, lively choreography that students of all levels can enjoy.',
+      en: 'Bai Ying Wen is a specialist in folk dance with a joyful, energetic approach to teaching. His classes draw on the rich traditions of Chinese and Asian folk dance forms, blending cultural heritage with accessible, lively choreography that students of all levels can enjoy.',
       zh: '白映文专注于民族民间舞教学，风格活泼、热情洋溢。课程融汇中国及亚洲各民族舞蹈传统，将文化底蕴与生动编排有机结合，适合各层次学员轻松参与。',
     },
     qualifications: null,

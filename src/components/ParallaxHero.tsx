@@ -21,6 +21,10 @@ export default function ParallaxHero({ src, alt, objectPosition = 'center', prio
     // Respect reduced-motion: skip the scroll-driven parallax translate entirely.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+    // Skip parallax on mobile/touch: scroll-driven transforms over a full-bleed
+    // image are expensive on phone GPUs and add little at small sizes.
+    if (!window.matchMedia('(min-width: 768px)').matches) return;
+
     let ticking = false;
 
     function onScroll() {

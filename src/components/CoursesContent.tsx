@@ -43,14 +43,14 @@ export default function CoursesContent() {
             return (
               <ScrollReveal key={course.name.en} delay={0}>
                 <article
-                  className={`bg-ivory group relative overflow-hidden ${
-                    isFeature ? 'grid grid-cols-1' : 'grid grid-cols-1 lg:grid-cols-2'
+                  className={`bg-ivory group relative overflow-hidden grid grid-cols-1 ${
+                    isFeature ? '' : 'lg:grid-cols-2'
                   }`}
                 >
                   {/* Image */}
                   <div
                     className={`relative overflow-hidden ${
-                      isFeature ? 'aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]' : `aspect-[4/3] lg:aspect-auto lg:min-h-80 ${i % 2 === 1 ? 'lg:order-last' : ''}`
+                      isFeature ? 'aspect-[4/3] lg:aspect-[21/9]' : `aspect-[4/3] lg:aspect-auto lg:min-h-80 ${i % 2 === 1 ? 'lg:order-last' : ''}`
                     }`}
                   >
                     <Image
@@ -63,8 +63,8 @@ export default function CoursesContent() {
                     />
 
                     {isFeature && (
-                      /* Feature overlay: text on image */
-                      <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/40 to-transparent flex flex-col justify-end p-10 lg:p-16">
+                      /* Feature overlay: text on image — desktop only */
+                      <div className="absolute inset-0 hidden lg:flex bg-gradient-to-r from-ink/80 via-ink/40 to-transparent flex-col justify-end p-10 lg:p-16">
                         <div className="w-8 h-px bg-gold mb-5" />
                         <h2 className="font-display text-ivory text-[clamp(2.2rem,5vw,4rem)] leading-tight mb-2">
                           {course.name[language]}
@@ -87,34 +87,36 @@ export default function CoursesContent() {
                     )}
                   </div>
 
-                  {/* Content — non-feature cards only */}
-                  {!isFeature && (
-                    <div className="p-10 lg:p-14 flex flex-col justify-center relative">
-                      {/* Gold border on hover */}
-                      <div className="absolute inset-0 border border-transparent group-hover:border-gold/30 transition-colors duration-400 pointer-events-none" />
+                  {/* Content — non-feature cards always; feature card on mobile only */}
+                  <div
+                    className={`p-10 lg:p-14 flex flex-col justify-center relative ${
+                      isFeature ? 'lg:hidden' : ''
+                    }`}
+                  >
+                    {/* Gold border on hover */}
+                    <div className="absolute inset-0 border border-transparent group-hover:border-gold/30 transition-colors duration-400 pointer-events-none" />
 
-                      <div className="relative">
-                        <div className="w-8 h-px bg-gold mb-6" />
-                        <h2 className="font-display text-[clamp(2rem,3.5vw,2.8rem)] leading-tight mb-2">
-                          {course.name[language]}
-                        </h2>
-                        <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-6">
-                          {tr.instructor[language]}: {course.instructor[language]}
-                        </p>
-                        <p className="text-ink-light text-base leading-relaxed mb-8">
-                          {course.description[language]}
-                        </p>
-                        <a
-                          href={REGISTRATION_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="self-start text-xs tracking-[0.2em] uppercase text-ink-light hover:text-gold border-b border-ink-light/40 hover:border-gold pb-0.5 transition-colors duration-150"
-                        >
-                          {tr.register[language]}
-                        </a>
-                      </div>
+                    <div className="relative">
+                      <div className="w-8 h-px bg-gold mb-6" />
+                      <h2 className="font-display text-[clamp(2rem,3.5vw,2.8rem)] leading-tight mb-2">
+                        {course.name[language]}
+                      </h2>
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-6">
+                        {tr.instructor[language]}: {course.instructor[language]}
+                      </p>
+                      <p className="text-ink-light text-base leading-relaxed mb-8">
+                        {course.description[language]}
+                      </p>
+                      <a
+                        href={REGISTRATION_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="self-start text-xs tracking-[0.2em] uppercase text-ink-light hover:text-gold border-b border-ink-light/40 hover:border-gold pb-0.5 transition-colors duration-150"
+                      >
+                        {tr.register[language]}
+                      </a>
                     </div>
-                  )}
+                  </div>
                 </article>
               </ScrollReveal>
             );
