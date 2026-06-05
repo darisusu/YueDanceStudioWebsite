@@ -25,7 +25,8 @@ export default function AboutContent() {
               alt="Lin Jing, Co-founder of YUE Dance Studio"
               fill
               sizes="(max-width: 768px) 50vw, 50vw"
-              className="object-cover object-center"
+              className="object-cover"
+              style={{ objectPosition: '50% 56%' }}
               priority
             />
             {/* top vignette for name legibility */}
@@ -51,7 +52,8 @@ export default function AboutContent() {
               alt="Han Tao, Co-founder of YUE Dance Studio"
               fill
               sizes="(max-width: 768px) 50vw, 50vw"
-              className="object-cover object-top"
+              className="object-cover"
+              style={{ objectPosition: '50% 18%' }}
               priority
             />
             {/* top vignette for name legibility */}
