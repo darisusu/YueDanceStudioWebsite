@@ -10,7 +10,10 @@ import { featuredTestimonials } from '@/data/testimonials';
 import ParallaxHero from '@/components/ParallaxHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import Marquee from '@/components/Marquee';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
+
+// useLayoutEffect on the client, useEffect on the server (avoids the SSR warning)
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const REGISTRATION_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
@@ -71,6 +74,17 @@ export default function HomeContent() {
     if (Math.abs(dx) > 40) goToTesti(testiIndex + (dx < 0 ? 1 : -1));
     touchStartX.current = null;
   };
+
+  // Fit the carousel to the active quote's height (animated) so short quotes
+  // don't leave a tall empty gap above the content that follows.
+  const activeSlideRef = useRef<HTMLDivElement>(null);
+  const [carouselH, setCarouselH] = useState<number>();
+  useIsomorphicLayoutEffect(() => {
+    const measure = () => { if (activeSlideRef.current) setCarouselH(activeSlideRef.current.offsetHeight); };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [testiIndex, language]);
 
   return (
     <>
@@ -441,7 +455,7 @@ export default function HomeContent() {
               ‹
             </button>
 
-            {/* Quote column — swipeable on touch; fixed height prevents reflow between slides */}
+            {/* Quote column — swipeable on touch; height follows the active quote */}
             <div
               className="flex-1 flex flex-col"
               onTouchStart={onTouchStart}
@@ -453,13 +467,17 @@ export default function HomeContent() {
                 </p>
               </ScrollReveal>
 
-              {/* Absolutely-positioned slide stack — all slides in DOM, only active one visible */}
-              <div className="relative h-[38rem] lg:h-[26rem]">
+              {/* Slides stacked absolutely (crossfade); container height animates to the active one */}
+              <div
+                className="relative transition-[height] duration-500 ease-in-out"
+                style={{ height: carouselH }}
+              >
                 {testiItems.map((item, i) => (
                   <div
                     key={i}
+                    ref={i === testiIndex ? activeSlideRef : undefined}
                     aria-hidden={i !== testiIndex}
-                    className="absolute inset-0 flex flex-col justify-start transition-opacity duration-700 ease-in-out"
+                    className="absolute inset-x-0 top-0 flex flex-col justify-start transition-opacity duration-700 ease-in-out"
                     style={{ opacity: i === testiIndex ? 1 : 0 }}
                   >
                     <blockquote className="font-display text-ivory text-[clamp(1.2rem,2.8vw,2.4rem)] leading-[1.4] font-light italic max-w-3xl mb-8">
