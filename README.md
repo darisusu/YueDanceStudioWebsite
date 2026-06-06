@@ -13,7 +13,7 @@ A custom-built website for **Xiang Yue Culture Arts / YUE Dance Studio**, a Sing
 | Framework | Next.js 16 (App Router) |
 | Styling | Tailwind CSS v4 |
 | Language | TypeScript |
-| Hosting | GitHub Pages (moving to Vercel) |
+| Hosting | Vercel |
 | Forms | Google Form (external link) |
 
 ## Design System
@@ -34,14 +34,15 @@ Aesthetic: editorial, minimal, generous whitespace — closer to a refined arts 
 
 | Route | Description |
 |---|---|
-| `/` | Home — hero, course grid, testimonial carousel |
-| `/about` | Studio story, mission |
-| `/performances` | Performance history and awards |
+| `/` | Home — hero, course grid, testimonial wall |
+| `/about` | Studio story and mission |
+| `/performances` | Performance history and awards timeline |
 | `/instructors` | Instructor profile cards |
 | `/courses` | Dance course listings |
 | `/schedule` | Class timetable grid |
 | `/contact` | Address, contact details, registration form |
 | `/faq` | Accordion FAQ — 4 categories |
+| `/voices` | Student Voices archive — full testimonials and prose |
 
 ---
 
@@ -62,6 +63,7 @@ Site content is split into two layers:
 | `src/data/courses.ts` | `Course[]` | Course name, instructor, description, image |
 | `src/data/schedule.ts` | `ScheduleClass[]` | Day (0–6 Mon–Sun), time band (0–4), time string, name, instructor |
 | `src/data/performances.ts` | `Performance[]` | Past performances and awards |
+| `src/data/testimonials.ts` | `Testimonial[]` | Student quotes with bilingual text, attribution, tags, and featured/excerpt fields for the homepage wall |
 
 ### Common updates
 
@@ -72,6 +74,8 @@ Site content is split into two layers:
 **Course** — append a `Course` entry to `src/data/courses.ts`. Both the home page grid and `/courses` page read from this file.
 
 **Performance** — prepend a `Performance` entry to `src/data/performances.ts`.
+
+**Testimonial** — add a `Testimonial` entry to `src/data/testimonials.ts`. Set `featured: true` and a `tag` to show it on the homepage wall (max 2 per tag: `TAG_BEGINNER`, `TAG_GUIDANCE`, `TAG_BEAUTY`). All testimonials appear on `/voices`.
 
 **Any copy or translation** — edit `src/lib/translations.ts`. Both EN and 中文 strings live here.
 
@@ -105,7 +109,7 @@ npm run build   # production build
 npm run start   # local production server
 ```
 
-Deploys automatically to GitHub Pages on push to `main` via `.github/workflows/deploy.yml`.
+Deploys automatically to Vercel on push to `main`.
 
 ---
 
@@ -113,4 +117,5 @@ Deploys automatically to GitHub Pages on push to `main` via `.github/workflows/d
 
 - See `AGENTS.md` before modifying any Next.js-specific code — this project uses Next.js 16, which has breaking changes from prior versions.
 - A `TODO: ADD_GA4_MEASUREMENT_ID` placeholder is in `layout.tsx` pending GA4 account creation.
-- Domain `xiangyueculturearts.com` is managed through Wix DNS. DNS cutover to Vercel is deferred until the new site is fully live and tested.
+- Domain `xiangyueculturearts.com` is managed through Wix DNS. Point DNS to Vercel when the new site is ready to go live.
+- The repo also contains two GitHub Actions workflows (`deploy.yml`, `nextjs.yml`) left over from a previous GitHub Pages experiment — `nextjs.yml` is disabled (`if: false`). These can be deleted once fully on Vercel.

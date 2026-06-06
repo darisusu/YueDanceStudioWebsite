@@ -65,7 +65,7 @@ export default function Nav() {
       >
         <div className="max-w-7xl mx-auto pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] lg:px-12 h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="YUE Dance Studio home">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
             <Image
               src="/images/logo/yue-dance-logo.png"
               alt=""
@@ -100,12 +100,11 @@ export default function Nav() {
             {/* Language toggle */}
             <button
               onClick={toggle}
-              aria-label={language === 'en' ? 'Switch to Chinese' : '切换为英文'}
               className={`inline-flex items-center h-11 px-1 text-[11px] tracking-[0.15em] transition-colors duration-200 ${textColor} ${hoverColor}`}
             >
               <span className={language === 'en' ? 'text-gold font-semibold' : ''}>EN</span>
-              <span className="mx-1.5 opacity-30">/</span>
-              <span className={language === 'zh' ? 'text-gold font-semibold' : ''}>中</span>
+              <span className="mx-1.5 opacity-30" aria-hidden="true">/</span>
+              <span className={language === 'zh' ? 'text-gold font-semibold' : ''}>中文</span>
             </button>
 
             {/* Hamburger — mobile only */}
@@ -181,11 +180,10 @@ export default function Nav() {
         <div className="pt-8 border-t border-ivory/10 flex items-center justify-between">
           <button
             onClick={toggle}
-            aria-label={language === 'en' ? 'Switch to Chinese' : '切换为英文'}
             className="inline-flex items-center h-11 -my-2 text-[11px] tracking-[0.15em] text-ivory/50"
           >
             <span className={language === 'en' ? 'text-gold' : 'text-ivory/50'}>EN</span>
-            <span className="mx-2 text-ivory/20">/</span>
+            <span className="mx-2 text-ivory/20" aria-hidden="true">/</span>
             <span className={language === 'zh' ? 'text-gold' : 'text-ivory/50'}>中文</span>
           </button>
           <span className="text-[10px] tracking-widest text-ivory/40 uppercase">Xiang Yue Culture Arts</span>

@@ -4,12 +4,12 @@ export const metadata: Metadata = {
   title: 'YUE Dance Courses | Singapore Dance Classes',
   description:
     'Explore our range of dance courses in Singapore — Chinese dance, ballet, contemporary, folk dance and more. Suitable for beginners to advanced dancers.',
-  alternates: { canonical: 'https://www.xiangyueculturearts.com/courses' },
+  alternates: { canonical: '/courses' },
   openGraph: {
     title: 'YUE Dance Courses | Singapore Dance Classes',
     description:
       'Explore our range of dance courses in Singapore — Chinese dance, ballet, contemporary, folk dance and more. Suitable for beginners to advanced dancers.',
-    url: 'https://www.xiangyueculturearts.com/courses',
+    url: '/courses',
     locale: 'en_SG',
   },
   twitter: {

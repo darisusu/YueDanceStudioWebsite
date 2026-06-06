@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from 'next';
-import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
+import { Cormorant_Garamond, DM_Sans, Noto_Sans_TC, Noto_Serif_TC } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import HtmlRoot from '@/components/HtmlRoot';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import CJKFontActivator from '@/components/CJKFontActivator';
 import './globals.css';
 
 const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -17,6 +17,23 @@ const dmSans = DM_Sans({
   variable: '--font-dm-sans',
   subsets: ['latin'],
   display: 'swap',
+});
+
+// preload: false — CJK fonts must not generate <link rel="preload"> in the HTML
+// head because they would compete with the render-blocking CSS for bandwidth on
+// slow connections. CJKFontActivator activates them after the first paint.
+const notoSansTC = Noto_Sans_TC({
+  variable: '--font-noto-sans-tc',
+  subsets: ['latin'],
+  display: 'swap',
+  preload: false,
+});
+
+const notoSerifTC = Noto_Serif_TC({
+  variable: '--font-noto-serif-tc',
+  subsets: ['latin'],
+  display: 'swap',
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -45,23 +62,11 @@ export const viewport: Viewport = {
   // zoom is intentionally left enabled for accessibility.
 };
 
-// TODO: ADD_GA4_MEASUREMENT_ID — create a GA4 property at analytics.google.com
-// then replace the placeholder below with your G-XXXXXXXXXX measurement ID
-const GA4_ID = 'G-XXXXXXXXXX';
+const GA4_ID = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID ?? '';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <HtmlRoot className={`${cormorant.variable} ${dmSans.variable} h-full antialiased bg-ivory`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Noto fonts provide CJK fallback for the bilingual toggle — low priority, not LCP-critical */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-          fetchPriority="low"
-        />
-      </head>
+    <HtmlRoot className={`${cormorant.variable} ${dmSans.variable} ${notoSansTC.variable} ${notoSerifTC.variable} h-full antialiased bg-ivory`}>
       <body className="min-h-dvh flex flex-col bg-ivory text-ink">
         {/* Skip-to-content — visible only on keyboard focus */}
         <a
@@ -73,8 +78,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
+        <CJKFontActivator />
       </body>
-      <GoogleAnalytics gaId={GA4_ID} />
+      {GA4_ID && <GoogleAnalytics gaId={GA4_ID} />}
     </HtmlRoot>
   );
 }

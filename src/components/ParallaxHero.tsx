@@ -51,7 +51,7 @@ export default function ParallaxHero({ src, alt, objectPosition = 'center', prio
         alt={alt}
         fill
         priority={priority}
-        quality={90}
+        quality={75}
         sizes="100vw"
         className={`object-cover ${imgClassName}`}
         style={{ objectPosition }}

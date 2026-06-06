@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   output: isGithubActions ? "export" : undefined,
   images: {
     unoptimized: isGithubActions,
+    formats: ['image/avif', 'image/webp'],
   },
   basePath: isGithubActions ? "/YueDanceStudioWebsite" : "",
   assetPrefix: isGithubActions ? "/YueDanceStudioWebsite" : "",

@@ -46,6 +46,7 @@ export default function InstructorsContent() {
                       src={profile.photo}
                       alt={`${profile.nameZh} — ${profile.title[language]}`}
                       fill
+                      priority={i === 0}
                       sizes="(max-width: 1024px) 100vw, 29vw"
                       className="object-cover object-top"
                     />
