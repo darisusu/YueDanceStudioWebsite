@@ -36,7 +36,7 @@ const jsonLd = {
   },
   sameAs: [
     'https://www.facebook.com/xiangyue.dance/',
-    'https://www.instagram.com/xiangyue100/',
+    'https://www.instagram.com/yuedancesg/',
   ],
 };
 

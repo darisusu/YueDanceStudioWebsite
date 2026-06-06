@@ -77,7 +77,7 @@ export default function Footer() {
                   Facebook
                 </a>
                 <a
-                  href="https://www.instagram.com/xiangyue100/"
+                  href="https://www.instagram.com/yuedancesg/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors duration-150"
