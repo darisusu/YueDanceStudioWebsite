@@ -113,7 +113,7 @@ export const t = {
   courses: {
     label:      { en: 'What We Teach',       zh: '教授内容' },
     heading:    { en: 'Dance Courses',        zh: '舞蹈课程' },
-    sub:        { en: 'Six disciplines. One community. All levels welcome.', zh: '六大舞种，同一社群，欢迎各程度学员。' },
+    sub:        { en: 'Five disciplines. One community. All levels welcome.', zh: '五大舞种，同一社群，欢迎各程度学员。' },
     instructor: { en: 'Instructor',           zh: '导师' },
     register:   { en: 'Register Interest →', zh: '立即报名 →' },
   },

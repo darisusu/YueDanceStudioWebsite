@@ -27,12 +27,12 @@ export const testimonials: Testimonial[] = [
 
   {
     quote: {
-      en: '"Deeply grateful for Lao Shi\'s meticulous guidance — the class was both engaging and genuinely insightful."',
+      en: '"Deeply grateful for our teacher\'s meticulous guidance — the class was both engaging and genuinely insightful."',
       zh: '「非常感谢老师的细心指导，这堂课既投入，又让我收获良多。」',
     },
     excerpt: {
       en: '"Both deeply engaging and genuinely insightful."',
-      zh: '「非常享受这堂课，从老师身上学到了很多。」',
+      zh: '「这堂课，既投入又收获良多。」',
     },
     attribution: { en: 'Sumini · Chinese Belly Dance, Jul 2020', zh: 'Sumini · 华族舞，2020年7月' },
     featured: true,

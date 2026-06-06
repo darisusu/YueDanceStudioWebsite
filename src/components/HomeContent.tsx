@@ -259,7 +259,7 @@ export default function HomeContent() {
           <ScrollReveal delay={100}>
             <blockquote className="font-display text-ivory text-[clamp(2.2rem,5vw,4.5rem)] leading-[1.1] font-light italic max-w-3xl">
               {language === 'en'
-                ? 'Dance is not just a performance.\nBut exploring what it means to be alive.'
+                ? 'Dance is not just a performance,\nbut a way of discovering what it means to be alive.'
                 : '舞蹈不是表演，而是我们感受生命、寻回自我的方式。'}
             </blockquote>
           </ScrollReveal>
