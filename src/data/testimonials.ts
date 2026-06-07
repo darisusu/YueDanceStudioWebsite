@@ -27,7 +27,7 @@ export const testimonials: Testimonial[] = [
 
   {
     quote: {
-      en: '"Deeply grateful for our teacher\'s meticulous guidance — the class was both engaging and genuinely insightful."',
+      en: '"Deeply grateful for Lao Shi\'s meticulous guidance — the class was both engaging and genuinely insightful."',
       zh: '「非常感谢老师的细心指导，这堂课既投入，又让我收获良多。」',
     },
     excerpt: {
