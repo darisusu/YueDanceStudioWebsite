@@ -67,7 +67,7 @@ Site content is split into two layers:
 
 ### Common updates
 
-**Instructor** — edit `src/data/instructors.ts`. TypeScript will flag missing required fields at build time.
+**Instructor** — edit `src/data/instructors.ts`. TypeScript will flag missing required fields at build time. Bios & qualifications are distilled from `INSTRUCTOR_PROFILES.md` (the owner-supplied source of truth) — update that file first, then reflect changes into the data file.
 
 **Schedule** — edit `src/data/schedule.ts`. `day` is 0 (Mon) – 6 (Sun); `band` is a time-row index 0 (morning) – 4 (evening).
 
