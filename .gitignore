@@ -47,3 +47,4 @@ content-review.md
 
 # local AI tooling state
 .claude/
+/memory/
