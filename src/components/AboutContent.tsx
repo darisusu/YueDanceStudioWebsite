@@ -42,9 +42,6 @@ export default function AboutContent() {
             </div>
           </div>
 
-          {/* Thin gold divider — horizontal when stacked, vertical from lg */}
-          <div className="w-full h-px lg:w-px lg:h-auto bg-gold/20 flex-shrink-0 z-10" />
-
           {/* Han Tao — right */}
           <div className="relative flex-1 overflow-hidden">
             <Image
