@@ -285,7 +285,7 @@ export default function HomeContent() {
           </h2>
           <p className="text-ink-light text-sm mt-4 max-w-md leading-relaxed">
             {language === 'en'
-              ? `A faculty of ${instructors.length} — spanning ballet, Chinese classical, folk, and contemporary dance.`
+              ? `A faculty of ${instructors.length}, spanning ballet, Chinese classical, folk, and contemporary dance.`
               : `${instructors.length} 位导师，涵盖芭蕾、中国古典舞、民族民间舞与当代舞。`}
           </p>
         </ScrollReveal>

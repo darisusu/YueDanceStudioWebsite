@@ -136,7 +136,7 @@ export default function AboutContent() {
           </h2>
           <p className="text-ink-light text-base leading-relaxed max-w-xl mb-8">
             {language === 'en'
-              ? 'From Chingay Parade to the Singapore Golden Lion Cup — browse our full stage history.'
+              ? 'From Chingay Parade to the Singapore Golden Lion Cup. Browse our full stage history.'
               : '从妆艺大游行到新加坡金狮奖——浏览翔悦完整的舞台足迹。'}
           </p>
           <Link

@@ -79,7 +79,7 @@ export default function PerformancesContent() {
                           <div key={j} className="relative flex-1 overflow-hidden group">
                             <Image
                               src={src}
-                              alt={`${item[language]} — ${j + 2}`}
+                              alt={`${item[language]}, photo ${j + 2}`}
                               fill
                               sizes="(max-width: 1024px) 50vw, 29vw"
                               className="object-cover group-hover:scale-105 transition-transform duration-700"

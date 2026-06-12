@@ -11,7 +11,7 @@ export const courses: Course[] = [
   {
     name:        { en: 'Contemporary Dance',  zh: '当代舞' },
     instructor:  { en: 'Daniel',              zh: 'Daniel' },
-    description: { en: 'An expressive, dynamic form that draws from modern technique — exploring movement, space, and emotion with freedom and intention.', zh: '融合现代技法的表达性舞蹈形式，以自由与意图探索动作、空间与情感的深度。' },
+    description: { en: 'An expressive, dynamic form rooted in modern technique. Explores movement, space, and emotion with freedom and intention.', zh: '融合现代技法的表达性舞蹈形式，以自由与意图探索动作、空间与情感的深度。' },
     image: '/images/featured/featured-contemporary-3.jpg',
   },
   {
@@ -23,7 +23,7 @@ export const courses: Course[] = [
   {
     name:        { en: 'Chinese Dance',               zh: '华族舞' },
     instructor:  { en: 'Daniel · Chang Hsiao-Min',   zh: 'Daniel · 张晓明' },
-    description: { en: 'A rich tradition of Chinese dance forms — from lyrical Han-style movements to expressive contemporary Chinese choreography, led by two complementary instructors.', zh: '涵盖抒情汉族风格至当代华族舞编排的丰富舞蹈传统，由两位导师各展所长，相辅相成。' },
+    description: { en: 'A rich tradition of Chinese dance forms, spanning lyrical Han-style movements to expressive contemporary Chinese choreography, led by two complementary instructors.', zh: '涵盖抒情汉族风格至当代华族舞编排的丰富舞蹈传统，由两位导师各展所长，相辅相成。' },
     image: '/images/featured/featured-chinese-dance-1.jpg',
   },
   {

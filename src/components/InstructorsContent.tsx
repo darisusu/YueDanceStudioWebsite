@@ -44,7 +44,7 @@ export default function InstructorsContent() {
                   <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full lg:min-h-full">
                     <Image
                       src={profile.photo}
-                      alt={`${profile.nameZh} — ${profile.title[language]}`}
+                      alt={`${profile.nameZh}, ${profile.title[language]}`}
                       fill
                       priority={i === 0}
                       sizes="(max-width: 1024px) 100vw, 29vw"
