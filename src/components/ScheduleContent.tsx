@@ -1,29 +1,39 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
-import { scheduleClasses } from '@/data/schedule';
+import { scheduleClasses, type DanceType } from '@/data/schedule';
 
 const NUM_BANDS = 5;
+
+type FilterKey = 'all' | DanceType;
+
+const FILTER_KEYS: FilterKey[] = ['all', 'contemporary', 'ballet', 'chinese-dance', 'folk', 'classical'];
 
 export default function ScheduleContent() {
   const { language } = useLanguage();
   const tr = t.schedule;
+  const [activeFilter, setActiveFilter] = useState<FilterKey>('all');
+
+  const filtered = activeFilter === 'all'
+    ? scheduleClasses
+    : scheduleClasses.filter(c => c.danceType === activeFilter);
 
   const grid: (typeof scheduleClasses[number] | undefined)[][] = Array.from(
     { length: NUM_BANDS },
     (_, band) =>
-      tr.days.map((_, day) => scheduleClasses.find(c => c.band === band && c.day === day)),
+      tr.days.map((_, day) => filtered.find(c => c.band === band && c.day === day)),
   );
 
   const activeDayIndices = tr.days
     .map((_, i) => i)
-    .filter(i => scheduleClasses.some(c => c.day === i));
+    .filter(i => filtered.some(c => c.day === i));
 
   const activeDays = activeDayIndices.map(i => ({
     day: tr.days[i],
-    classes: scheduleClasses.filter(c => c.day === i).sort((a, b) => a.band - b.band),
+    classes: filtered.filter(c => c.day === i).sort((a, b) => a.band - b.band),
   }));
 
   return (
@@ -37,6 +47,30 @@ export default function ScheduleContent() {
           {tr.heading[language]}
         </h1>
         <p className="text-ink-light text-base">{tr.sub[language]}</p>
+      </section>
+
+      {/* ── Filter buttons ───────────────────────────────────── */}
+      <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-10">
+        <div className="flex flex-wrap gap-2">
+          {FILTER_KEYS.map(key => {
+            const label = tr.filters[key][language];
+            const isActive = activeFilter === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveFilter(key)}
+                className={[
+                  'px-5 py-2 text-xs tracking-[0.18em] uppercase transition-all duration-150 border',
+                  isActive
+                    ? 'bg-[#1C1917] text-[#F5F0E8] border-[#1C1917]'
+                    : 'bg-transparent text-ink border-ink/30 hover:border-gold hover:text-gold',
+                ].join(' ')}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
       </section>
 
       {/* ── Desktop: grid table ───────────────────────────────── */}

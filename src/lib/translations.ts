@@ -28,7 +28,7 @@ export const t = {
       heading:  { en: 'Dance Courses',                              zh: '舞蹈课程' },
       sub:      { en: 'Led by experienced instructors across a range of styles.', zh: '由专业导师带领，涵盖多元舞蹈风格。' },
       viewAll:  { en: 'View all courses →',                         zh: '查看全部课程 →' },
-      glanceNote: { en: 'All levels welcome — no experience required.', zh: '欢迎各程度学员，无需舞蹈基础。' },
+      glanceNote: { en: 'All levels welcome. No experience required.', zh: '欢迎各程度学员，无需舞蹈基础。' },
     },
     visit: {
       label:      { en: 'Visit Us',                  zh: '到访我们' },
@@ -37,12 +37,12 @@ export const t = {
       directions: { en: 'Get directions →',          zh: '查看路线 →' },
       call:       { en: 'Call us',                   zh: '致电我们' },
       email:      { en: 'Email',                     zh: '电邮' },
-      note:       { en: 'Drop by, call, or message — we respond within 1–2 business days.', zh: '欢迎到访、来电或留言，我们将在1至2个工作日内回复。' },
+      note:       { en: 'Drop by, call, or message. We respond within 1–2 business days.', zh: '欢迎到访、来电或留言，我们将在1至2个工作日内回复。' },
     },
     testimonial: {
       label:   { en: 'In Their Words', zh: '学员心声' },
       heading: { en: 'Why They Dance\nwith Us', zh: '他们为何\n选择翔悦' },
-      sub:     { en: 'Beginners and lifelong dancers alike — in their own words, on finding expert guidance, the beauty of dance, and a place to belong.',
+      sub:     { en: 'Beginners and lifelong dancers alike. In their own words, on finding expert guidance, the beauty of dance, and a place to belong.',
                  zh: '从零基础到资深舞者，听他们亲述：在这里遇见专业指导、舞蹈之美，与归属之所。' },
       cta:     { en: 'Read all student voices →', zh: '阅读全部学员心声 →' },
     },
@@ -55,7 +55,7 @@ export const t = {
     performances: {
       label:   { en: 'Performances & Awards', zh: '演出与荣誉' },
       heading: { en: 'Performed. Recognised.\nCelebrated.',  zh: '登台·获誉·被铭记' },
-      sub:     { en: 'Our students don\'t just train — they take the stage. From national parades to award ceremonies, see where YUE Dance has performed.',
+      sub:     { en: 'Our students don\'t just train. They take the stage. From national parades to award ceremonies, see where YUE Dance has performed.',
                  zh: '翔悦学员不止于练习——他们真正登台表演。从国家盛典到颁奖典礼，见证翔悦的舞台足迹。' },
       cta:     { en: 'See Our Full History →', zh: '探索完整演出历史 →' },
       items: [
@@ -74,7 +74,7 @@ export const t = {
         {
           year: '2018',
           title: { en: 'Singapore Golden Lion Cup', zh: '新加坡金狮奖' },
-          note:  { en: 'Gold Award at the national Music & Dance Competition — our first major stage, and far from our last.',
+          note:  { en: 'Gold Award at the national Music & Dance Competition. Our first major stage, and far from our last.',
                    zh: '于全国音乐舞蹈大赛荣获金奖——这是翔悦登上的第一个重要舞台，却绝不是最后一个。' },
         },
       ],
@@ -84,7 +84,7 @@ export const t = {
   voices: {
     label:      { en: 'Student Voices', zh: '学员心声' },
     heading:    { en: 'In Their\nOwn Words', zh: '学员\n心声' },
-    intro:      { en: 'Over the years, our students have shared what dance has come to mean to them — in messages, reflections, and poems. A selection lives here, in their own words.',
+    intro:      { en: 'Over the years, our students have shared what dance has come to mean to them, in messages, reflections, and poems. A selection lives here, in their own words.',
                   zh: '多年来，学员们以留言、随笔与诗作，记录下舞蹈于他们的意义。我们在此精选珍藏，呈现他们的心声。' },
     ctaHeading: { en: 'Your story could be\nthe next one here.', zh: '下一个故事，\n或许就是你的。' },
     cta:        { en: 'Explore Courses', zh: '探索课程' },
@@ -93,8 +93,8 @@ export const t = {
   about: {
     label:   { en: 'Our Story',            zh: '我们的故事' },
     heading: { en: 'Born from a\nLove of Dance', zh: '热爱舞蹈而生' },
-    body1:   { en: 'Founded in 2018, Xiang Yue Culture Arts — known to our students as YUE Dance Studio — was born from a simple belief: that dance is for everyone, at every stage of life.', zh: '翔悦文艺成立于2018年，始终秉持一个简单的信念：舞蹈属于每一个人，无论年龄，无论起点。' },
-    body2:   { en: 'We began as a small community studio in Singapore, built on word of mouth and a genuine passion for movement. Today, we bring together adult learners of all backgrounds under the guidance of experienced, accomplished instructors — in classes that range from Chinese classical dance and ballet to folk dance and contemporary forms.', zh: '我们从新加坡的一间小小社区舞室起步，凭借口碑与对舞蹈艺术的热忱，逐渐成长壮大。如今，翔悦文艺汇聚了来自各行各业的成人学员，在专业导师的带领下，共同探索现当代舞、民族民间舞、芭蕾舞、华族舞、古典舞的世界。' },
+    body1:   { en: 'Founded in 2018, Xiang Yue Culture Arts (known to our students as YUE Dance Studio) was born from a simple belief: that dance is for everyone, at every stage of life.', zh: '翔悦文艺成立于2018年，始终秉持一个简单的信念：舞蹈属于每一个人，无论年龄，无论起点。' },
+    body2:   { en: 'We began as a small community studio in Singapore, built on word of mouth and a genuine passion for movement. Today, we bring together adult learners of all backgrounds under the guidance of experienced, accomplished instructors, in classes ranging from Chinese classical dance and ballet to folk dance and contemporary forms.', zh: '我们从新加坡的一间小小社区舞室起步，凭借口碑与对舞蹈艺术的热忱，逐渐成长壮大。如今，翔悦文艺汇聚了来自各行各业的成人学员，在专业导师的带领下，共同探索现当代舞、民族民间舞、芭蕾舞、华族舞、古典舞的世界。' },
     body3:   { en: 'We are not a studio that trains competitors. We are a place where working adults, retirees, and lifelong learners come to find rhythm, community, and the quiet joy of movement. Many of our students have never danced before. Many have danced their whole lives. All of them are welcome here.', zh: '我们不是培养竞技选手的训练机构，而是一个让职场人士、退休人员及终身学习者寻回节奏、融入社群、感受律动之美的地方。这里有初学者，有资深舞者，每一位都在翔悦找到属于自己的位置。' },
     performances: {
       label:   { en: 'Performances & Achievements', zh: '演出与荣誉' },
@@ -124,6 +124,14 @@ export const t = {
     sub:     { en: 'Current term schedule. Contact us to confirm your slot.', zh: '当前学期课程表，如需确认课位，欢迎联系我们。' },
     note:    { en: 'Schedule is subject to change. Please confirm with our admin team before attending.', zh: '课程表如有变动，敬请于出席前向我们的行政团队确认。' },
     contact: { en: 'Contact Us', zh: '联系我们' },
+    filters: {
+      all:          { en: 'All',                   zh: '全部'       },
+      contemporary: { en: 'Contemporary Dance',    zh: '当代舞'     },
+      ballet:       { en: 'Ballet',                zh: '芭蕾舞'     },
+      'chinese-dance': { en: 'Chinese Dance',      zh: '华族舞'     },
+      folk:         { en: 'Folk Dance',            zh: '民族民间舞' },
+      classical:    { en: 'Chinese Classical Dance', zh: '古典舞'   },
+    },
     days: [
       { en: 'Monday',    zh: '星期一' },
       { en: 'Tuesday',   zh: '星期二' },
@@ -200,7 +208,7 @@ export const t = {
         items: [
           {
             q: { en: 'What is the attire for dance classes?', zh: '舞蹈课的着装要求是什么？' },
-            a: { en: 'We strongly encourage you to wear the same dance attire as the class — this helps the instructor observe and correct your moves.', zh: '我们强烈建议您穿着与班级统一的舞蹈服装，以便导师观察和纠正您的动作。' },
+            a: { en: 'We strongly encourage you to wear the same dance attire as the class, as this helps the instructor observe and correct your moves.', zh: '我们强烈建议您穿着与班级统一的舞蹈服装，以便导师观察和纠正您的动作。' },
           },
           {
             q: { en: 'Can I wear my own attire?', zh: '可以穿自己的服装吗？' },
@@ -231,7 +239,7 @@ export const t = {
   performances: {
     label:   { en: 'Stage History',          zh: '舞台足迹' },
     heading: { en: 'Performances\n& Awards', zh: '演出与荣誉' },
-    sub:     { en: 'From national parades to charity galas — our students take the stage.', zh: '从国家级游行到慈善晚会，翔悦学员走上真实的舞台。' },
+    sub:     { en: 'From national parades to charity galas, our students take the stage.', zh: '从国家级游行到慈善晚会，翔悦学员走上真实的舞台。' },
   },
 
   footer: {
