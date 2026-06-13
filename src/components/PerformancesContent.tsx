@@ -1,16 +1,19 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useLanguage } from '@/context/LanguageContext';
-import { t } from '@/lib/translations';
-import { performances } from '@/data/performances';
-import ParallaxHero from '@/components/ParallaxHero';
-import ScrollReveal from '@/components/ScrollReveal';
+import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import { t } from "@/lib/translations";
+import { performances } from "@/data/performances";
+import ParallaxHero from "@/components/ParallaxHero";
+import ScrollReveal from "@/components/ScrollReveal";
 
-// Major entries get full editorial treatment; 2019 entries share a card row
-const majorYears = ['2025', '2021', '2020', '2018'];
-const majorEntries = performances.filter((p) => majorYears.includes(p.year) && p.year !== '2019');
-const entries2019 = performances.filter((p) => p.year === '2019');
+const SPRING_FESTIVAL = "Singapore Chinese Spring Festival Gala: 《情人心》";
+const majorEntries = performances.filter(
+  (p) => p.year !== "2019" || p.en === SPRING_FESTIVAL,
+);
+const communityNamedEntries = performances.filter(
+  (p) => p.year === "2019" && p.en !== SPRING_FESTIVAL,
+);
 
 export default function PerformancesContent() {
   const { language } = useLanguage();
@@ -46,7 +49,9 @@ export default function PerformancesContent() {
       {/* ── Intro ────────────────────────────────────────────── */}
       <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="max-w-2xl">
-          <p className="text-ink-light text-base leading-relaxed">{pf.sub[language]}</p>
+          <p className="text-ink-light text-base leading-relaxed">
+            {pf.sub[language]}
+          </p>
         </ScrollReveal>
       </section>
 
@@ -58,10 +63,13 @@ export default function PerformancesContent() {
 
           return (
             <ScrollReveal key={item.en} delay={i * 60} as="article">
-              <div className={`grid grid-cols-1 lg:grid-cols-12 bg-ink/5 gap-px min-h-[520px]`}>
-
+              <div
+                className={`grid grid-cols-1 lg:grid-cols-12 bg-ink/5 gap-px min-h-[520px]`}
+              >
                 {/* Image column */}
-                <div className={`lg:col-span-7 ${flipImage ? 'lg:order-last' : ''} bg-ivory overflow-hidden`}>
+                <div
+                  className={`lg:col-span-7 ${flipImage ? "lg:order-last" : ""} bg-ivory overflow-hidden`}
+                >
                   {isRiverHongBao && item.images ? (
                     /* River Hong Bao: main image top + 2 smaller below */
                     <div className="flex flex-col h-full gap-px">
@@ -74,9 +82,12 @@ export default function PerformancesContent() {
                           className="object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                       </div>
-                      <div className="flex gap-px" style={{ height: '200px' }}>
+                      <div className="flex gap-px" style={{ height: "200px" }}>
                         {item.images.slice(1).map((src, j) => (
-                          <div key={j} className="relative flex-1 overflow-hidden group">
+                          <div
+                            key={j}
+                            className="relative flex-1 overflow-hidden group"
+                          >
                             <Image
                               src={src}
                               alt={`${item[language]}, photo ${j + 2}`}
@@ -102,7 +113,7 @@ export default function PerformancesContent() {
                 </div>
 
                 {/* Text column */}
-                <div className="lg:col-span-5 bg-ivory p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden">
+                <div className="lg:col-span-5 bg-ivory py-10 lg:p-14 flex flex-col justify-center relative overflow-hidden">
                   <span
                     className="absolute -bottom-6 right-0 font-display text-[8rem] leading-none text-ink/[0.04] select-none pointer-events-none"
                     aria-hidden="true"
@@ -124,44 +135,95 @@ export default function PerformancesContent() {
                     )}
                   </div>
                 </div>
-
               </div>
             </ScrollReveal>
           );
         })}
       </div>
 
-      {/* ── 2019 Events ──────────────────────────────────────── */}
-      <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
+      {/* ── Community Performances ───────────────────────────── */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 mt-24">
+        <div className="border-t border-ink/15" />
+      </div>
+      <section className="pt-16 pb-20 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="mb-10">
-          <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">2019</p>
+          <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
+            {language === "en" ? "Community" : "社区"}
+          </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3rem)] leading-[0.95]">
-            {language === 'en' ? 'Also in 2019' : '2019年其他演出'}
+            {language === "en" ? "Community Performances" : "社区演出"}
           </h2>
+          <p className="mt-4 text-ink-light text-base leading-relaxed max-w-xl">
+            {language === "en"
+              ? "Bringing dance to the community through grassroots events, neighbourhoods, and shared celebrations."
+              : "将舞蹈带入社区，走进基层活动、邻里之间与共同的庆典时刻。"}
+          </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-ink/10">
-          {entries2019.map((item, i) => (
-            <ScrollReveal key={item.en} delay={i * 80} className="bg-ivory group overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-ink/10 mb-px">
+          {communityNamedEntries.map((item, i) => (
+            <ScrollReveal
+              key={item.en}
+              delay={i * 80}
+              className="bg-ivory group overflow-hidden"
+            >
               {item.images?.[0] && (
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={item.images[0]}
                     alt={item[language]}
                     fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
               )}
-              <div className="p-6 lg:p-8">
+              <div className="py-6 sm:p-6 lg:p-8">
                 <div className="w-5 h-px bg-gold mb-4" />
-                <h3 className="font-display text-xl leading-tight mb-2">{item[language]}</h3>
+                <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-2">
+                  {item.year}
+                </p>
+                <h3 className="font-display text-xl leading-tight mb-2">
+                  {item[language]}
+                </h3>
                 {item.desc && (
                   <p className="text-ink-light text-sm leading-relaxed mt-2">
                     {item.desc[language]}
                   </p>
                 )}
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        <p className="text-[10px] tracking-[0.28em] uppercase text-ink/40 mt-10 mb-4">
+          {language === "en" ? "More moments" : "更多精彩"}
+        </p>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-ink/10">
+          {[
+            "/images/performances/community/community-1.jpg",
+            "/images/performances/community/community-2.jpg",
+            "/images/performances/community/community-3.jpg",
+            "/images/performances/community/community-4.jpg",
+            "/images/performances/community/community-5.jpg",
+            "/images/performances/community/community-6.jpg",
+            "/images/performances/community/community-7.jpg",
+            "/images/performances/community/community-8.jpg",
+          ].map((src, i) => (
+            <ScrollReveal
+              key={src}
+              delay={i * 50}
+              className="bg-ivory group overflow-hidden"
+            >
+              <div className="relative aspect-square overflow-hidden">
+                <Image
+                  src={src}
+                  alt={`Community performance ${i + 1}`}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </ScrollReveal>
           ))}

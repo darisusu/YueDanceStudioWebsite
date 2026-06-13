@@ -18,6 +18,16 @@ export const performances: Performance[] = [
     images: ['/images/about/about-performance-10.jpg'],
   },
   {
+    year: '2022',
+    en: 'Mrs Singapore World 2022 Pageant',
+    zh: '2022年新加坡世界夫人大赛',
+    desc: {
+      en: 'Invited to perform at Mrs Singapore World 2022 pageant stage at Orchid Country Club.',
+      zh: '受邀登上2022年新加坡世界夫人大赛舞台，献上中华古典舞表演。',
+    },
+    images: ['/images/performances/community/mrs-singapore-world2022.jpg'],
+  },
+  {
     year: '2021',
     en: 'River Hong Bao: Best Live Performance Award',
     zh: '新春河畔嘉年华：最佳现场演出奖',
