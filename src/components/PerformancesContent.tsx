@@ -160,7 +160,7 @@ export default function PerformancesContent() {
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-ink/10 mb-px">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-px gap-y-10 sm:gap-y-px bg-transparent sm:bg-ink/10 mb-px">
           {communityNamedEntries.map((item, i) => (
             <ScrollReveal
               key={item.en}

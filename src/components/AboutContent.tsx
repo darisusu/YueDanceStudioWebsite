@@ -117,7 +117,7 @@ export default function AboutContent() {
       </div>
 
       {/* ── Performances link ────────────────────────────────── */}
-      <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-10 pb-20 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="relative">
           <span
             className="font-display absolute -top-8 right-0 text-[12rem] leading-none text-ink/[0.04] select-none pointer-events-none hidden lg:block"

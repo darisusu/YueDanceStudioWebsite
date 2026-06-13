@@ -89,7 +89,7 @@ export default function CoursesContent() {
 
                   {/* Content — non-feature cards always; feature card on mobile only */}
                   <div
-                    className={`p-10 lg:p-14 flex flex-col justify-center relative ${
+                    className={`py-10 lg:p-14 flex flex-col justify-center relative ${
                       isFeature ? 'lg:hidden' : ''
                     }`}
                   >
