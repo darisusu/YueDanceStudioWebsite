@@ -6,6 +6,7 @@ export interface Instructor {
   title: Bilingual;
   teaches: Bilingual;
   photo: string;
+  focalPoint: string;
   bio: Bilingual;
   qualifications: { en: string[]; zh: string[] } | null;
 }
@@ -17,6 +18,7 @@ export const instructors: Instructor[] = [
     title:   { en: 'Artistic Director',             zh: '艺术总监' },
     teaches: { en: 'Contemporary Dance · Chinese Dance', zh: '当代舞 · 华族舞' },
     photo:  '/images/instructors/clear-daniel-deng-yu.jpeg',
+    focalPoint: '50% 25%',
     bio: {
       en: 'Daniel graduated from the Dance Department of Fujian Arts Academy and later studied under modern dance master Cao Chengyuan at the Beijing Dance Academy. He served as principal dancer at the Fujian Opera & Dance Theatre and the Hong Kong City Contemporary Dance Company before moving to Singapore in late 1994, where he joined the People\'s Association Dance Company. He is now Artistic Director of YUE Dance Studio (Xiang Yue Culture Arts) and a part-time lecturer at the Nanyang Academy of Fine Arts (NAFA). With close to thirty years of teaching, Daniel choreographs professional, engaging programmes for dancers of every level; patient and sincere, he shares a genuine love of dance through a scientific, progressive method that leads students to explore the body\'s potential and find their own language of expression. “Dance out the style of your life; move to the rhythm of your soul.”',
       zh: 'Daniel邓宇老师毕业于福建省艺术学院舞蹈系，后在北京舞蹈学院师从现代舞大师曹诚渊先生。曾担任福建省歌舞剧院、香港城市当代舞团首席舞者。1994年移居新加坡，受聘新加坡人民协会舞蹈团；现任翔悦文艺艺术总监、新加坡南洋艺术学院兼职导师。他拥有近三十年教学经验，为各程度的舞者编排专业且引人入胜的课程；教学耐心诚恳，传递对舞蹈的欣赏与热爱，采用科学循序渐进的方法，带领学员探索身体潜能，在自由舒展中找到自我表达的独特语言。「舞出人生风格，跳出生命腔调。」',
@@ -58,6 +60,7 @@ export const instructors: Instructor[] = [
     title:   { en: 'Chinese Dance Instructor', zh: '华族舞导师' },
     teaches: { en: 'Chinese Dance',            zh: '华族舞' },
     photo:  '/images/instructors/clear-chang-hsiao-min.jpeg',
+    focalPoint: '50% 20%',
     bio: {
       en: "Originally from Taiwan, Chang Hsiao-Min is a highly sought-after choreographer and dance artiste, and a graduate of the esteemed National Taiwan University of Arts. She has trained across a remarkable range of genres (ballet, jazz, modern dance, Middle Eastern dance, Chinese dance, flamenco and belly dance) and is celebrated for fusing Eastern and Western movement into a style entirely her own. She currently serves as Lead Choreographer for the People's Association Talents Chinese Dance Ensemble and lectures in the Department of Dance at the Nanyang Academy of Fine Arts (NAFA). Versatile, creative and warm, her classes are lively and engaging, and she encourages students to take part in performances and competitions to build experience and confidence. A highly skilled instructor and a true mentor and friend. “The body dances with the melody; the soul resonates with time.”",
       zh: '张晓明老师来自台湾，是一位备受追捧的编舞家和舞蹈艺术家。她毕业于著名的国立台湾艺术大学，精通各类舞种，擅长芭蕾、爵士、现代舞、中东舞、华族舞、佛朗明哥、肚皮舞等多种流派，并以融合中西舞蹈特色、独树一帜的风格著称。现任人协才艺—中国舞团首席编导、南洋艺术学院（NAFA）舞蹈系讲师。她教学经验丰富、风格独特，课堂轻松活泼，深受学员喜爱；鼓励学员积极参与各类演出与比赛，在实践中积累经验、提升技巧、增强自信，既是技艺精湛的导师，更是学员成长路上的良师益友。「身体与旋律共舞，灵魂与时光共鸣。」',
@@ -95,6 +98,7 @@ export const instructors: Instructor[] = [
     title:   { en: 'Folk Dance Instructor', zh: '民族舞导师' },
     teaches: { en: 'Folk Dance',             zh: '民族民间舞' },
     photo:  '/images/instructors/instructor-3.png',
+    focalPoint: '50% 15%',
     bio: {
       en: 'Bai Ying Wen graduated from the Folk Dance Department of the Beijing Dance Academy. In 1994 he helped the renowned Chinese dancer Jia Zuoguang establish China\'s first private dance school, the Jia Zuoguang Dance School. He joined Singapore\'s People\'s Association as a professional dancer in 1996, lectured in the dance department of the Nanyang Academy of Fine Arts (NAFA) from 1999 to 2005, and went on to teach Chinese Dance at the School of the Arts (SOTA). In 2005 he founded Dong Fang Cai Yun International Arts. An artist who unites performance, teaching and choreography, he collaborates closely with artists across the region to promote Chinese dance culture. With wit and humour, his classes are filled with laughter as he explains in detail how each ethnic culture is woven into its dance. “Every movement is a poem written by time.”',
       zh: '白映文老师毕业于北京舞蹈学院民间舞系。1994年协助中国著名舞蹈家贾作光先生建立中国第一间私立舞蹈学校“贾作光舞蹈学校”；1996年受聘新加坡人民协会，担任舞蹈团专业舞员；1999至2005年任南洋艺术学院（NAFA）舞蹈系讲师，后担任新加坡艺术学校（SOTA）华族舞蹈讲师；2005年创立东方彩韵国际艺术有限公司。他集表演、教学及编导于一身，与本地及周边国家的艺术家和团体合作良好，致力于推广华族舞蹈文化。课堂上风趣幽默、笑声不断，并细致讲解各民族文化如何融入舞蹈，让学员感受民族舞蹈的独特魅力。「每一个动作，都是时间的诗篇。」',
@@ -140,6 +144,7 @@ export const instructors: Instructor[] = [
     title:   { en: 'Ballet Instructor',    zh: '芭蕾导师' },
     teaches: { en: 'Adult Ballet / Basic', zh: '成人基础芭蕾' },
     photo:  '/images/instructors/clear-shen-zhihua.jpeg',
+    focalPoint: '50% 20%',
     bio: {
       en: "Shen Zhihua entered the Shanghai Dance School at the age of thirteen and graduated with distinction in ballet in 1966, becoming a professional ballet dancer. She performed with the Shanghai Ballet Company and the “White-Haired Girl” production group, touring across Europe, America and Asia in a repertoire spanning modern ballet, classical ballet and Chinese ethnic and folk dance, including “The Red Detachment of Women”, “Swan Lake” and “Coppélia”. She later joined the company's choreographic team, relocated to Singapore in 1984, and has since taught at the National Dance Company, the Southern Arts Research Association, the Nanyang Academy of Fine Arts and numerous schools. Firm yet caring, she tailors her teaching to each student and inspires them with her sunny outlook, patiently guiding adult learners of every background toward the line and elegance at the heart of ballet. “Life is made vivid by dance; the years are made radiant by love.”",
       zh: '沈芷华老师13岁进入中国上海舞蹈学校，1966年以优异成绩毕业于芭蕾舞专科，成为专业芭蕾舞演员。曾任上海芭蕾舞团、《白毛女》剧组演员，出访演出足迹遍及欧美亚多个国家，出演剧目涵盖现代芭蕾、古典芭蕾及中国民族民间舞蹈，代表作包括《红色娘子军》《天鹅湖》《葛佩利亚》等。后调入上海芭蕾舞团编导组，1984年定居新加坡，先后任教于国家舞蹈团、南方艺术研究会、南洋艺术学院及多所中小学。她因材施教，严格而不失关爱，以积极阳光的生活态度感染每一位学员，将对芭蕾的热情融入课堂，耐心引导各背景成人学员感受芭蕾的线条美感与优雅气质。「生命因舞蹈而灵动，岁月因热爱而闪光。」',
@@ -177,6 +182,7 @@ export const instructors: Instructor[] = [
     title:   { en: 'Chinese Classical Dance Instructor', zh: '中国古典舞导师' },
     teaches: { en: 'Chinese Classical Dance',           zh: '中国古典舞' },
     photo:  '/images/instructors/clear-angel.jpeg',
+    focalPoint: '50% 25%',
     bio: {
       en: 'After graduating from the Dance Department of Shenyang Music Conservatory, Angel Peng has spent over a decade moving between the classroom and the stage. She maintains an active love for dance, continuing to perform alongside her teaching career. Her approach centres on cultivating a genuine feel for movement, developing physical coordination, and unlocking authentic inner expression, through gentle, focused guidance that lets students grow at their own pace.',
       zh: '彭若丹毕业于沈阳音乐学院舞蹈系，从事舞蹈领域教学十余年，行走于课堂与舞台之间。始终保持对舞蹈的热爱，并持续参与舞台演出。教学中关注舞感的生成、身体的协调与内在表达，在温和而专注的引导中，让学员于从容的节奏里提升能力，体会舞蹈所带来的力量与喜悦。',

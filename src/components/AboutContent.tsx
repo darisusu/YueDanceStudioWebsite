@@ -26,7 +26,7 @@ export default function AboutContent() {
               fill
               sizes="(max-width: 768px) 50vw, 50vw"
               className="object-cover"
-              style={{ objectPosition: '50% 56%' }}
+              style={{ objectPosition: '50% 30%' }}
               priority
             />
             {/* top vignette for name legibility */}

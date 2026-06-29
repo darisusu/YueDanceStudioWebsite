@@ -48,7 +48,8 @@ export default function InstructorsContent() {
                       fill
                       priority={i === 0}
                       sizes="(max-width: 1024px) 100vw, 29vw"
-                      className="object-cover object-top"
+                      className="object-cover"
+                      style={{ objectPosition: profile.focalPoint }}
                     />
                     {/* Vertical Chinese text on image */}
                     <p
