@@ -20,26 +20,7 @@ export const metadata: Metadata = {
 };
 
 import ContactContent from '@/components/ContactContent';
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': ['DanceSchool', 'LocalBusiness'],
-  name: 'YUE Dance Studio / Xiang Yue Culture Arts',
-  url: 'https://www.xiangyueculturearts.com',
-  telephone: '+6596885938',
-  email: 'xiangyue.culturearts@gmail.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '47 Beach Road, #02-04',
-    addressLocality: 'Singapore',
-    postalCode: '189683',
-    addressCountry: 'SG',
-  },
-  sameAs: [
-    'https://www.facebook.com/xiangyue.dance/',
-    'https://www.instagram.com/yuedancesg/',
-  ],
-};
+import { jsonLd } from '@/data/config';
 
 export default function ContactPage() {
   return (

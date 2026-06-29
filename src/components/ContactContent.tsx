@@ -2,9 +2,7 @@
 
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
-
-const REGISTRATION_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
+import { REGISTRATION_URL, FACEBOOK_URL, INSTAGRAM_URL, DOUYIN_URL } from '@/data/config';
 
 export default function ContactContent() {
   const { language } = useLanguage();
@@ -81,7 +79,7 @@ export default function ContactContent() {
               </p>
               <div className="flex gap-6 text-sm">
                 <a
-                  href="https://www.facebook.com/xiangyue.dance/"
+                  href={FACEBOOK_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-ink hover:text-gold transition-colors duration-150"
@@ -89,7 +87,7 @@ export default function ContactContent() {
                   Facebook
                 </a>
                 <a
-                  href="https://www.instagram.com/yuedancesg/"
+                  href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-ink hover:text-gold transition-colors duration-150"
@@ -97,7 +95,7 @@ export default function ContactContent() {
                   Instagram
                 </a>
                 <a
-                  href="https://www.douyin.com/user/MS4wLjABAAAALKE5By-qugkaCLezzyXgNVuTrykNIq7o10JPMKQwwMxHk7-3D_DZYeLdco5DcWVn"
+                  href={DOUYIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-ink hover:text-gold transition-colors duration-150"

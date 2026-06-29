@@ -10,15 +10,7 @@ import { featuredTestimonials } from '@/data/testimonials';
 import ParallaxHero from '@/components/ParallaxHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import Marquee from '@/components/Marquee';
-
-const REGISTRATION_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
-
-const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=47%20Beach%20Road%20%2302-04%20Singapore%20189683';
-
-const FACEBOOK_URL  = 'https://www.facebook.com/xiangyue.dance/';
-const INSTAGRAM_URL = 'https://www.instagram.com/yuedancesg/';
+import { REGISTRATION_URL, MAPS_URL, FACEBOOK_URL, INSTAGRAM_URL } from '@/data/config';
 
 const marqueeItems = [
   'Movement as Language',

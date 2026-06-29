@@ -5,9 +5,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
 import { courses } from '@/data/courses';
 import ScrollReveal from '@/components/ScrollReveal';
-
-const REGISTRATION_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
+import { REGISTRATION_URL } from '@/data/config';
 
 export default function CoursesContent() {
   const { language } = useLanguage();

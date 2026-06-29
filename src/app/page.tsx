@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import HomeContent from '@/components/HomeContent';
+import { jsonLd } from '@/data/config';
 
 export const metadata: Metadata = {
   title: 'YUE Dance Studio Singapore | Xiang Yue Culture Arts',
@@ -18,26 +19,6 @@ export const metadata: Metadata = {
     description:
       'Elegant Chinese, ballet and contemporary dance classes in Singapore. All levels welcome.',
   },
-};
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': ['DanceSchool', 'LocalBusiness'],
-  name: 'YUE Dance Studio / Xiang Yue Culture Arts',
-  url: 'https://www.xiangyueculturearts.com',
-  telephone: '+6596885938',
-  email: 'xiangyue.culturearts@gmail.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '47 Beach Road, #02-04',
-    addressLocality: 'Singapore',
-    postalCode: '189683',
-    addressCountry: 'SG',
-  },
-  sameAs: [
-    'https://www.facebook.com/xiangyue.dance/',
-    'https://www.instagram.com/yuedancesg/',
-  ],
 };
 
 export default function HomePage() {

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
+import { FACEBOOK_URL, INSTAGRAM_URL } from '@/data/config';
 
 const pageLinks = [
   { href: '/about',       label: t.nav.about },
@@ -69,7 +70,7 @@ export default function Footer() {
               </a>
               <div className="flex gap-5 pt-1">
                 <a
-                  href="https://www.facebook.com/xiangyue.dance/"
+                  href={FACEBOOK_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors duration-150"
@@ -77,7 +78,7 @@ export default function Footer() {
                   Facebook
                 </a>
                 <a
-                  href="https://www.instagram.com/yuedancesg/"
+                  href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors duration-150"
