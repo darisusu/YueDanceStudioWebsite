@@ -34,7 +34,7 @@ export const testimonials: Testimonial[] = [
       en: '"Both deeply engaging and genuinely insightful."',
       zh: '「这堂课，既投入又收获良多。」',
     },
-    attribution: { en: 'Sumini · Chinese Belly Dance, Jul 2020', zh: 'Sumini · 华族舞，2020年7月' },
+    attribution: { en: 'Sumini · Chinese Dance, Jul 2020', zh: 'Sumini · 华族舞，2020年7月' },
     featured: true,
     tag: TAG_GUIDANCE,
   },

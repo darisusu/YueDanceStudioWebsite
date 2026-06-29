@@ -247,6 +247,6 @@ export const t = {
     established: { en: 'Est. 2018 · Singapore',          zh: '2018年创立 · 新加坡' },
     pages:       { en: 'Pages',                           zh: '页面' },
     contact:     { en: 'Contact',                         zh: '联系' },
-    copyright:   { en: '© 2025 Xiang Yue Culture Arts. All rights reserved.', zh: '© 2025 翔悦文艺版权所有。' },
+    copyright:   { en: '© 2026 Xiang Yue Culture Arts. All rights reserved.', zh: '© 2026 翔悦文艺版权所有。' },
   },
 };
