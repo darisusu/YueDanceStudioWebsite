@@ -49,6 +49,15 @@ export default function Nav() {
     }
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [menuOpen]);
+
   const onDark    = !scrolled && isHome;
   const textColor = onDark ? 'text-ivory' : 'text-ink';
   const hoverColor = onDark ? 'hover:text-ivory/70' : 'hover:text-gold';
