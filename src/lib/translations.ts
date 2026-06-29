@@ -124,6 +124,7 @@ export const t = {
     sub:     { en: 'Current term schedule. Contact us to confirm your slot.', zh: '当前学期课程表，如需确认课位，欢迎联系我们。' },
     note:    { en: 'Schedule is subject to change. Please confirm with our admin team before attending.', zh: '课程表如有变动，敬请于出席前向我们的行政团队确认。' },
     contact: { en: 'Contact Us', zh: '联系我们' },
+    empty:   { en: 'No classes scheduled for this style.', zh: '该舞种暂无排课。' },
     filters: {
       all:          { en: 'All',                   zh: '全部'       },
       contemporary: { en: 'Contemporary Dance',    zh: '当代舞'     },
