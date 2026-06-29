@@ -55,21 +55,25 @@ export default function ContactContent() {
               <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.phone[language]}
               </p>
-              <div className="space-y-1 text-sm text-ink-light">
-                <p>
-                  Janelle:{' '}
-                  <a href="tel:+6596885938" className="text-ink hover:text-gold transition-colors duration-150">
-                    +65 9688 5938
-                  </a>
-                </p>
-                <p>
-                  Vicky:{' '}
-                  <a href="tel:+6594253833" className="text-ink hover:text-gold transition-colors duration-150">
-                    +65 9425 3833
-                  </a>
-                </p>
-                <p className="text-xs text-ink/40 mt-2">{tr.adminNote[language]}</p>
-              </div>
+              <dl className="text-sm text-ink-light space-y-1">
+                <div className="flex gap-1">
+                  <dt>Janelle:</dt>
+                  <dd>
+                    <a href="tel:+6596885938" className="text-ink hover:text-gold transition-colors duration-150">
+                      +65 9688 5938
+                    </a>
+                  </dd>
+                </div>
+                <div className="flex gap-1">
+                  <dt>Vicky:</dt>
+                  <dd>
+                    <a href="tel:+6594253833" className="text-ink hover:text-gold transition-colors duration-150">
+                      +65 9425 3833
+                    </a>
+                  </dd>
+                </div>
+                <dd className="text-xs text-ink/40 mt-2">{tr.adminNote[language]}</dd>
+              </dl>
             </div>
 
             {/* Social */}
