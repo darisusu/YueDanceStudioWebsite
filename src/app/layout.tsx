@@ -48,8 +48,12 @@ export const metadata: Metadata = {
     siteName: 'YUE Dance Studio Singapore',
     locale: 'en_SG',
     type: 'website',
+    images: [{ url: '/images/hero/hero-banner-1.jpeg', width: 1200, height: 630, alt: 'YUE Dance Studio — Chinese, ballet and contemporary dance in Singapore' }],
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: {
+    card: 'summary_large_image',
+    images: [{ url: '/images/hero/hero-banner-1.jpeg', alt: 'YUE Dance Studio — Chinese, ballet and contemporary dance in Singapore' }],
+  },
 };
 
 export const viewport: Viewport = {

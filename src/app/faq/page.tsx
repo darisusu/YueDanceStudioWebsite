@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import FaqContent from '@/components/FaqContent';
 import { t } from '@/lib/translations';
+import { breadcrumbJsonLd } from '@/data/config';
 
 export const metadata: Metadata = {
   title: 'FAQ',
@@ -42,6 +43,10 @@ export default function FAQPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd('FAQ', '/faq')) }}
       />
       <FaqContent />
     </>

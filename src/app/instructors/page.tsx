@@ -11,16 +11,47 @@ export const metadata: Metadata = {
       'Meet the professional dance instructors at YUE Dance Studio, specialists in Chinese dance, ballet, folk dance, and contemporary styles.',
     url: 'https://www.xiangyueculturearts.com/instructors',
     locale: 'en_SG',
+    images: [{ url: '/images/hero/hero-banner-3.jpg', width: 1200, height: 630, alt: 'Professional dance instructors at YUE Dance Studio' }],
   },
   twitter: {
     title: 'Our Instructors | YUE Dance Studio Singapore',
     description:
       'Meet the professional dance instructors at YUE Dance Studio, specialists in Chinese dance, ballet, folk dance, and contemporary styles.',
+    images: [{ url: '/images/hero/hero-banner-3.jpg', alt: 'Professional dance instructors at YUE Dance Studio' }],
   },
 };
 
 import InstructorsContent from '@/components/InstructorsContent';
+import { instructors } from '@/data/instructors';
+import { SITE_URL, breadcrumbJsonLd } from '@/data/config';
+
+const instructorsJsonLd = instructors.map(i => ({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: i.name,
+  alternateName: i.nameZh,
+  jobTitle: i.title.en,
+  image: `${SITE_URL}${i.photo}`,
+  worksFor: {
+    '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`,
+    name: 'YUE Dance Studio',
+  },
+  knowsAbout: i.teaches.en,
+}));
 
 export default function InstructorsPage() {
-  return <InstructorsContent />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(instructorsJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd('Our Instructors', '/instructors')) }}
+      />
+      <InstructorsContent />
+    </>
+  );
 }

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 import ContactContent from '@/components/ContactContent';
-import { jsonLd } from '@/data/config';
+import { jsonLd, breadcrumbJsonLd } from '@/data/config';
 
 export default function ContactPage() {
   return (
@@ -28,6 +28,10 @@ export default function ContactPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd('Contact Us', '/contact')) }}
       />
       <ContactContent />
     </>

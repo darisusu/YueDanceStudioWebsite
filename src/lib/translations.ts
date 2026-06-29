@@ -234,6 +234,27 @@ export const t = {
           },
         ],
       },
+      {
+        title: { en: 'General', zh: '一般信息' },
+        items: [
+          {
+            q: { en: 'Where is YUE Dance Studio located?', zh: 'YUE Dance Studio在哪里？' },
+            a: { en: 'We are located at 47 Beach Road, #02-04, Singapore 189683, near Bugis and Nicoll Highway MRT stations.', zh: '我们位于新加坡Beach Road 47号 #02-04，邮编189683，靠近Bugis和Nicoll Highway地铁站。' },
+          },
+          {
+            q: { en: 'Who are the instructors at YUE Dance Studio?', zh: 'YUE Dance Studio的导师有哪些？' },
+            a: { en: 'Our team includes Artistic Director Daniel Deng Yu (contemporary & Chinese dance), Chang Hsiao-Min (Chinese dance), Bai Ying Wen (folk dance), Shen Zhihua (ballet), and Angel Peng (Chinese classical dance). All are professionally trained with decades of performance and teaching experience.', zh: '我们的团队包括艺术总监邓宇（当代舞与华族舞）、张晓明（华族舞）、白映文（民族民间舞）、沈芷华（芭蕾）和彭若丹（中国古典舞），所有导师均为专业科班出身，拥有数十年的演出与教学经验。' },
+          },
+          {
+            q: { en: 'Do I need to be a certain age to join?', zh: '参加课程有年龄要求吗？' },
+            a: { en: 'Our classes are designed for adults of all ages. There is no upper age limit — we welcome anyone with a passion for dance.', zh: '我们的课程面向各年龄段的成人学员，没有年龄上限——欢迎所有热爱舞蹈的朋友加入。' },
+          },
+          {
+            q: { en: 'How do I register for a class?', zh: '如何报名参加课程？' },
+            a: { en: 'You can register through our online registration form on the Contact page, or reach out to us via email at xiangyue.culturearts@gmail.com or by phone.', zh: '您可以通过联系页面的在线报名表格注册，也可通过电邮 xiangyue.culturearts@gmail.com 或电话联系我们。' },
+          },
+        ],
+      },
     ],
   },
 

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import VoicesContent from '@/components/VoicesContent';
+import { breadcrumbJsonLd } from '@/data/config';
 
 export const metadata: Metadata = {
   title: 'Student Voices',
@@ -21,5 +22,13 @@ export const metadata: Metadata = {
 };
 
 export default function VoicesPage() {
-  return <VoicesContent />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd('Student Voices', '/voices')) }}
+      />
+      <VoicesContent />
+    </>
+  );
 }
