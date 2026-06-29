@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import FaqContent from '@/components/FaqContent';
+import { t } from '@/lib/translations';
 
 export const metadata: Metadata = {
   title: 'FAQ',
@@ -19,8 +21,29 @@ export const metadata: Metadata = {
   },
 };
 
-import FaqContent from '@/components/FaqContent';
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faq.categories.flatMap(cat =>
+    cat.items.map(item => ({
+      '@type': 'Question',
+      name: item.q.en,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a.en,
+      },
+    })),
+  ),
+};
 
 export default function FAQPage() {
-  return <FaqContent />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <FaqContent />
+    </>
+  );
 }
