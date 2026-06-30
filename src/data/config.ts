@@ -35,6 +35,15 @@ export const jsonLd = {
     addressCountry: 'SG',
   },
   sameAs: [FACEBOOK_URL, INSTAGRAM_URL, DOUYIN_URL],
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Monday',    opens: '10:00', closes: '21:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday',   opens: '19:30', closes: '21:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Wednesday', opens: '10:00', closes: '21:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday',  opens: '10:00', closes: '21:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday',    opens: '16:30', closes: '21:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday',  opens: '11:00', closes: '21:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday',    opens: '14:00', closes: '18:00' },
+  ],
 };
 
 export function breadcrumbJsonLd(name: string, path: string) {

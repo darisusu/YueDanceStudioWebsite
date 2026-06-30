@@ -239,7 +239,7 @@ export const t = {
         items: [
           {
             q: { en: 'Where is YUE Dance Studio located?', zh: 'YUE Dance Studio在哪里？' },
-            a: { en: 'We are located at 47 Beach Road, #02-04, Singapore 189683, near Bugis and Nicoll Highway MRT stations.', zh: '我们位于新加坡Beach Road 47号 #02-04，邮编189683，靠近Bugis和Nicoll Highway地铁站。' },
+            a: { en: 'We are located at 47 Beach Road, #02-04, Singapore 189683, near Bugis, Nicoll Highway, and City Hall MRT stations.', zh: '我们位于新加坡Beach Road 47号 #02-04，邮编189683，靠近Bugis、Nicoll Highway及City Hall地铁站。' },
           },
           {
             q: { en: 'Who are the instructors at YUE Dance Studio?', zh: 'YUE Dance Studio的导师有哪些？' },
@@ -247,11 +247,23 @@ export const t = {
           },
           {
             q: { en: 'Do I need to be a certain age to join?', zh: '参加课程有年龄要求吗？' },
-            a: { en: 'Our classes are designed for adults of all ages. There is no upper age limit — we welcome anyone with a passion for dance.', zh: '我们的课程面向各年龄段的成人学员，没有年龄上限——欢迎所有热爱舞蹈的朋友加入。' },
+            a: { en: 'Our classes are open to adults aged 18 to 70. All experience levels are welcome.', zh: '我们的课程面向18至70岁的成人学员，欢迎各程度的舞蹈爱好者加入。' },
           },
           {
             q: { en: 'How do I register for a class?', zh: '如何报名参加课程？' },
-            a: { en: 'You can register through our online registration form on the Contact page, or reach out to us via email at xiangyue.culturearts@gmail.com or by phone.', zh: '您可以通过联系页面的在线报名表格注册，也可通过电邮 xiangyue.culturearts@gmail.com 或电话联系我们。' },
+            a: { en: 'You can register through our online registration form on the Contact page, via WhatsApp at +65 9688 5938 or +65 9425 3833, WeChat (ID: lin_jing68), or by email at xiangyue.culturearts@gmail.com. Enrollment is rolling — new students can join at any time and will be placed in a suitable class.', zh: '您可以通过联系页面的在线报名表格注册，也可通过WhatsApp（+65 9688 5938 / +65 9425 3833）、微信（ID: lin_jing68）或电邮 xiangyue.culturearts@gmail.com 联系我们。课程采用滚动招生制，新学员随时可以报名，我们会安排适合的班级。' },
+          },
+          {
+            q: { en: 'Do you offer trial classes?', zh: '有体验课吗？' },
+            a: { en: 'Yes! Trial classes are available at $38 for a 1.5-hour session. Contact us via WhatsApp at +65 9688 5938 or +65 9425 3833, or WeChat (ID: lin_jing68) to book.', zh: '有的！体验课费用为$38，时长1.5小时。请通过WhatsApp（+65 9688 5938 / +65 9425 3833）或微信（ID: lin_jing68）预约。' },
+          },
+          {
+            q: { en: 'What are the studio\'s opening hours?', zh: '工作室的营业时间是怎样的？' },
+            a: { en: 'Monday: 10 am – 9 pm, Tuesday: 7:30 – 9 pm, Wednesday – Thursday: 10 am – 9 pm, Friday: 4:30 – 9 pm, Saturday: 11 am – 9 pm, Sunday: 2 – 6 pm.', zh: '周一：上午10点至晚上9点，周二：晚上7:30至9点，周三至周四：上午10点至晚上9点，周五：下午4:30至晚上9点，周六：上午11点至晚上9点，周日：下午2点至6点。' },
+          },
+          {
+            q: { en: 'How many students are in each class?', zh: '每节课有多少学员？' },
+            a: { en: 'Classes are kept small with a maximum of 16 students, ensuring personalised attention from the instructor.', zh: '每节课最多16人，确保每位学员都能获得导师的个性化指导。' },
           },
         ],
       },
