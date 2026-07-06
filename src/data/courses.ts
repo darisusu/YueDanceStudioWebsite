@@ -24,7 +24,7 @@ export const courses: Course[] = [
     name:        { en: 'Chinese Dance',               zh: '华族舞' },
     instructor:  { en: 'Daniel · Chang Hsiao-Min',   zh: 'Daniel · 张晓明' },
     description: { en: 'A rich tradition of Chinese dance forms, spanning lyrical Han-style movements to expressive contemporary Chinese choreography, led by two complementary instructors.', zh: '涵盖抒情汉族风格至当代华族舞编排的丰富舞蹈传统，由两位导师各展所长，相辅相成。' },
-    image: '/images/featured/featured-chinese-dance-1.jpg',
+    image: '/images/featured/chang-hsiao-min-chinese-dance.jpg',
   },
   {
     name:        { en: 'Folk Dance',   zh: '民族民间舞' },

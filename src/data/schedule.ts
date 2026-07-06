@@ -14,13 +14,13 @@ export interface ScheduleClass {
 export const scheduleClasses: ScheduleClass[] = [
   // Monday
   { day: 0, band: 0, time: '10:00–11:30am', name: { en: 'Contemporary Chinese Dance',       zh: '当代华族舞'      }, instructor: { en: 'Daniel',          zh: 'Daniel'  }, danceType: 'chinese-dance' },
-  { day: 0, band: 3, time: '5:30–7:00pm',   name: { en: 'Chinese Dance',                    zh: '舞韵踏歌'        }, instructor: { en: 'Chang Hsiao-Min', zh: '张晓明'  }, danceType: 'chinese-dance' },
-  { day: 0, band: 4, time: '7:30–9:00pm',   name: { en: 'Chinese Dance',                    zh: '舞韵踏歌'        }, instructor: { en: 'Chang Hsiao-Min', zh: '张晓明'  }, danceType: 'chinese-dance' },
+  { day: 0, band: 3, time: '5:30–7:00pm',   name: { en: 'Chinese Dance',                    zh: '华族舞'          }, instructor: { en: 'Chang Hsiao-Min', zh: '张晓明'  }, danceType: 'chinese-dance' },
+  { day: 0, band: 4, time: '7:30–9:00pm',   name: { en: 'Chinese Dance',                    zh: '华族舞'          }, instructor: { en: 'Chang Hsiao-Min', zh: '张晓明'  }, danceType: 'chinese-dance' },
   // Tuesday
-  { day: 1, band: 1, time: '1:00–2:30pm',   name: { en: 'Basic Ballet',                    zh: '基础芭蕾'        }, instructor: { en: 'Shen Zhihua',     zh: '沈芷华'  }, danceType: 'ballet' },
-  { day: 1, band: 4, time: '7:30–9:00pm',   name: { en: 'Chinese Dance',                    zh: '华族舞'          }, instructor: { en: 'Angel Peng',      zh: '彭若丹'  }, danceType: 'chinese-dance' },
+  { day: 1, band: 4, time: '7:30–9:00pm',   name: { en: 'Chinese Classical Dance',          zh: '古典舞'          }, instructor: { en: 'Angel Peng',      zh: '彭若丹'  }, danceType: 'classical' },
   // Wednesday
   { day: 2, band: 0, time: '10:00–11:30am', name: { en: 'Chinese Dance',                    zh: '华族舞'          }, instructor: { en: 'Chang Hsiao-Min', zh: '张晓明'  }, danceType: 'chinese-dance' },
+  { day: 2, band: 1, time: '1:00–2:30pm',   name: { en: 'Basic Ballet',                    zh: '基础芭蕾'        }, instructor: { en: 'Shen Zhihua',     zh: '沈芷华'  }, danceType: 'ballet' },
   { day: 2, band: 3, time: '5:30–7:00pm',   name: { en: 'Chinese Dance',                    zh: '华族舞'          }, instructor: { en: 'Chang Hsiao-Min', zh: '张晓明'  }, danceType: 'chinese-dance' },
   { day: 2, band: 4, time: '7:30–9:00pm',   name: { en: 'Chinese Dance',                    zh: '华族舞'          }, instructor: { en: 'Chang Hsiao-Min', zh: '张晓明'  }, danceType: 'chinese-dance' },
   // Thursday
@@ -37,5 +37,5 @@ export const scheduleClasses: ScheduleClass[] = [
   { day: 5, band: 3, time: '4:45–6:45pm',   name: { en: 'Tibetan Folk Dance',               zh: '藏族舞'          }, instructor: { en: 'Bai Ying Wen',   zh: '白映文'  }, danceType: 'folk' },
   { day: 5, band: 4, time: '7:00–8:30pm',   name: { en: 'Dance Performance Training',       zh: '表演基训班'      }, instructor: { en: 'Daniel',          zh: 'Daniel'  }, danceType: 'contemporary' },
   // Sunday
-  { day: 6, band: 2, time: '2:00–3:30pm',   name: { en: 'Chinese Classical Dance',          zh: '古典舞'          }, instructor: { en: 'Angel Peng',      zh: '彭若丹'  }, danceType: 'classical' },
+  { day: 6, band: 2, time: '2:00–3:30pm',   name: { en: 'Chinese Classical Dance',          zh: '古典舞'          }, instructor: { en: '',                zh: ''        }, danceType: 'classical' },
 ];
