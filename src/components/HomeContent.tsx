@@ -26,6 +26,16 @@ const marqueeItems = [
 const featuredInstructors = [instructors[0], instructors[2]];
 const moreInstructors = instructors.filter((ins) => !featuredInstructors.includes(ins));
 
+// Truncate a bio to its first `count` sentences. Chinese sentences end with 。,
+// English with a period + space — splitting on the wrong separator returns the
+// whole bio (the previous bug), so pick the separator by language.
+function firstSentences(text: string, lang: 'en' | 'zh', count = 2) {
+  const sep = lang === 'zh' ? '。' : '. ';
+  const end = lang === 'zh' ? '。' : '.';
+  const parts = text.split(sep).map((s) => s.trim()).filter(Boolean);
+  return parts.slice(0, count).join(sep) + (parts.length ? end : '');
+}
+
 export default function HomeContent() {
   const { language } = useLanguage();
   const hero    = t.home.hero;
@@ -92,16 +102,29 @@ export default function HomeContent() {
             </span>
           </h1>
 
-          <div className="flex flex-col sm:flex-row sm:items-end gap-8 max-w-2xl">
-            <p className="text-ivory/75 text-base leading-relaxed flex-1 [text-shadow:0_1px_6px_rgba(0,0,0,0.8)]">
+          <div className="max-w-2xl">
+            <p className="text-ivory/80 text-base sm:text-lg leading-relaxed mb-9 [text-shadow:0_1px_6px_rgba(0,0,0,0.8)]">
               {hero.tagline[language]}
             </p>
-            <Link
-              href="/courses"
-              className="shrink-0 inline-flex items-center gap-2 bg-gold text-ink hover:bg-ivory px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase font-semibold transition-all duration-200"
-            >
-              {hero.cta[language]}
-            </Link>
+            <div className="flex flex-wrap items-center gap-4 mb-6">
+              <a
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gold text-ink hover:bg-ivory px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase font-semibold transition-all duration-200"
+              >
+                {hero.ctaPrimary[language]}
+              </a>
+              <Link
+                href="/courses"
+                className="inline-flex items-center gap-2 border border-ivory/50 text-ivory hover:bg-ivory hover:text-ink px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase font-medium transition-all duration-200"
+              >
+                {hero.cta[language]}
+              </Link>
+            </div>
+            <p className="text-ivory/80 text-base sm:text-lg leading-relaxed [text-shadow:0_1px_6px_rgba(0,0,0,0.85)]">
+              {t.cta.trialBlurb[language]}
+            </p>
           </div>
         </div>
       </section>
@@ -113,7 +136,7 @@ export default function HomeContent() {
       <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
-            <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
+            <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-3">
               {courses.label[language]}
             </p>
             <h2 className="font-display text-[clamp(2.8rem,6vw,5rem)] leading-[0.95]">
@@ -123,7 +146,7 @@ export default function HomeContent() {
           </div>
           <Link
             href="/courses"
-            className="shrink-0 text-[11px] tracking-[0.15em] uppercase text-gold hover:text-ink transition-colors duration-150"
+            className="shrink-0 text-[11px] tracking-[0.15em] uppercase text-gold-deep hover:text-ink transition-colors duration-150"
           >
             {courses.viewAll[language]}
           </Link>
@@ -290,7 +313,7 @@ export default function HomeContent() {
                 <div className={`relative overflow-hidden aspect-[4/5] lg:aspect-auto ${i % 2 === 1 ? 'lg:order-last' : ''}`}>
                   <Image
                     src={instructor.photo}
-                    alt={instructor.nameZh}
+                    alt={language === 'en' ? instructor.name : instructor.nameZh}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover object-top"
@@ -315,11 +338,11 @@ export default function HomeContent() {
                     {instructor.nameZh !== instructor.name && (
                       <p className="text-ink-light text-sm mb-4">{instructor.name}</p>
                     )}
-                    <p className="text-[10px] tracking-[0.22em] uppercase text-gold mb-6">
+                    <p className="text-[10px] tracking-[0.22em] uppercase text-gold-deep mb-6">
                       {instructor.title[language]}
                     </p>
                     <p className="text-ink-light text-base leading-relaxed max-w-sm">
-                      {instructor.bio[language].split('. ').slice(0, 2).join('. ') + '.'}
+                      {firstSentences(instructor.bio[language], language)}
                     </p>
                   </div>
                 </div>
@@ -344,17 +367,17 @@ export default function HomeContent() {
                   <div className="relative w-14 h-14 shrink-0 overflow-hidden rounded-full">
                     <Image
                       src={instructor.photo}
-                      alt={instructor.nameZh}
+                      alt={language === 'en' ? instructor.name : instructor.nameZh}
                       fill
                       sizes="56px"
                       className="object-cover object-top"
                     />
                   </div>
                   <div>
-                    <p className="font-display text-lg leading-tight group-hover:text-gold transition-colors duration-150">
+                    <p className="font-display text-lg leading-tight group-hover:text-gold-deep transition-colors duration-150">
                       {instructor.nameZh}
                     </p>
-                    <p className="text-[10px] tracking-[0.18em] uppercase text-gold/80 mt-1">
+                    <p className="text-[10px] tracking-[0.18em] uppercase text-gold-deep/80 mt-1">
                       {instructor.title[language]}
                     </p>
                   </div>
@@ -379,7 +402,7 @@ export default function HomeContent() {
       {/* ── Performances teaser ──────────────────────────────── */}
       <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="mb-10">
-          <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
+          <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-3">
             {perf.label[language]}
           </p>
           <h2 className="font-display text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[0.95] whitespace-pre-line">
@@ -419,7 +442,7 @@ export default function HomeContent() {
             fill
             sizes="100vw"
             className="object-cover"
-            objectPosition="center 40%"
+            style={{ objectPosition: 'center 40%' }}
             aria-hidden="true"
           />
         </div>
@@ -485,7 +508,7 @@ export default function HomeContent() {
       {/* ── Visit / Location ─────────────────────────────────── */}
       <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal>
-          <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-3">
+          <p className="text-[10px] tracking-[0.3em] uppercase text-gold-deep mb-3">
             {visit.label[language]}
           </p>
           <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] leading-[0.98] mb-10">
@@ -528,14 +551,14 @@ export default function HomeContent() {
                   href="tel:+6596885938"
                   className="group flex items-center justify-between gap-4 h-12 px-4 border border-ink/15 hover:border-gold transition-colors duration-150"
                 >
-                  <span className="font-display text-lg text-ink group-hover:text-gold transition-colors duration-150">Janelle</span>
+                  <span className="font-display text-lg text-ink group-hover:text-gold-deep transition-colors duration-150">Janelle</span>
                   <span className="text-sm tracking-wide text-ink-light">+65 9688 5938</span>
                 </a>
                 <a
                   href="tel:+6594253833"
                   className="group flex items-center justify-between gap-4 h-12 px-4 border border-ink/15 hover:border-gold transition-colors duration-150"
                 >
-                  <span className="font-display text-lg text-ink group-hover:text-gold transition-colors duration-150">Vicky</span>
+                  <span className="font-display text-lg text-ink group-hover:text-gold-deep transition-colors duration-150">Vicky</span>
                   <span className="text-sm tracking-wide text-ink-light">+65 9425 3833</span>
                 </a>
               </div>
@@ -544,7 +567,7 @@ export default function HomeContent() {
               </p>
               <a
                 href="mailto:xiangyue.culturearts@gmail.com"
-                className="text-sm text-ink hover:text-gold break-all transition-colors duration-150"
+                className="text-sm text-ink hover:text-gold-deep break-all transition-colors duration-150"
               >
                 xiangyue.culturearts@gmail.com
               </a>
@@ -572,10 +595,10 @@ export default function HomeContent() {
                 className="group flex items-center gap-2.5 h-11 px-4 border border-ink/15 hover:border-gold transition-colors duration-150"
               >
                 {/* Facebook wordmark icon */}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0 text-ink group-hover:text-gold transition-colors duration-150" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0 text-ink group-hover:text-gold-deep transition-colors duration-150" aria-hidden="true">
                   <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
                 </svg>
-                <span className="text-[11px] tracking-[0.12em] text-ink group-hover:text-gold transition-colors duration-150">Facebook</span>
+                <span className="text-[11px] tracking-[0.12em] text-ink group-hover:text-gold-deep transition-colors duration-150">Facebook</span>
               </a>
               <a
                 href={INSTAGRAM_URL}
@@ -585,10 +608,10 @@ export default function HomeContent() {
                 className="group flex items-center gap-2.5 h-11 px-4 border border-ink/15 hover:border-gold transition-colors duration-150"
               >
                 {/* Instagram icon */}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0 text-ink group-hover:text-gold transition-colors duration-150" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0 text-ink group-hover:text-gold-deep transition-colors duration-150" aria-hidden="true">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
                 </svg>
-                <span className="text-[11px] tracking-[0.12em] text-ink group-hover:text-gold transition-colors duration-150">Instagram</span>
+                <span className="text-[11px] tracking-[0.12em] text-ink group-hover:text-gold-deep transition-colors duration-150">Instagram</span>
               </a>
             </div>
           </div>
