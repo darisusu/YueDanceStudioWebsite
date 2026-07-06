@@ -105,7 +105,7 @@ export const t = {
   instructors: {
     label:          { en: 'Our Team',              zh: '导师团队' },
     heading:        { en: 'Meet the\nInstructors', zh: '我们的导师' },
-    sub:            { en: 'Accomplished artists. Patient teachers. Passionate practitioners.', zh: '技艺精湛、耐心教导、热爱舞蹈的专业导师团队' },
+    sub:            { en: 'Five instructors spanning Chinese, contemporary, ballet, folk, and classical dance.', zh: '5位导师，涵盖华族舞、现当代舞、芭蕾舞、民族民间舞、古典舞' },
     teaches:        { en: 'Teaches',               zh: '教授课程' },
     qualifications: { en: 'Qualifications',        zh: '专业资质' },
   },

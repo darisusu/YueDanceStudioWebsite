@@ -76,7 +76,7 @@ export default function InstructorsContent() {
 
                     {/* Name block */}
                     <div className="mb-6">
-                      <h2 className="font-display text-[clamp(2.8rem,5vw,4.5rem)] leading-[0.9]">
+                      <h2 className="font-display text-[clamp(2.8rem,5vw,4.5rem)] leading-[0.9] -ml-[0.06em]">
                         {profile.nameZh}
                       </h2>
                       {profile.nameZh !== profile.name && (
