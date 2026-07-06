@@ -14,6 +14,12 @@ export const t = {
     voices:       { en: 'Voices',       zh: '学员心声' },
   },
 
+  cta: {
+    bookTrial:  { en: 'Book a Trial',  zh: '预约体验课' },
+    register:   { en: 'Register',      zh: '立即报名' },
+    trialBlurb: { en: 'New here? Try any class at just $38 for a 1.5-hour session.', zh: '初次到访？任选课程体验 · $38／1.5小时。' },
+  },
+
   home: {
     hero: {
       label:   { en: 'Xiang Yue Culture Arts · Singapore', zh: '翔悦文艺 · 新加坡' },
@@ -21,7 +27,8 @@ export const t = {
       line2:   { en: 'in Life Through',   zh: '' },
       line3:   { en: 'Dance',             zh: '寻生活之美' },
       tagline: { en: 'Whether you\'re a beginner or a seasoned dancer, we invite you on a journey to find the beauty in life through dance.', zh: '无论您是舞蹈初学者，还是经验丰富的舞者，翔悦文艺诚邀您踏上以舞寻美的旅程。' },
-      cta:     { en: 'Explore Courses',   zh: '探索课程' },
+      cta:        { en: 'Explore Courses',    zh: '探索课程' },
+      ctaPrimary: { en: 'Book a Trial Class', zh: '预约体验课' },
     },
     courses: {
       label:    { en: 'What We Offer',                              zh: '我们的课程' },
@@ -153,6 +160,9 @@ export const t = {
     email:    { en: 'Email',             zh: '电子邮件' },
     phone:    { en: 'Phone',             zh: '联系电话' },
     social:   { en: 'Follow Us',         zh: '关注我们' },
+    directions: { en: 'Get directions →', zh: '查看路线 →' },
+    whatsapp: { en: 'WhatsApp',          zh: 'WhatsApp' },
+    wechat:   { en: 'WeChat',            zh: '微信' },
     adminNote: { en: 'Finance enquiries: contact Vicky', zh: '费用咨询：请联系Vicky' },
     register: {
       heading: { en: 'Ready to Join a Class?', zh: '准备好加入了吗？' },
@@ -282,5 +292,16 @@ export const t = {
     pages:       { en: 'Pages',                           zh: '页面' },
     contact:     { en: 'Contact',                         zh: '联系' },
     copyright:   { en: '© 2026 Xiang Yue Culture Arts. All rights reserved.', zh: '© 2026 翔悦文艺版权所有。' },
+  },
+
+  errors: {
+    notFoundTag:     { en: '404',              zh: '404' },
+    notFoundHeading: { en: 'Page Not Found',   zh: '页面未找到' },
+    notFoundBody:    { en: 'The page you are looking for does not exist or has been moved.', zh: '您访问的页面不存在或已被移动。' },
+    backHome:        { en: 'Back to Home',      zh: '返回首页' },
+    errorTag:        { en: 'Error',             zh: '出错' },
+    errorHeading:    { en: 'Something Went Wrong', zh: '出错了' },
+    errorBody:       { en: 'An unexpected error occurred. Please try again.', zh: '发生了意外错误，请重试。' },
+    tryAgain:        { en: 'Try Again',         zh: '重试' },
   },
 };
