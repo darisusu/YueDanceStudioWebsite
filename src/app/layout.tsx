@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, DM_Sans, Noto_Sans_TC, Noto_Serif_TC } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { GA4_MEASUREMENT_ID, jsonLd } from '@/data/config';
 import HtmlRoot from '@/components/HtmlRoot';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -66,12 +67,31 @@ export const viewport: Viewport = {
   // zoom is intentionally left enabled for accessibility.
 };
 
-const GA4_ID = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID ?? '';
+const GA4_ID = GA4_MEASUREMENT_ID || process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || '';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <HtmlRoot className={`${cormorant.variable} ${dmSans.variable} ${notoSansTC.variable} ${notoSerifTC.variable} h-full antialiased bg-ivory`}>
       <body className="min-h-dvh flex flex-col bg-ivory text-ink">
+        {/* Resolve the saved language before first paint so <html lang> and the
+            CJK font are correct immediately — avoids the English/font flash for
+            returning Chinese visitors. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var m=document.cookie.match(/(?:^|;\\s*)lang=(en|zh)/);var l=m?m[1]:(localStorage.getItem('lang')||'en');document.documentElement.lang=l;if(l==='zh'){document.documentElement.classList.add('cjk-active');}}catch(e){}})();",
+          }}
+        />
+        {/* Without JS, reveal-on-scroll content would stay invisible; show it. */}
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+        {/* Organization / DanceSchool graph node — emitted on every page so the
+            @id references in the Course and Person schemas always resolve. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Skip-to-content — visible only on keyboard focus */}
         <a
           href="#main-content"
