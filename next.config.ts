@@ -1,23 +1,16 @@
 import type { NextConfig } from "next";
 
-const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-
 const nextConfig: NextConfig = {
-  output: isGithubActions ? "export" : undefined,
   images: {
-    unoptimized: isGithubActions,
     formats: ['image/avif', 'image/webp'],
   },
-  basePath: isGithubActions ? "/YueDanceStudioWebsite" : "",
-  assetPrefix: isGithubActions ? "/YueDanceStudioWebsite" : "",
   experimental: {
     viewTransition: true,
   },
   // 301 redirects preserving Google Search Console rankings during the
   // Wix → Next.js migration. Old Wix URLs (incl. /en/ locale prefixes and
-  // non-standard slugs) are mapped to their new routes.
-  // NOTE: redirects() is ignored under `output: "export"` (the GitHub Pages
-  // build path); these only take effect on the Vercel/Node deployment.
+  // non-standard slugs) are mapped to their new routes. The site is deployed
+  // on Vercel (Node), so these always run.
   async redirects() {
     return [
       // Courses (highest traffic)
