@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Our Instructors',
   description:
     'Meet the professional dance instructors at YUE Dance Studio, specialists in Chinese dance, ballet, folk dance, and contemporary styles.',
-  alternates: { canonical: 'https://www.xiangyueculturearts.com/instructors' },
+  alternates: { canonical: '/instructors' },
   openGraph: {
     title: 'Our Instructors | YUE Dance Studio Singapore',
     description:
@@ -32,11 +32,7 @@ const instructorsJsonLd = instructors.map(i => ({
   alternateName: i.nameZh,
   jobTitle: i.title.en,
   image: `${SITE_URL}${i.photo}`,
-  worksFor: {
-    '@type': 'Organization',
-    '@id': `${SITE_URL}/#organization`,
-    name: 'YUE Dance Studio',
-  },
+  worksFor: { '@id': `${SITE_URL}/#organization` },
   knowsAbout: i.teaches.en,
 }));
 

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Class Schedule',
   description:
     'Weekly class timetable for Chinese dance, ballet, contemporary and folk dance at YUE Dance Studio Singapore. Find a session that fits your schedule.',
-  alternates: { canonical: 'https://www.xiangyueculturearts.com/schedule' },
+  alternates: { canonical: '/schedule' },
   openGraph: {
     title: 'Class Schedule | YUE Dance Studio Singapore',
     description:

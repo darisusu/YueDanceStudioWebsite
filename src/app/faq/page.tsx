@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'FAQ',
   description:
     'Answers to common questions about our courses, fees, attire and performance opportunities at YUE Dance Studio Singapore.',
-  alternates: { canonical: 'https://www.xiangyueculturearts.com/faq' },
+  alternates: { canonical: '/faq' },
   openGraph: {
     title: 'FAQ | YUE Dance Studio Singapore',
     description:

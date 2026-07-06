@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Contact Us',
   description:
     'Get in touch with YUE Dance Studio. Located at Beach Road, Singapore. Enquiries via email, WhatsApp, or our registration form.',
-  alternates: { canonical: 'https://www.xiangyueculturearts.com/contact' },
+  alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact Us | YUE Dance Studio Singapore',
     description:
@@ -20,15 +20,11 @@ export const metadata: Metadata = {
 };
 
 import ContactContent from '@/components/ContactContent';
-import { jsonLd, breadcrumbJsonLd } from '@/data/config';
+import { breadcrumbJsonLd } from '@/data/config';
 
 export default function ContactPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd('Contact Us', '/contact')) }}

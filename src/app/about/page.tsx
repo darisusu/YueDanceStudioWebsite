@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'Established in 2018 on Beach Road, Xiang Yue Culture Arts brings professional dance training to Singapore\'s community through experienced instructors and inspiring performances.',
-  alternates: { canonical: 'https://www.xiangyueculturearts.com/about' },
+  alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Us | YUE Dance Studio Singapore',
     description:

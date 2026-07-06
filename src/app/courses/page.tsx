@@ -23,22 +23,27 @@ export const metadata: Metadata = {
 
 import CoursesContent from '@/components/CoursesContent';
 import { courses } from '@/data/courses';
-import { SITE_URL, jsonLd, breadcrumbJsonLd } from '@/data/config';
+import { SITE_URL, REGISTRATION_URL, jsonLd, breadcrumbJsonLd } from '@/data/config';
 
 const coursesJsonLd = courses.map(c => ({
   '@context': 'https://schema.org',
   '@type': 'Course',
   name: c.name.en,
   description: c.description.en,
-  provider: {
-    '@type': 'Organization',
-    '@id': `${SITE_URL}/#organization`,
-    name: 'YUE Dance Studio',
-  },
+  // Reference the organization node (emitted site-wide in the root layout) by
+  // @id only — no duplicated/conflicting name.
+  provider: { '@id': `${SITE_URL}/#organization` },
   hasCourseInstance: {
     '@type': 'CourseInstance',
     courseMode: 'Onsite',
     location: jsonLd.address,
+  },
+  offers: {
+    '@type': 'Offer',
+    category: 'Paid',
+    priceCurrency: 'SGD',
+    url: REGISTRATION_URL,
+    availability: 'https://schema.org/InStock',
   },
 }));
 
