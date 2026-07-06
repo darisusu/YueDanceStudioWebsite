@@ -188,7 +188,7 @@ export const instructors: Instructor[] = [
       zh: '彭若丹毕业于沈阳音乐学院舞蹈系，从事舞蹈领域教学十余年，行走于课堂与舞台之间。始终保持对舞蹈的热爱，并持续参与舞台演出。教学中关注舞感的生成、身体的协调与内在表达，在温和而专注的引导中，让学员于从容的节奏里提升能力，体会舞蹈所带来的力量与喜悦。',
     },
     qualifications: {
-      en: ['Graduate, Dance Dept., Shenyang Music Conservatory', 'Member, PA Talent Dance Company', 'MOE Registered Teacher (CCA)', 'CSTD Registered Teacher', 'Certified Dance Examination Teacher (舞协)'],
+      en: ['Graduate, Dance Dept., Shenyang Music Conservatory', 'Member, PA Talent Dance Company', 'MOE Registered Teacher (CCA)', 'CSTD Registered Teacher', 'Certified Dance Examination Teacher (China Dancers Association)'],
       zh: ['沈阳音乐学院舞蹈系毕业', 'PA Talent舞团成员', 'MOE注册教师（CCA）', 'CSTD注册教师', '舞协考级认证教师'],
     },
   },

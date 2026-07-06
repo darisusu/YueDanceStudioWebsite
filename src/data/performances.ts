@@ -10,7 +10,7 @@ export interface Performance {
 export const performances: Performance[] = [
   {
     year: '2025',
-    en: '《悦舞飞扬 II》',
+    en: 'YUE Dance Rising II 《悦舞飞扬 II》',
     zh: '《悦舞飞扬 II》',
     subtitle: {
       en: 'YUE Dance Studio · 7th Anniversary Teachers\' Original Works Recital',

@@ -36,6 +36,6 @@ export const courses: Course[] = [
     name:        { en: 'Chinese Classical Dance', zh: '中国古典舞' },
     instructor:  { en: 'Angel Peng',              zh: '彭若丹' },
     description: { en: 'Drawing from centuries of Chinese court and theatrical tradition, classical dance emphasises flowing lines, inner stillness, and the poetry of movement.', zh: '源自数百年中国宫廷与戏曲传统，古典舞注重流畅的身体线条、内在的沉静与肢体的诗意表达。' },
-    image: '/images/hero/hero-banner-3.jpg',
+    image: '/images/featured/chinese-classical-dance.jpg',
   },
 ];
