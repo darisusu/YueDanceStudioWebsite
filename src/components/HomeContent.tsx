@@ -48,7 +48,7 @@ export default function HomeContent() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative min-h-svh flex items-end overflow-hidden grain">
+      <section className="relative min-h-svh flex items-end overflow-hidden grain pt-24 lg:pt-28">
         {/* Parallax image — grayscale-normalised so the warm-tone layers below read consistently */}
         <ParallaxHero
           src="/images/hero/hero-dancer.jpg"
@@ -88,43 +88,45 @@ export default function HomeContent() {
           </p>
 
           {/* Headline — massive, overlapping the image */}
-          <h1 className="font-display text-ivory leading-[0.95] lg:leading-[0.9] mb-10 [text-shadow:0_2px_16px_rgba(0,0,0,0.4)]">
-            <span className="block text-[clamp(3rem,12vw,10rem)] font-light">
+          <h1 className="font-display text-ivory leading-[0.95] lg:leading-[0.9] mb-12 sm:mb-14 [text-shadow:0_2px_16px_rgba(0,0,0,0.4)]">
+            <span className="block text-[clamp(3.25rem,12vw,10rem)] font-light">
               {hero.line1[language]}
             </span>
             {hero.line2[language] && (
-              <span className="block text-[clamp(3rem,12vw,10rem)] font-light lg:pl-[6vw] text-ivory/90">
+              <span className="block text-[clamp(3.25rem,12vw,10rem)] font-light lg:pl-[6vw] text-ivory/90">
                 {hero.line2[language]}
               </span>
             )}
-            <span className="block text-[clamp(3rem,12vw,10rem)] font-light lg:pl-[12vw] italic">
+            <span className="block text-[clamp(3.25rem,12vw,10rem)] font-light lg:pl-[12vw] italic">
               {hero.line3[language]}
             </span>
           </h1>
 
-          <div className="max-w-2xl">
-            <p className="text-ivory/80 text-base sm:text-lg leading-relaxed mb-9 [text-shadow:0_1px_6px_rgba(0,0,0,0.8)]">
+          <div className="max-w-5xl flex flex-col md:flex-row md:items-center gap-10 md:gap-14">
+            <p className="md:flex-1 md:max-w-md text-ivory/80 text-base sm:text-lg leading-relaxed [text-shadow:0_1px_6px_rgba(0,0,0,0.8)]">
               {hero.tagline[language]}
             </p>
-            <div className="flex flex-wrap items-center gap-4 mb-6">
-              <a
-                href={REGISTRATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gold text-ink hover:bg-ivory px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase font-semibold transition-all duration-200"
-              >
-                {hero.ctaPrimary[language]}
-              </a>
-              <Link
-                href="/courses"
-                className="inline-flex items-center gap-2 border border-ivory/50 text-ivory hover:bg-ivory hover:text-ink px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase font-medium transition-all duration-200"
-              >
-                {hero.cta[language]}
-              </Link>
+            <div className="md:w-fit md:shrink-0">
+              <div className="flex items-center gap-3 sm:gap-4 mb-8">
+                <a
+                  href={REGISTRATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-1 md:flex-none items-center justify-center gap-2 bg-gold text-ink hover:bg-ivory px-4 sm:px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase font-semibold transition-all duration-200"
+                >
+                  {hero.ctaPrimary[language]}
+                </a>
+                <Link
+                  href="/courses"
+                  className="inline-flex flex-1 md:flex-none items-center justify-center gap-2 border border-ivory/50 text-ivory hover:bg-ivory hover:text-ink px-4 sm:px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase font-medium transition-all duration-200"
+                >
+                  {hero.cta[language]}
+                </Link>
+              </div>
+              <p className="md:w-0 md:min-w-full text-ivory/80 text-base sm:text-lg leading-relaxed [text-shadow:0_1px_6px_rgba(0,0,0,0.85)]">
+                {t.cta.trialBlurb[language]}
+              </p>
             </div>
-            <p className="text-ivory/80 text-base sm:text-lg leading-relaxed [text-shadow:0_1px_6px_rgba(0,0,0,0.85)]">
-              {t.cta.trialBlurb[language]}
-            </p>
           </div>
         </div>
       </section>
@@ -133,8 +135,8 @@ export default function HomeContent() {
       <Marquee items={marqueeItems} />
 
       {/* ── Courses ──────────────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
-        <ScrollReveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+        <ScrollReveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14 lg:mb-16">
           <div>
             <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-3">
               {courses.label[language]}
@@ -248,7 +250,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Cultural identity section ─────────────────────────── */}
-      <section className="relative bg-ink py-32 px-6 lg:px-12 overflow-hidden grain">
+      <section className="relative bg-ink py-32 lg:py-40 px-6 lg:px-12 overflow-hidden grain">
         {/* 悦 large ghost */}
         <span
           className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[40vw] leading-none text-ivory/[0.03] select-none pointer-events-none"
@@ -290,8 +292,8 @@ export default function HomeContent() {
       </section>
 
       {/* ── Instructor teaser ─────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
-        <ScrollReveal className="mb-16">
+      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+        <ScrollReveal className="mb-14 lg:mb-16">
           <p className="text-[10px] tracking-[0.28em] uppercase text-ink-light mb-3">
             {t.instructors.label[language]}
           </p>
@@ -400,8 +402,8 @@ export default function HomeContent() {
       </section>
 
       {/* ── Performances teaser ──────────────────────────────── */}
-      <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto">
-        <ScrollReveal className="mb-10">
+      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+        <ScrollReveal className="mb-14 lg:mb-16">
           <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-3">
             {perf.label[language]}
           </p>
@@ -433,7 +435,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Testimonials — wall of voices ────────────────────── */}
-      <section className="relative bg-ink py-20 lg:py-28 px-6 lg:px-12 overflow-hidden grain">
+      <section className="relative bg-ink py-32 lg:py-40 px-6 lg:px-12 overflow-hidden grain">
         {/* background performance image */}
         <div className="absolute inset-0 opacity-[0.10]">
           <Image
@@ -506,12 +508,12 @@ export default function HomeContent() {
       </section>
 
       {/* ── Visit / Location ─────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal>
           <p className="text-[10px] tracking-[0.3em] uppercase text-gold-deep mb-3">
             {visit.label[language]}
           </p>
-          <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] leading-[0.98] mb-10">
+          <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] leading-[0.98] mb-14 lg:mb-16">
             {visit.heading[language]}
           </h2>
         </ScrollReveal>
@@ -619,7 +621,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Join CTA ─────────────────────────────────────────── */}
-      <section className="py-28 px-6 lg:px-12">
+      <section className="py-24 lg:py-32 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="relative">
             <span
