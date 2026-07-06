@@ -2,7 +2,7 @@
 
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
-import { REGISTRATION_URL, FACEBOOK_URL, INSTAGRAM_URL, DOUYIN_URL } from '@/data/config';
+import { REGISTRATION_URL, MAPS_URL, WHATSAPP_JANELLE, WHATSAPP_VICKY, WECHAT_ID, FACEBOOK_URL, INSTAGRAM_URL, DOUYIN_URL } from '@/data/config';
 
 export default function ContactContent() {
   const { language } = useLanguage();
@@ -31,10 +31,20 @@ export default function ContactContent() {
               <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.studio[language]}
               </p>
-              <address className="not-italic text-ink-light text-sm leading-relaxed">
-                47 Beach Road, #02-04<br />
-                Singapore 189683
-              </address>
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-block"
+              >
+                <address className="not-italic text-ink text-sm leading-relaxed group-hover:text-gold-deep transition-colors duration-150">
+                  47 Beach Road, #02-04<br />
+                  Singapore 189683
+                </address>
+                <span className="mt-2 inline-block text-[11px] tracking-[0.18em] uppercase text-gold-deep group-hover:text-ink border-b border-gold/50 group-hover:border-ink pb-0.5 transition-colors duration-150">
+                  {tr.directions[language]}
+                </span>
+              </a>
             </div>
 
             {/* Email */}
@@ -44,7 +54,7 @@ export default function ContactContent() {
               </p>
               <a
                 href="mailto:xiangyue.culturearts@gmail.com"
-                className="text-sm text-ink hover:text-gold transition-colors duration-150 break-all"
+                className="text-sm text-ink hover:text-gold-deep transition-colors duration-150 break-all"
               >
                 xiangyue.culturearts@gmail.com
               </a>
@@ -59,7 +69,7 @@ export default function ContactContent() {
                 <div className="flex gap-1">
                   <dt>Janelle:</dt>
                   <dd>
-                    <a href="tel:+6596885938" className="text-ink hover:text-gold transition-colors duration-150">
+                    <a href="tel:+6596885938" className="text-ink hover:text-gold-deep transition-colors duration-150">
                       +65 9688 5938
                     </a>
                   </dd>
@@ -67,13 +77,31 @@ export default function ContactContent() {
                 <div className="flex gap-1">
                   <dt>Vicky:</dt>
                   <dd>
-                    <a href="tel:+6594253833" className="text-ink hover:text-gold transition-colors duration-150">
+                    <a href="tel:+6594253833" className="text-ink hover:text-gold-deep transition-colors duration-150">
                       +65 9425 3833
                     </a>
                   </dd>
                 </div>
                 <dd className="text-xs text-ink/40 mt-2">{tr.adminNote[language]}</dd>
               </dl>
+              <div className="flex flex-wrap gap-3 mt-4">
+                <a
+                  href={WHATSAPP_JANELLE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center h-10 px-4 border border-ink/15 hover:border-gold text-sm text-ink hover:text-gold-deep transition-colors duration-150"
+                >
+                  {tr.whatsapp[language]} · Janelle
+                </a>
+                <a
+                  href={WHATSAPP_VICKY}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center h-10 px-4 border border-ink/15 hover:border-gold text-sm text-ink hover:text-gold-deep transition-colors duration-150"
+                >
+                  {tr.whatsapp[language]} · Vicky
+                </a>
+              </div>
             </div>
 
             {/* Social */}
@@ -81,12 +109,15 @@ export default function ContactContent() {
               <p className="text-xs tracking-[0.2em] uppercase text-ink-light mb-3">
                 {tr.social[language]}
               </p>
+              <p className="text-sm text-ink-light mb-3">
+                {tr.wechat[language]}: <span className="text-ink">{WECHAT_ID}</span>
+              </p>
               <div className="flex gap-6 text-sm">
                 <a
                   href={FACEBOOK_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink hover:text-gold transition-colors duration-150"
+                  className="text-ink hover:text-gold-deep transition-colors duration-150"
                 >
                   Facebook
                 </a>
@@ -94,7 +125,7 @@ export default function ContactContent() {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink hover:text-gold transition-colors duration-150"
+                  className="text-ink hover:text-gold-deep transition-colors duration-150"
                 >
                   Instagram
                 </a>
@@ -102,7 +133,7 @@ export default function ContactContent() {
                   href={DOUYIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink hover:text-gold transition-colors duration-150"
+                  className="text-ink hover:text-gold-deep transition-colors duration-150"
                 >
                   抖音
                 </a>
