@@ -126,7 +126,7 @@ export default function PerformancesContent() {
                   </span>
                   <div className="relative">
                     <div className="w-8 h-px bg-gold mb-6" />
-                    <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
+                    <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-3">
                       {item.year}
                     </p>
                     <h2
@@ -158,7 +158,7 @@ export default function PerformancesContent() {
       </div>
       <section className="pt-16 pb-20 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="mb-10">
-          <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
+          <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-3">
             {language === "en" ? "Community" : "社区"}
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3rem)] leading-[0.95]">
@@ -191,7 +191,7 @@ export default function PerformancesContent() {
               )}
               <div className="py-6 sm:p-6 lg:p-8">
                 <div className="w-5 h-px bg-gold mb-4" />
-                <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-2">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-2">
                   {item.year}
                 </p>
                 <h3 className="font-display text-xl leading-tight mb-2">

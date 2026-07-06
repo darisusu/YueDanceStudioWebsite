@@ -22,7 +22,7 @@ export default function CoursesContent() {
           悦
         </span>
         <div className="relative">
-          <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-5">
+          <p className="text-[10px] tracking-[0.3em] uppercase text-gold-deep mb-5">
             {tr.label[language]}
           </p>
           <h1 className="font-display text-[clamp(3.5rem,9vw,8rem)] leading-[0.9] mb-6">
@@ -99,7 +99,7 @@ export default function CoursesContent() {
                       <h2 className="font-display text-[clamp(2rem,3.5vw,2.8rem)] leading-tight mb-2">
                         {course.name[language]}
                       </h2>
-                      <p className="text-[10px] tracking-[0.2em] uppercase text-gold mb-6">
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-gold-deep mb-6">
                         {tr.instructor[language]}: {course.instructor[language]}
                       </p>
                       <p className="text-ink-light text-base leading-relaxed mb-8">
@@ -109,7 +109,7 @@ export default function CoursesContent() {
                         href={REGISTRATION_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="self-start text-xs tracking-[0.2em] uppercase text-ink-light hover:text-gold border-b border-ink-light/40 hover:border-gold pb-0.5 transition-colors duration-150"
+                        className="self-start text-xs tracking-[0.2em] uppercase text-ink-light hover:text-gold-deep border-b border-ink-light/40 hover:border-gold pb-0.5 transition-colors duration-150"
                       >
                         {tr.register[language]}
                       </a>

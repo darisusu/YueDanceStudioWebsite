@@ -51,15 +51,14 @@ export default function ScheduleContent() {
 
       {/* ── Filter buttons ───────────────────────────────────── */}
       <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-10">
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label={language === 'en' ? 'Filter by dance style' : '按舞种筛选'}>
+        <div className="flex flex-wrap gap-2" role="group" aria-label={language === 'en' ? 'Filter by dance style' : '按舞种筛选'}>
           {FILTER_KEYS.map(key => {
             const label = tr.filters[key][language];
             const isActive = activeFilter === key;
             return (
               <button
                 key={key}
-                role="tab"
-                aria-selected={isActive}
+                aria-pressed={isActive}
                 onClick={() => setActiveFilter(key)}
                 className={[
                   'px-5 py-2 text-xs tracking-[0.18em] uppercase transition-all duration-150 border',
@@ -76,7 +75,7 @@ export default function ScheduleContent() {
       </section>
 
       {/* ── Desktop: grid table ───────────────────────────────── */}
-      <section className="hidden lg:block px-12 max-w-7xl mx-auto pb-16" role="tabpanel">
+      <section className="hidden lg:block px-12 max-w-7xl mx-auto pb-16" aria-live="polite" aria-label={language === 'en' ? 'Weekly class schedule' : '每周课程表'}>
         {filtered.length === 0 ? (
           <p className="text-ink-light text-base py-12 text-center">{tr.empty[language]}</p>
         ) : (
@@ -118,7 +117,7 @@ export default function ScheduleContent() {
                       >
                         {cls && (
                           <>
-                            <p className="text-gold text-[11px] tracking-[0.18em] uppercase mb-2">
+                            <p className="text-gold-deep text-[11px] tracking-[0.18em] uppercase mb-2">
                               {cls.time}
                             </p>
                             <p className="font-display text-xl lg:text-2xl text-ink leading-tight mb-2">
@@ -141,7 +140,7 @@ export default function ScheduleContent() {
       </section>
 
       {/* ── Mobile: stacked day list ──────────────────────────── */}
-      <section className="lg:hidden px-6 max-w-xl mx-auto pb-16 space-y-10" role="tabpanel">
+      <section className="lg:hidden px-6 max-w-xl mx-auto pb-16 space-y-10" aria-live="polite" aria-label={language === 'en' ? 'Weekly class schedule' : '每周课程表'}>
         {filtered.length === 0 ? (
           <p className="text-ink-light text-base py-12 text-center">{tr.empty[language]}</p>
         ) : (
@@ -150,13 +149,13 @@ export default function ScheduleContent() {
             <div className="flex items-baseline gap-3 mb-4 pb-2 border-b border-ink/10">
               <h2 className="font-display text-2xl text-ink">{day[language]}</h2>
               {language === 'en' && (
-                <span className="text-gold text-xs tracking-wide">{day.zh}</span>
+                <span className="text-gold-deep text-xs tracking-wide">{day.zh}</span>
               )}
             </div>
             <div className="space-y-3">
               {classes.map((cls, j) => (
                 <div key={j} className="bg-ivory border border-[#D6CFC3] px-5 py-4">
-                  <p className="text-gold text-[11px] tracking-[0.18em] uppercase mb-1.5">
+                  <p className="text-gold-deep text-[11px] tracking-[0.18em] uppercase mb-1.5">
                     {cls.time}
                   </p>
                   <p className="font-display text-xl text-ink leading-tight mb-1">

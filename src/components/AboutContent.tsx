@@ -125,7 +125,7 @@ export default function AboutContent() {
           >
             悦
           </span>
-          <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-4">
+          <p className="text-[10px] tracking-[0.3em] uppercase text-gold-deep mb-4">
             {ab.performances.label[language]}
           </p>
           <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] mb-6">

@@ -87,7 +87,7 @@ export default function VoicesContent() {
               className="break-inside-avoid mb-8 lg:mb-12 border-t border-ink/10 pt-6"
             >
               <cite className="not-italic block text-[11px] tracking-[0.22em] uppercase mb-6">
-                <span className="text-gold">{group.name[language]}</span>
+                <span className="text-gold-deep">{group.name[language]}</span>
                 {group.context[language] && (
                   <span className="text-ink-light/55"> · {group.context[language]}</span>
                 )}

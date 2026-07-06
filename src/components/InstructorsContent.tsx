@@ -21,7 +21,7 @@ export default function InstructorsContent() {
           悦
         </span>
         <div className="relative">
-          <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-5">
+          <p className="text-[10px] tracking-[0.3em] uppercase text-gold-deep mb-5">
             {tr.label[language]}
           </p>
           <h1 className="font-display text-[clamp(3.5rem,9vw,8rem)] leading-[0.9] whitespace-pre-line mb-6">
@@ -44,7 +44,7 @@ export default function InstructorsContent() {
                   <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full lg:min-h-full">
                     <Image
                       src={profile.photo}
-                      alt={`${profile.nameZh}, ${profile.title[language]}`}
+                      alt={`${language === 'en' ? profile.name : profile.nameZh}, ${profile.title[language]}`}
                       fill
                       priority={i === 0}
                       sizes="(max-width: 1024px) 100vw, 29vw"
@@ -84,7 +84,7 @@ export default function InstructorsContent() {
                       )}
                     </div>
 
-                    <p className="text-[10px] tracking-[0.25em] uppercase text-gold mb-2">
+                    <p className="text-[10px] tracking-[0.25em] uppercase text-gold-deep mb-2">
                       {profile.title[language]}
                     </p>
                     <p className="text-xs tracking-[0.15em] text-ink-light mb-8">
@@ -104,7 +104,7 @@ export default function InstructorsContent() {
                         <ul className="space-y-2">
                           {profile.qualifications[language].map((q, qi) => (
                             <li key={qi} className={`text-sm text-ink-light flex gap-3 items-start ${isReversed ? 'lg:flex-row-reverse lg:text-right' : ''}`}>
-                              <span className="text-gold shrink-0 mt-0.5">—</span>
+                              <span className="text-gold-deep shrink-0 mt-0.5">—</span>
                               {q}
                             </li>
                           ))}

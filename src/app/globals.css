@@ -4,6 +4,11 @@
   --color-ivory: #F5F0E8;
   --color-ink: #1C1917;
   --color-gold: #B8945A;
+  /* AA-compliant gold for text/icons/links on the light ivory surface.
+     Decorative gold (#B8945A, ~2.5:1 on ivory) fails WCAG AA for text, but is
+     fine on the dark ink sections (~6:1) and for non-text rules/borders.
+     Use gold-deep for any gold *text* that sits on a light background. */
+  --color-gold-deep: #7A5A28;
   --color-ivory-muted: #E8E3D9;
   --color-ink-light: #44403C;
   --font-display: var(--font-cormorant);
@@ -35,9 +40,13 @@ html.cjk-active .font-display {
   font-family: var(--font-cormorant), var(--font-noto-serif-tc), serif;
 }
 
+/* Focus ring that stays visible on both the light ivory surface and the dark
+   ink sections: the gold-deep outline carries on light backgrounds, the ivory
+   halo carries on dark ones. */
 :focus-visible {
-  outline: 2px solid #B8945A;
+  outline: 2px solid var(--color-gold-deep);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(245, 240, 232, 0.9);
   border-radius: 2px;
 }
 

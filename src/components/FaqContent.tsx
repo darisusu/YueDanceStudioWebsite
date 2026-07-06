@@ -14,20 +14,22 @@ function AccordionItem({
   const [open, setOpen] = useState(false);
   const id = useId();
   const panelId = `faq-panel-${id}`;
+  const buttonId = `faq-button-${id}`;
 
   return (
     <div className="border-b border-ink/10 last:border-0">
       <button
+        id={buttonId}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-controls={panelId}
         className="w-full flex items-start justify-between gap-4 py-5 text-left group"
       >
-        <span className="text-base text-ink group-hover:text-gold transition-colors duration-150 leading-relaxed">
+        <span className="text-base text-ink group-hover:text-gold-deep transition-colors duration-150 leading-relaxed">
           {question}
         </span>
         <span
-          className={`shrink-0 mt-1 text-gold transition-transform duration-200 ${open ? 'rotate-45' : ''}`}
+          className={`shrink-0 mt-1 text-gold-deep transition-transform duration-200 ${open ? 'rotate-45' : ''}`}
           aria-hidden="true"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -36,7 +38,7 @@ function AccordionItem({
         </span>
       </button>
       {open && (
-        <div id={panelId} role="region" className="pb-5 pr-8">
+        <div id={panelId} role="region" aria-labelledby={buttonId} className="pb-5 pr-8">
           <p className="text-base text-ink-light leading-relaxed">{answer}</p>
         </div>
       )}
