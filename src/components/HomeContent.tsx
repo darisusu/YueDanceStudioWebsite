@@ -259,8 +259,8 @@ export default function HomeContent() {
             <div className="mt-12 w-16 h-px bg-gold" />
             <p className="text-ivory/40 text-sm mt-6 max-w-xl leading-relaxed">
               {language === 'en'
-                ? 'Founded in Singapore in 2018, Xiang Yue Culture Arts brings together adult learners of all backgrounds under the guidance of accomplished artists.'
-                : '翔悦文艺2018年于新加坡创立，汇聚各背景成人学员，在专业艺术家的带领下共同探索舞蹈之美。'}
+                ? 'Founded in Singapore in 2018, YUE Dance Studio, part of Xiang Yue Culture Arts, brings together adult learners of all backgrounds under the guidance of accomplished artists.'
+                : '翔悦文艺旗下悦舞坊2018年于新加坡创立，汇聚各背景成人学员，在专业艺术家的带领下共同探索舞蹈之美。'}
             </p>
           </ScrollReveal>
         </div>

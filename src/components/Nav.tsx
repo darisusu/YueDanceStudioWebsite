@@ -83,7 +83,7 @@ export default function Nav() {
               className={`object-contain transition-all duration-300 ${onDark ? 'brightness-0 invert' : ''}`}
             />
             <span className={`font-display text-lg tracking-wide transition-colors duration-300 ${textColor}`}>
-              翔悦文艺
+              翔悦文艺 • 悦舞坊
             </span>
           </Link>
 
