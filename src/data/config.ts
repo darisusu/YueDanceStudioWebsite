@@ -1,8 +1,15 @@
+import { featuredTestimonials } from './testimonials';
+
 export const REGISTRATION_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
 
 export const MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=47%20Beach%20Road%20%2302-04%20Singapore%20189683';
+
+// Click-to-chat links for the two studio contacts (Singapore default channel).
+export const WHATSAPP_JANELLE = 'https://wa.me/6596885938';
+export const WHATSAPP_VICKY = 'https://wa.me/6594253833';
+export const WECHAT_ID = 'lin_jing68';
 
 export const FACEBOOK_URL = 'https://www.facebook.com/xiangyue.dance/';
 export const INSTAGRAM_URL = 'https://www.instagram.com/yuedancesg/';
@@ -10,6 +17,11 @@ export const DOUYIN_URL =
   'https://www.douyin.com/user/MS4wLjABAAAALKE5By-qugkaCLezzyXgNVuTrykNIq7o10JPMKQwwMxHk7-3D_DZYeLdco5DcWVn';
 
 export const SITE_URL = 'https://www.xiangyueculturearts.com';
+
+// Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX'. The project avoids
+// env vars, so paste the studio's real ID here to enable analytics; '' disables
+// it. A NEXT_PUBLIC_GA4_MEASUREMENT_ID env var is still honoured as a fallback.
+export const GA4_MEASUREMENT_ID = '';
 
 export const jsonLd = {
   '@context': 'https://schema.org',
@@ -35,6 +47,13 @@ export const jsonLd = {
     addressCountry: 'SG',
   },
   sameAs: [FACEBOOK_URL, INSTAGRAM_URL, DOUYIN_URL],
+  // Genuine student testimonials (no numeric ratings are collected, so no
+  // aggregateRating is emitted — only the review text and author).
+  review: featuredTestimonials.map((tItem) => ({
+    '@type': 'Review',
+    reviewBody: (tItem.excerpt ?? tItem.quote).en,
+    author: { '@type': 'Person', name: tItem.attribution.en.split('·')[0].trim() },
+  })),
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Monday',    opens: '10:00', closes: '21:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday',   opens: '19:30', closes: '21:00' },
