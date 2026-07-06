@@ -6,7 +6,21 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
+import { REGISTRATION_URL } from '@/data/config';
 
+// Desktop bar — every page except Home (the logo already links home).
+const primaryLinks = [
+  { href: '/about',          label: t.nav.about },
+  { href: '/instructors',    label: t.nav.instructors },
+  { href: '/courses',        label: t.nav.courses },
+  { href: '/performances',   label: t.nav.performances },
+  { href: '/voices',         label: t.nav.voices },
+  { href: '/schedule',       label: t.nav.schedule },
+  { href: '/contact',        label: t.nav.contact },
+  { href: '/faq',            label: t.nav.faq },
+];
+
+// Full-screen mobile overlay — room for everything.
 const navLinks = [
   { href: '/',               label: t.nav.home },
   { href: '/about',          label: t.nav.about },
@@ -60,7 +74,10 @@ export default function Nav() {
 
   const onDark    = !scrolled && isHome;
   const textColor = onDark ? 'text-ivory' : 'text-ink';
-  const hoverColor = onDark ? 'hover:text-ivory/70' : 'hover:text-gold';
+  const hoverColor = onDark ? 'hover:text-ivory/70' : 'hover:text-gold-deep';
+  // Bright gold reads well on the dark hero; on the light scrolled bar it fails
+  // WCAG contrast, so use the AA-safe gold-deep there.
+  const activeColor = onDark ? 'text-gold' : 'text-gold-deep';
 
   return (
     <>
@@ -87,15 +104,15 @@ export default function Nav() {
             </span>
           </Link>
 
-          {/* Desktop links */}
-          <nav className="hidden lg:flex items-center gap-7" aria-label="Main navigation">
-            {navLinks.map(({ href, label }) => (
+          {/* Desktop links — core journey only; hamburger below the xl breakpoint */}
+          <nav className="hidden xl:flex items-center gap-7" aria-label="Main navigation">
+            {primaryLinks.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
                 className={`text-[11px] tracking-[0.18em] uppercase font-medium transition-colors duration-200 ${
                   pathname === href
-                    ? 'text-gold'
+                    ? activeColor
                     : `${textColor} ${hoverColor}`
                 }`}
               >
@@ -105,23 +122,34 @@ export default function Nav() {
           </nav>
 
           {/* Right cluster */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4 lg:gap-5">
             {/* Language toggle */}
             <button
               onClick={toggle}
+              aria-label={language === 'en' ? 'Switch language to Chinese' : '切换语言为英文'}
               className={`inline-flex items-center h-11 px-1 text-[11px] tracking-[0.15em] transition-colors duration-200 ${textColor} ${hoverColor}`}
             >
-              <span className={language === 'en' ? 'text-gold font-semibold' : ''}>EN</span>
+              <span className={language === 'en' ? `${activeColor} font-semibold` : ''}>EN</span>
               <span className="mx-1.5 opacity-30" aria-hidden="true">/</span>
-              <span className={language === 'zh' ? 'text-gold font-semibold' : ''}>中文</span>
+              <span className={language === 'zh' ? `${activeColor} font-semibold` : ''}>中文</span>
             </button>
 
-            {/* Hamburger — mobile only */}
+            {/* Book-a-trial — persistent primary CTA (from sm up; in the menu below sm) */}
+            <a
+              href={REGISTRATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center bg-gold text-ink hover:bg-ink hover:text-ivory px-5 py-2.5 text-[11px] tracking-[0.18em] uppercase font-semibold transition-colors duration-200"
+            >
+              {t.cta.bookTrial[language]}
+            </a>
+
+            {/* Hamburger — shown until the full nav row fits (xl) */}
             <button
               ref={hamburgerRef}
               onClick={() => setMenuOpen(true)}
               aria-label="Open navigation menu"
-              className={`lg:hidden flex flex-col gap-[5px] p-3 -mr-3 transition-colors ${textColor}`}
+              className={`xl:hidden flex flex-col gap-[5px] p-3 -mr-3 transition-colors ${textColor}`}
             >
               <span className="block w-[22px] h-px bg-current" />
               <span className="block w-[22px] h-px bg-current" />
@@ -138,7 +166,7 @@ export default function Nav() {
         aria-label="Navigation menu"
         aria-hidden={!menuOpen || undefined}
         ref={(el) => { if (el) (el as HTMLElement & { inert: boolean }).inert = !menuOpen; }}
-        className={`fixed inset-0 z-[100] bg-ink flex flex-col p-8 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))] transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 z-[100] bg-ink flex flex-col overflow-y-auto p-8 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))] transition-all duration-300 ease-in-out ${
           menuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -185,10 +213,22 @@ export default function Nav() {
           ))}
         </nav>
 
+        {/* Primary CTA */}
+        <a
+          href={REGISTRATION_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setMenuOpen(false)}
+          className="mt-8 inline-flex items-center justify-center bg-gold text-ink hover:bg-ivory px-6 py-4 text-xs tracking-[0.2em] uppercase font-semibold transition-colors duration-200"
+        >
+          {t.cta.bookTrial[language]}
+        </a>
+
         {/* Bottom */}
         <div className="pt-8 border-t border-ivory/10 flex items-center justify-between">
           <button
             onClick={toggle}
+            aria-label={language === 'en' ? 'Switch language to Chinese' : '切换语言为英文'}
             className="inline-flex items-center h-11 -my-2 text-[11px] tracking-[0.15em] text-ivory/50"
           >
             <span className={language === 'en' ? 'text-gold' : 'text-ivory/50'}>EN</span>
