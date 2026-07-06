@@ -2,6 +2,7 @@ export interface Performance {
   year: string;
   en: string;
   zh: string;
+  subtitle?: { en: string; zh: string };
   desc?: { en: string; zh: string };
   images?: string[];
 }
@@ -9,8 +10,12 @@ export interface Performance {
 export const performances: Performance[] = [
   {
     year: '2025',
-    en: '7th Anniversary Showcase Concert 《悦舞飞扬 II》',
-    zh: '七周年汇演音乐会《悦舞飞扬 II》',
+    en: '《悦舞飞扬 II》',
+    zh: '《悦舞飞扬 II》',
+    subtitle: {
+      en: 'YUE Dance Studio · 7th Anniversary Teachers\' Original Works Recital',
+      zh: '悦舞坊七周年老师原创作品汇报演出',
+    },
     desc: {
       en: 'Our 7th Anniversary Showcase Concert, celebrating years of artistry, community, and growth.',
       zh: '七周年年度汇演，庆祝翔悦多年来的艺术成就与社群成长。',
@@ -43,28 +48,36 @@ export const performances: Performance[] = [
   },
   {
     year: '2020',
-    en: 'Chingay Parade, featured in the Straits Times and shared by PM Lee Hsien Loong',
-    zh: '妆艺大游行，获《海峡时报》专题报道，李显龙总理于社交媒体分享',
+    en: 'Chingay Parade',
+    zh: '妆艺大游行',
+    subtitle: {
+      en: 'Featured in the Straits Times · shared by PM Lee Hsien Loong',
+      zh: '获《海峡时报》报道·李显龙总理社媒分享',
+    },
     desc: {
-      en: 'A 35-member team took the Chingay stage. Our performance was featured by the Straits Times and shared by PM Lee Hsien Loong on social media. The team also met with the President.',
-      zh: '35名团员登上妆艺大游行舞台，演出获《海峡时报》专题报道，并由李显龙总理于社交媒体转发分享，团队亦获邀与总统会面。',
+      en: 'A 35-member team took the Chingay stage, with the performance later featured by the Straits Times and shared by PM Lee Hsien Loong.',
+      zh: '35名团员登上妆艺大游行舞台，演出获《海峡时报》报道，并由李显龙总理于社交媒体分享。',
     },
     images: ['/images/about/about-performance-12.jpeg'],
   },
   {
     year: '2019',
-    en: 'Singapore Chinese Spring Festival Gala: 《情人心》',
-    zh: '新加坡华族春节嘉年华：《情人心》',
+    en: 'Singapore Chinese Spring Festival Gala: 《恋人心》',
+    zh: '新加坡华族春节嘉年华：《恋人心》',
     desc: {
-      en: 'Part of a large-scale international art gala broadcasted worldwide, promoting Chinese culture through dance 《情人心》.',
-      zh: '参与大型国际艺术晚会，演出《情人心》，向全球推广中华舞蹈文化。',
+      en: 'Part of a large-scale international art gala broadcasted worldwide, promoting Chinese culture through dance 《恋人心》.',
+      zh: '参与大型国际艺术晚会，演出《恋人心》，向全球推广中华舞蹈文化。',
     },
     images: ['/images/about/about-performance-6.jpg'],
   },
   {
     year: '2019',
-    en: 'Dance Is Calling: 《阿里情》, presented by Tampines Art Troupe',
-    zh: '《舞动新加坡》：《阿里情》，由淡滨尼艺术团主办',
+    en: 'Dance Is Calling: 《阿里情》',
+    zh: '《舞动新加坡》：《阿里情》',
+    subtitle: {
+      en: 'Presented by Tampines Art Troupe',
+      zh: '由淡滨尼艺术团主办',
+    },
     desc: {
       en: 'Performed 《阿里情》 in a diverse dance special organised by Tampines Art Troupe.',
       zh: '受淡滨尼艺术团之邀，于多元舞蹈专场演出《阿里情》。',
@@ -76,15 +89,19 @@ export const performances: Performance[] = [
     en: 'Fo Guang Shan Charity Performance',
     zh: '佛光山慈善演出',
     desc: {
-      en: 'Performed alongside actress Michelle in a charitable concert.',
-      zh: '与女演员Michelle同台，参与慈善演唱会义演。',
+      en: 'Performed alongside renowned Hong Kong artist Michelle Yim in a charitable concert.',
+      zh: '与香港知名艺人米雪Michelle同台，参与慈善演唱会义演。',
     },
     images: ['/images/about/about-performance-11.jpg'],
   },
   {
     year: '2018',
-    en: 'Singapore Golden Lion Awards: Gold Award, Music & Dance Competition (26th edition)',
-    zh: '新加坡金狮奖：音乐舞蹈赛金奖（第二十六届）',
+    en: 'Singapore Golden Lion Awards',
+    zh: '新加坡金狮奖',
+    subtitle: {
+      en: 'Gold Award · Music & Dance Competition (26th edition)',
+      zh: '音乐舞蹈赛金奖·第二十六届',
+    },
     desc: {
       en: 'Gold Award at the Singapore Golden Lion Cup, supported by 958 City Channel, Lianhe Zaobao, and the Chinese Embassy.',
       zh: '荣获新加坡金狮奖金奖，赛事由958城市频道、联合早报及中国驻新加坡大使馆联合支持。',

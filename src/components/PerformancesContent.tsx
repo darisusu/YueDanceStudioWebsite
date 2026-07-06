@@ -7,7 +7,7 @@ import { performances } from "@/data/performances";
 import ParallaxHero from "@/components/ParallaxHero";
 import ScrollReveal from "@/components/ScrollReveal";
 
-const SPRING_FESTIVAL = "Singapore Chinese Spring Festival Gala: 《情人心》";
+const SPRING_FESTIVAL = "Singapore Chinese Spring Festival Gala: 《恋人心》";
 const majorEntries = performances.filter(
   (p) => p.year !== "2019" || p.en === SPRING_FESTIVAL,
 );
@@ -25,8 +25,8 @@ export default function PerformancesContent() {
       <section className="relative h-[70vh] flex items-end overflow-hidden grain mt-16">
         <ParallaxHero
           src="/images/hero/hero-banner-2.jpg"
-          alt="YUE Dance Studio performance"
-          objectPosition="center top"
+          alt="YUE Dance Studio red fan dance performance"
+          objectPosition="center"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/30 to-ink/10 z-[1]" />
@@ -60,6 +60,10 @@ export default function PerformancesContent() {
         {majorEntries.map((item, i) => {
           const flipImage = i % 2 === 1; // alternate sides
           const isRiverHongBao = item.images && item.images.length > 1;
+          const heading = item[language];
+          const label = item.subtitle
+            ? `${heading} — ${item.subtitle[language]}`
+            : heading;
 
           return (
             <ScrollReveal key={item.en} delay={i * 60} as="article">
@@ -76,7 +80,7 @@ export default function PerformancesContent() {
                       <div className="relative flex-1 overflow-hidden group min-h-[260px]">
                         <Image
                           src={item.images[0]}
-                          alt={item[language]}
+                          alt={label}
                           fill
                           sizes="(max-width: 1024px) 100vw, 58vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -90,7 +94,7 @@ export default function PerformancesContent() {
                           >
                             <Image
                               src={src}
-                              alt={`${item[language]}, photo ${j + 2}`}
+                              alt={`${label}, photo ${j + 2}`}
                               fill
                               sizes="(max-width: 1024px) 50vw, 29vw"
                               className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -103,7 +107,7 @@ export default function PerformancesContent() {
                     <div className="relative h-full min-h-[360px] overflow-hidden group">
                       <Image
                         src={item.images[0]}
-                        alt={item[language]}
+                        alt={label}
                         fill
                         sizes="(max-width: 1024px) 100vw, 58vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -125,9 +129,16 @@ export default function PerformancesContent() {
                     <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
                       {item.year}
                     </p>
-                    <h2 className="font-display text-[clamp(1.8rem,3.5vw,2.8rem)] leading-[1.05] mb-5">
-                      {item[language]}
+                    <h2
+                      className={`font-display text-[clamp(1.8rem,3.5vw,2.8rem)] leading-[1.05] ${item.subtitle ? "mb-3" : "mb-5"}`}
+                    >
+                      {heading}
                     </h2>
+                    {item.subtitle && (
+                      <p className="font-display text-[clamp(1.1rem,1.7vw,1.4rem)] text-ink/70 leading-snug mb-5">
+                        {item.subtitle[language]}
+                      </p>
+                    )}
                     {item.desc && (
                       <p className="text-ink-light text-base leading-relaxed">
                         {item.desc[language]}
@@ -196,9 +207,12 @@ export default function PerformancesContent() {
           ))}
         </div>
 
-        <p className="text-[10px] tracking-[0.28em] uppercase text-ink/40 mt-10 mb-4">
-          {language === "en" ? "More moments" : "更多精彩"}
-        </p>
+        <div className="mt-16 mb-6">
+          <div className="w-8 h-px bg-gold mb-4" />
+          <h3 className="font-display text-[clamp(1.6rem,3vw,2.4rem)] leading-[0.95]">
+            {language === "en" ? "More moments" : "更多精彩"}
+          </h3>
+        </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-ink/10">
           {[
