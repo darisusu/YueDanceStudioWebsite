@@ -26,7 +26,7 @@ export default function AboutContent() {
               fill
               sizes="(max-width: 768px) 50vw, 50vw"
               className="object-cover"
-              style={{ objectPosition: '50% 30%' }}
+              style={{ objectPosition: '50% 36%' }}
               priority
             />
             {/* top vignette for name legibility */}
@@ -50,7 +50,7 @@ export default function AboutContent() {
               fill
               sizes="(max-width: 768px) 50vw, 50vw"
               className="object-cover"
-              style={{ objectPosition: '50% 18%' }}
+              style={{ objectPosition: '50% 0%' }}
               priority
             />
             {/* top vignette for name legibility */}
