@@ -153,7 +153,7 @@ export const t = {
     email:    { en: 'Email',             zh: '电子邮件' },
     phone:    { en: 'Phone',             zh: '联系电话' },
     social:   { en: 'Follow Us',         zh: '关注我们' },
-    adminNote: { en: 'Finance enquiries: contact Vicky (available daily before 4pm)', zh: '费用咨询：请联系Vicky（每日下午4时前）' },
+    adminNote: { en: 'Finance enquiries: contact Vicky', zh: '费用咨询：请联系Vicky' },
     register: {
       heading: { en: 'Ready to Join a Class?', zh: '准备好加入了吗？' },
       sub:     { en: 'Fill in our registration form and we\'ll be in touch soon.', zh: '填写报名表格，我们将尽快与您联系。' },
@@ -192,7 +192,7 @@ export const t = {
         items: [
           {
             q: { en: 'How are fees calculated if I join a course midway?', zh: '中途加入课程，费用如何计算？' },
-            a: { en: 'Fees are prorated on a case-by-case basis. Please contact our finance director Vicky (available daily before 4pm) at +65 94253833.', zh: '费用按实际情况按比例计算，请联系财务主任Vicky（每日下午4时前）+65 94253833。' },
+            a: { en: 'Fees are prorated on a case-by-case basis. Please contact our finance director Vicky (available daily before 4pm) at +65 94253833.', zh: '费用按实际情况按比例计算，请联系财务主任Vicky +65 94253833。' },
           },
           {
             q: { en: 'Can I pay for a single class?', zh: '可以只付单堂课费用吗？' },
