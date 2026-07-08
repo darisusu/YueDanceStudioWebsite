@@ -1,5 +1,3 @@
-import { featuredTestimonials } from './testimonials';
-
 export const REGISTRATION_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSer8QU02hDVxaPR4EZ1H98_ux7b50ZHYJV9Fo1r7YnmBKbOYQ/viewform';
 
@@ -47,13 +45,10 @@ export const jsonLd = {
     addressCountry: 'SG',
   },
   sameAs: [FACEBOOK_URL, INSTAGRAM_URL, DOUYIN_URL],
-  // Genuine student testimonials (no numeric ratings are collected, so no
-  // aggregateRating is emitted — only the review text and author).
-  review: featuredTestimonials.map((tItem) => ({
-    '@type': 'Review',
-    reviewBody: (tItem.excerpt ?? tItem.quote).en,
-    author: { '@type': 'Person', name: tItem.attribution.en.split('·')[0].trim() },
-  })),
+  // No `review` markup: we collect testimonial text but no numeric ratings, and
+  // Google ignores self-serving reviews a business marks up on its own site —
+  // emitting them only triggers the "multiple reviews without aggregateRating"
+  // warning with no rich-result benefit. Testimonials still render on-page.
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Monday',    opens: '10:00', closes: '21:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday',   opens: '19:30', closes: '21:00' },
