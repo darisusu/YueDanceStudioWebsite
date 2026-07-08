@@ -19,7 +19,7 @@ export const SITE_URL = 'https://www.xiangyueculturearts.com';
 // Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX'. The project avoids
 // env vars, so paste the studio's real ID here to enable analytics; '' disables
 // it. A NEXT_PUBLIC_GA4_MEASUREMENT_ID env var is still honoured as a fallback.
-export const GA4_MEASUREMENT_ID = '';
+export const GA4_MEASUREMENT_ID = 'G-PBMFH427K3';
 
 export const jsonLd = {
   '@context': 'https://schema.org',
