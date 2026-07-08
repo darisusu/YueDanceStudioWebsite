@@ -31,9 +31,11 @@ const instructorsJsonLd = instructors.map(i => ({
   name: i.name,
   alternateName: i.nameZh,
   jobTitle: i.title.en,
+  description: i.bio.en,
   image: `${SITE_URL}${i.photo}`,
+  url: `${SITE_URL}/instructors`,
   worksFor: { '@id': `${SITE_URL}/#organization` },
-  knowsAbout: i.teaches.en,
+  knowsAbout: i.teaches.en.split('·').map(s => s.trim()),
 }));
 
 export default function InstructorsPage() {

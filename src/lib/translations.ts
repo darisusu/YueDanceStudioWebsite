@@ -180,6 +180,10 @@ export const t = {
         title: { en: 'Course Types', zh: '课程类型' },
         items: [
           {
+            q: { en: 'What dance styles do you teach?', zh: '你们教授哪些舞蹈类型？' },
+            a: { en: 'YUE Dance Studio teaches Chinese dance, Chinese classical dance, folk (ethnic) dance, contemporary dance, and adult ballet, plus a Mixed Style Dance class blending ballet, traditional, contemporary, folk and fitness dance. All classes are designed for adults, and beginners are welcome.', zh: '悦舞坊开设华族舞、中国古典舞、民族民间舞、当代舞与成人芭蕾，以及融合芭蕾、传统、当代、民族与健身舞的综合风格舞。所有课程均为成人设计，欢迎零基础学员。' },
+          },
+          {
             q: { en: 'I do not have experience in dance. What courses are suitable for me?', zh: '我没有舞蹈经验，适合参加哪些课程？' },
             a: { en: 'Mixed Style Dance and Chinese Dance Basics are popular among new dancers. However, feel free to try out other classes and let our instructors know if you wish to have basic steps explained along the way.', zh: '综合风格舞及华族舞基础深受初学者喜爱。当然，您也可以尝试其他课程，只需告知导师希望同步讲解基础步骤即可。' },
           },
@@ -200,6 +204,10 @@ export const t = {
       {
         title: { en: 'Course Fees', zh: '课程费用' },
         items: [
+          {
+            q: { en: 'How much do dance classes cost?', zh: '舞蹈课程的费用是多少？' },
+            a: { en: 'A single drop-in class is $38, and a 1.5-hour trial class is also $38. Term-package fees are prorated based on when you join — contact our finance director Vicky at +65 9425 3833 for a quote.', zh: '散课每堂$38，1.5小时体验课同样为$38。学期套餐费用按加入时间按比例计算，详情请联系财务主任Vicky +65 9425 3833。' },
+          },
           {
             q: { en: 'How are fees calculated if I join a course midway?', zh: '中途加入课程，费用如何计算？' },
             a: { en: 'Fees are prorated on a case-by-case basis. Please contact our finance director Vicky (available daily before 4pm) at +65 94253833.', zh: '费用按实际情况按比例计算，请联系财务主任Vicky +65 94253833。' },
