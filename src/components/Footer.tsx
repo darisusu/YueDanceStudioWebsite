@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
 import { FACEBOOK_URL, INSTAGRAM_URL } from '@/data/config';
+import { localizedHref } from '@/lib/locale';
 
 const pageLinks = [
   { href: '/about',       label: t.nav.about },
@@ -48,7 +49,7 @@ export default function Footer() {
               {pageLinks.map(({ href, label }) => (
                 <li key={href}>
                   <Link
-                    href={href}
+                    href={localizedHref(href, language)}
                     className="text-ivory/50 hover:text-ivory text-sm transition-colors duration-150"
                   >
                     {label[language]}
@@ -94,7 +95,7 @@ export default function Footer() {
         {/* Bottom rule */}
         <div className="border-t border-ivory/10 pt-8 flex flex-col sm:flex-row justify-between gap-3 items-start sm:items-center">
           <p className="text-ivory/50 text-xs">{tr.copyright[language]}</p>
-          <Link href="/faq" className="text-ivory/50 hover:text-ivory text-xs transition-colors duration-150">
+          <Link href={localizedHref('/faq', language)} className="text-ivory/50 hover:text-ivory text-xs transition-colors duration-150">
             {t.nav.faq[language]}
           </Link>
         </div>

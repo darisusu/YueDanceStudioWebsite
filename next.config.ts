@@ -13,6 +13,17 @@ const nextConfig: NextConfig = {
   // on Vercel (Node), so these always run.
   async redirects() {
     return [
+      // Language memory: a returning visitor who last chose 中文 is sent from the
+      // root to /zh. Crawlers and first-time visitors arrive without the cookie
+      // and always get the English root, so indexing is unaffected. Temporary
+      // (307) because it is content-negotiated, not a permanent move.
+      {
+        source: "/",
+        has: [{ type: "cookie", key: "lang", value: "zh" }],
+        destination: "/zh",
+        permanent: false,
+      },
+
       // Courses (highest traffic)
       { source: "/en/classes", destination: "/courses", statusCode: 301 },
 

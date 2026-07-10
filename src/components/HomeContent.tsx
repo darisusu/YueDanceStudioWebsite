@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
+import { localizedHref } from '@/lib/locale';
 import { t } from '@/lib/translations';
 import { courses as courseList } from '@/data/courses';
 import { instructors } from '@/data/instructors';
@@ -117,7 +118,7 @@ export default function HomeContent() {
                   {hero.ctaPrimary[language]}
                 </a>
                 <Link
-                  href="/courses"
+                  href={localizedHref('/courses', language)}
                   className="inline-flex flex-1 md:flex-none items-center justify-center gap-2 border border-ivory/50 text-ivory hover:bg-ivory hover:text-ink px-4 sm:px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase font-medium transition-all duration-200"
                 >
                   {hero.cta[language]}
@@ -147,7 +148,7 @@ export default function HomeContent() {
             <p className="text-ink-light text-sm mt-3">{courses.sub[language]}</p>
           </div>
           <Link
-            href="/courses"
+            href={localizedHref('/courses', language)}
             className="shrink-0 text-[11px] tracking-[0.15em] uppercase text-gold-deep hover:text-ink transition-colors duration-150"
           >
             {courses.viewAll[language]}
@@ -159,7 +160,7 @@ export default function HomeContent() {
           {/* Feature card — spans 8 columns */}
           {courseList[0] && (
             <ScrollReveal className="lg:col-span-8 bg-ivory group overflow-hidden relative">
-              <Link href="/courses" className="block">
+              <Link href={localizedHref('/courses', language)} className="block">
                 <div className="relative aspect-[16/10] lg:aspect-[unset] lg:min-h-[480px] overflow-hidden">
                   <Image
                     src={courseList[0].image}
@@ -190,7 +191,7 @@ export default function HomeContent() {
           <div className="lg:col-span-4 flex flex-col gap-px bg-ink/10">
             {courseList.slice(1, 3).map((course, i) => (
               <ScrollReveal key={course.name.en} delay={i * 100} className="bg-ivory group overflow-hidden flex-1 relative">
-                <Link href="/courses" className="block h-full">
+                <Link href={localizedHref('/courses', language)} className="block h-full">
                   <div className="relative aspect-[4/3] lg:aspect-[unset] lg:min-h-[238px] overflow-hidden">
                     <Image
                       src={course.image}
@@ -220,7 +221,7 @@ export default function HomeContent() {
           {/* Bottom row — remaining courses */}
           {courseList.slice(3).map((course, i) => (
             <ScrollReveal key={course.name.en} delay={i * 80} className="lg:col-span-6 bg-ivory group overflow-hidden relative">
-              <Link href="/courses" className="block">
+              <Link href={localizedHref('/courses', language)} className="block">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={course.image}
@@ -363,7 +364,7 @@ export default function HomeContent() {
               {moreInstructors.map((instructor) => (
                 <Link
                   key={instructor.name}
-                  href="/instructors"
+                  href={localizedHref('/instructors', language)}
                   className="group bg-ivory flex items-center gap-4 p-6 hover:bg-ink/[0.02] transition-colors duration-150"
                 >
                   <div className="relative w-14 h-14 shrink-0 overflow-hidden rounded-full">
@@ -391,7 +392,7 @@ export default function HomeContent() {
 
         <ScrollReveal className="mt-8 flex justify-end">
           <Link
-            href="/instructors"
+            href={localizedHref('/instructors', language)}
             className="text-[11px] tracking-[0.18em] uppercase text-gold hover:text-ink border-b border-gold/50 hover:border-ink pb-0.5 transition-colors duration-150"
           >
             {language === 'en'
@@ -426,7 +427,7 @@ export default function HomeContent() {
             {perf.sub[language]}
           </p>
           <Link
-            href="/performances"
+            href={localizedHref('/performances', language)}
             className="shrink-0 text-[11px] tracking-[0.15em] uppercase text-gold hover:text-ink border-b border-gold/50 hover:border-ink pb-0.5 transition-colors duration-150"
           >
             {perf.cta[language]}
@@ -490,7 +491,7 @@ export default function HomeContent() {
           {/* Read the full archive */}
           <ScrollReveal className="mt-12 lg:mt-14">
             <Link
-              href="/voices"
+              href={localizedHref('/voices', language)}
               className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-gold hover:text-ivory border-b border-gold/40 hover:border-ivory pb-1 transition-colors duration-150"
             >
               {testi.cta[language]}
@@ -650,7 +651,7 @@ export default function HomeContent() {
                   {join.primary[language]}
                 </a>
                 <Link
-                  href="/schedule"
+                  href={localizedHref('/schedule', language)}
                   className="inline-flex items-center gap-2 border border-ink text-ink hover:border-gold hover:text-gold px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase transition-all duration-200"
                 >
                   {join.secondary[language]}

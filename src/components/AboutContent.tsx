@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
+import { localizedHref } from '@/lib/locale';
 import { t } from '@/lib/translations';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -137,7 +138,7 @@ export default function AboutContent() {
               : '从妆艺大游行到新加坡金狮奖——浏览翔悦完整的舞台足迹。'}
           </p>
           <Link
-            href="/performances"
+            href={localizedHref('/performances', language)}
             className="inline-flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-gold hover:text-ink border-b border-gold/50 hover:border-ink pb-0.5 transition-colors duration-150"
           >
             {language === 'en' ? 'See full history →' : '了解演出历史 →'}

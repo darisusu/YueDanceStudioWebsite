@@ -6,6 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: 'YUE Dance',
     description:
       'Professional Chinese dance, ballet, contemporary, and folk dance classes in Singapore. All levels welcome.',
+    lang: 'en',
     start_url: '/',
     display: 'standalone',
     background_color: '#F5F0E8',

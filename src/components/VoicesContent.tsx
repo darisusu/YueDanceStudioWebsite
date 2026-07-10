@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
+import { localizedHref } from '@/lib/locale';
 import { t, type Bilingual } from '@/lib/translations';
 import { testimonials } from '@/data/testimonials';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -117,7 +118,7 @@ export default function VoicesContent() {
             {v.ctaHeading[language]}
           </h2>
           <Link
-            href="/courses"
+            href={localizedHref('/courses', language)}
             className="shrink-0 inline-flex items-center gap-2 bg-ink text-ivory hover:bg-gold hover:text-ink px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase font-semibold transition-colors duration-200"
           >
             {v.cta[language]}

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
+import { localizedHref } from '@/lib/locale';
 import { t } from '@/lib/translations';
 import { scheduleClasses, type DanceType } from '@/data/schedule';
 
@@ -176,7 +177,7 @@ export default function ScheduleContent() {
             {tr.note[language]}
           </p>
           <Link
-            href="/contact"
+            href={localizedHref('/contact', language)}
             className="shrink-0 inline-flex items-center border border-ink text-ink hover:border-gold hover:text-gold px-7 py-3 text-xs tracking-[0.2em] uppercase transition-all duration-150"
           >
             {tr.contact[language]}

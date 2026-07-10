@@ -2,7 +2,7 @@
 
 # YUE Dance Studio — Project Context
 
-Fully static Next.js 16 site (App Router) for a Singapore dance school. Bilingual EN/中文. Hosted on Vercel, auto-deploys on push to `main`.
+Next.js 16 site (App Router) for a Singapore dance school. Bilingual EN/中文 via locale-segmented routes (English at root, 中文 under `/zh`). Deployed on Vercel (Node runtime), auto-deploys on push to `main` — server redirects/rewrites are available (see `next.config.ts`).
 
 ## Tech
 
@@ -49,9 +49,11 @@ Never hardcode display text in components. Always add to translations or data fi
 
 ## Bilingual System
 
-- `LanguageContext` provides current language + toggle
-- Components destructure `t.section.key` and index with `[lang]`
-- Pattern: `const { lang } = useLanguage(); ... t.home.hero.line1[lang]`
+- **URL-driven locale:** English at root (`/about`), 中文 under `/zh` (`/zh/about`). Two route groups, `src/app/(en)` and `src/app/(zh)`, each with its own root layout owning `<html lang>`.
+- `LanguageContext` is fed the locale by the root layout (`<LanguageProvider lang>`); `useLanguage()` returns `{ language }` (no toggle — switching is a link to the other locale, handled in `Nav.tsx`).
+- Components destructure `t.section.key` and index with `[language]`
+- Pattern: `const { language } = useLanguage(); ... t.home.hero.line1[language]`
+- Per-page SEO copy lives in `src/data/pageSeo.ts`; `src/lib/seo.ts` builds metadata + hreflang; `src/lib/jsonld.ts` builds per-locale structured data; `src/lib/locale.ts` maps paths between locales.
 
 ## Design Tokens
 
@@ -67,6 +69,6 @@ Never hardcode display text in components. Always add to translations or data fi
 
 - **Commit style:** `type(scope): message` — e.g. `fix(seo):`, `feat(i18n):`, `docs(readme):`
 - **No env vars** — everything is in `src/data/config.ts`
-- **Static export** — no server components, no API routes, no middleware
+- **Vercel Node deployment** — server redirects/rewrites in `next.config.ts` run (no `output: 'export'`)
 - **Images** — always use `next/image`, place files in `public/images/`
 - **No comments** unless the WHY is non-obvious

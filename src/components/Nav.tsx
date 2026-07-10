@@ -7,6 +7,13 @@ import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
 import { t } from '@/lib/translations';
 import { REGISTRATION_URL } from '@/data/config';
+import { localizedHref } from '@/lib/locale';
+
+// Persist the chosen language so the cookie-conditional root redirect (see
+// next.config.ts) can send returning visitors to their locale.
+function rememberLang(lang: 'en' | 'zh') {
+  document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
+}
 
 // Desktop bar — every page except Home (the logo already links home).
 const primaryLinks = [
@@ -36,9 +43,15 @@ const navLinks = [
 export default function Nav() {
   const [scrolled, setScrolled]     = useState(false);
   const [menuOpen, setMenuOpen]     = useState(false);
-  const { language, toggle }        = useLanguage();
+  const { language }                = useLanguage();
   const pathname                    = usePathname();
-  const isHome                      = pathname === '/';
+  const isHome                      = pathname === '/' || pathname === '/zh';
+
+  // The same page in each locale — English at root, Chinese under /zh.
+  const isZh     = pathname === '/zh' || pathname.startsWith('/zh/');
+  const basePath = isZh ? (pathname.replace(/^\/zh/, '') || '/') : pathname;
+  const enHref   = basePath;
+  const zhHref   = basePath === '/' ? '/zh' : `/zh${basePath}`;
   const hamburgerRef                = useRef<HTMLButtonElement>(null);
   const closeButtonRef              = useRef<HTMLButtonElement>(null);
   const firstRender                 = useRef(true);
@@ -91,7 +104,7 @@ export default function Nav() {
       >
         <div className="max-w-7xl mx-auto pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] lg:px-12 h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0">
+          <Link href={localizedHref('/', language)} className="flex items-center gap-2.5 shrink-0">
             <Image
               src="/images/logo/yue-dance-logo.png"
               alt=""
@@ -106,33 +119,46 @@ export default function Nav() {
 
           {/* Desktop links — core journey only; hamburger below the xl breakpoint */}
           <nav className="hidden xl:flex items-center gap-7" aria-label="Main navigation">
-            {primaryLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`text-[11px] tracking-[0.18em] uppercase font-medium transition-colors duration-200 ${
-                  pathname === href
-                    ? activeColor
-                    : `${textColor} ${hoverColor}`
-                }`}
-              >
-                {label[language]}
-              </Link>
-            ))}
+            {primaryLinks.map(({ href, label }) => {
+              const localized = localizedHref(href, language);
+              return (
+                <Link
+                  key={href}
+                  href={localized}
+                  className={`text-[11px] tracking-[0.18em] uppercase font-medium transition-colors duration-200 ${
+                    pathname === localized
+                      ? activeColor
+                      : `${textColor} ${hoverColor}`
+                  }`}
+                >
+                  {label[language]}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right cluster */}
           <div className="flex items-center gap-4 lg:gap-5">
-            {/* Language toggle */}
-            <button
-              onClick={toggle}
-              aria-label={language === 'en' ? 'Switch language to Chinese' : '切换语言为英文'}
-              className={`inline-flex items-center h-11 px-1 text-[11px] tracking-[0.15em] transition-colors duration-200 ${textColor} ${hoverColor}`}
-            >
-              <span className={language === 'en' ? `${activeColor} font-semibold` : ''}>EN</span>
+            {/* Language switch — links to the same page in the other locale */}
+            <div className={`inline-flex items-center h-11 px-1 text-[11px] tracking-[0.15em] ${textColor}`}>
+              <a
+                href={enHref}
+                onClick={() => rememberLang('en')}
+                aria-label="Switch to English"
+                className={`transition-colors duration-200 ${language === 'en' ? `${activeColor} font-semibold` : hoverColor}`}
+              >
+                EN
+              </a>
               <span className="mx-1.5 opacity-30" aria-hidden="true">/</span>
-              <span className={language === 'zh' ? `${activeColor} font-semibold` : ''}>中文</span>
-            </button>
+              <a
+                href={zhHref}
+                onClick={() => rememberLang('zh')}
+                aria-label="切换到中文"
+                className={`transition-colors duration-200 ${language === 'zh' ? `${activeColor} font-semibold` : hoverColor}`}
+              >
+                中文
+              </a>
+            </div>
 
             {/* Book-a-trial — persistent primary CTA (from sm up; in the menu below sm) */}
             <a
@@ -174,7 +200,7 @@ export default function Nav() {
       >
         {/* Top bar */}
         <div className="flex items-center justify-between">
-          <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Home">
+          <Link href={localizedHref('/', language)} onClick={() => setMenuOpen(false)} aria-label="Home">
             <Image
               src="/images/logo/yue-dance-logo.png"
               alt="YUE Dance Studio"
@@ -197,20 +223,23 @@ export default function Nav() {
 
         {/* Nav links */}
         <nav className="flex flex-col gap-2 mt-14 flex-1" aria-label="Mobile navigation">
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-              className={`font-display text-[2.6rem] leading-tight transition-colors duration-150 ${
-                pathname === href
-                  ? 'text-gold'
-                  : 'text-ivory/75 hover:text-ivory'
-              }`}
-            >
-              {label[language]}
-            </Link>
-          ))}
+          {navLinks.map(({ href, label }) => {
+            const localized = localizedHref(href, language);
+            return (
+              <Link
+                key={href}
+                href={localized}
+                onClick={() => setMenuOpen(false)}
+                className={`font-display text-[2.6rem] leading-tight transition-colors duration-150 ${
+                  pathname === localized
+                    ? 'text-gold'
+                    : 'text-ivory/75 hover:text-ivory'
+                }`}
+              >
+                {label[language]}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Primary CTA */}
@@ -226,15 +255,25 @@ export default function Nav() {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-ivory/10 flex items-center justify-between">
-          <button
-            onClick={toggle}
-            aria-label={language === 'en' ? 'Switch language to Chinese' : '切换语言为英文'}
-            className="inline-flex items-center h-11 -my-2 text-[11px] tracking-[0.15em] text-ivory/50"
-          >
-            <span className={language === 'en' ? 'text-gold' : 'text-ivory/50'}>EN</span>
+          <div className="inline-flex items-center h-11 -my-2 text-[11px] tracking-[0.15em] text-ivory/50">
+            <a
+              href={enHref}
+              onClick={() => { rememberLang('en'); setMenuOpen(false); }}
+              aria-label="Switch to English"
+              className={language === 'en' ? 'text-gold' : 'text-ivory/50 hover:text-ivory'}
+            >
+              EN
+            </a>
             <span className="mx-2 text-ivory/20" aria-hidden="true">/</span>
-            <span className={language === 'zh' ? 'text-gold' : 'text-ivory/50'}>中文</span>
-          </button>
+            <a
+              href={zhHref}
+              onClick={() => { rememberLang('zh'); setMenuOpen(false); }}
+              aria-label="切换到中文"
+              className={language === 'zh' ? 'text-gold' : 'text-ivory/50 hover:text-ivory'}
+            >
+              中文
+            </a>
+          </div>
           <span className="text-[10px] tracking-widest text-ivory/40 uppercase">Xiang Yue Culture Arts</span>
         </div>
       </div>
