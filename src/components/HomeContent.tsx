@@ -293,7 +293,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Instructor teaser ─────────────────────────────────── */}
-      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-24 lg:pt-32 pb-12 lg:pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="mb-14 lg:mb-16">
           <p className="text-[10px] tracking-[0.28em] uppercase text-ink-light mb-3">
             {t.instructors.label[language]}
@@ -403,7 +403,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Performances teaser ──────────────────────────────── */}
-      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-0 lg:pt-2 pb-24 lg:pb-32 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="mb-14 lg:mb-16">
           <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-3">
             {perf.label[language]}
@@ -413,11 +413,24 @@ export default function HomeContent() {
           </h2>
         </ScrollReveal>
 
-        <div className="border-t border-ink/10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-ink/10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
           {perf.items.map((item, i) => (
-            <ScrollReveal key={item.title.en} delay={i * 80} className="py-8 px-0 sm:px-8 first:pl-0 last:pr-0">
-              <h3 className="font-display text-xl leading-tight mb-2">{item.title[language]}</h3>
-              <p className="text-ink-light text-sm leading-relaxed">{item.note[language]}</p>
+            <ScrollReveal key={item.title.en} delay={i * 80}>
+              <div className="group relative overflow-hidden bg-ink grain">
+                <Image
+                  src={item.image}
+                  alt={item.title[language]}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/5" />
+                <div className="relative z-10 flex min-h-[22rem] lg:min-h-[26rem] flex-col justify-end p-6 lg:p-8">
+                  <p className="text-[10px] tracking-[0.28em] uppercase text-gold mb-3">{item.year}</p>
+                  <h3 className="font-display text-ivory text-2xl leading-tight mb-2">{item.title[language]}</h3>
+                  <p className="text-ivory/75 text-sm leading-relaxed">{item.note[language]}</p>
+                </div>
+              </div>
             </ScrollReveal>
           ))}
         </div>

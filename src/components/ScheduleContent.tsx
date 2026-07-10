@@ -126,6 +126,7 @@ export default function ScheduleContent() {
                             </p>
                             <p className="text-ink-light text-sm">
                               {cls.instructor[language]}
+                              {language === 'zh' && cls.instructor.zh && '老师'}
                             </p>
                           </>
                         )}
@@ -162,7 +163,10 @@ export default function ScheduleContent() {
                   <p className="font-display text-xl text-ink leading-tight mb-1">
                     {cls.name[language]}
                   </p>
-                  <p className="text-ink-light text-sm">{cls.instructor[language]}</p>
+                  <p className="text-ink-light text-sm">
+                    {cls.instructor[language]}
+                    {language === 'zh' && cls.instructor.zh && '老师'}
+                  </p>
                 </div>
               ))}
             </div>
