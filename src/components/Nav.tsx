@@ -121,15 +121,14 @@ export default function Nav() {
           <nav className="hidden xl:flex items-center gap-7" aria-label="Main navigation">
             {primaryLinks.map(({ href, label }) => {
               const localized = localizedHref(href, language);
+              const active = pathname === localized;
               return (
                 <Link
                   key={href}
                   href={localized}
-                  className={`text-[11px] tracking-[0.18em] uppercase font-medium transition-colors duration-200 ${
-                    pathname === localized
-                      ? activeColor
-                      : `${textColor} ${hoverColor}`
-                  }`}
+                  className={`whitespace-nowrap uppercase font-medium transition-colors duration-200 ${
+                    language === 'en' ? 'text-[11px] tracking-[0.18em]' : 'text-[11px] tracking-normal'
+                  } ${active ? activeColor : `${textColor} ${hoverColor}`}`}
                 >
                   {label[language]}
                 </Link>
@@ -140,7 +139,7 @@ export default function Nav() {
           {/* Right cluster */}
           <div className="flex items-center gap-4 lg:gap-5">
             {/* Language switch — links to the same page in the other locale */}
-            <div className={`inline-flex items-center h-11 px-1 text-[11px] tracking-[0.15em] ${textColor}`}>
+            <div className={`inline-flex items-center h-11 text-[11px] tracking-[0.15em] ${textColor}`}>
               <a
                 href={enHref}
                 onClick={() => rememberLang('en')}
@@ -165,7 +164,9 @@ export default function Nav() {
               href={REGISTRATION_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center bg-gold text-ink hover:bg-ink hover:text-ivory px-5 py-2.5 text-[11px] tracking-[0.18em] uppercase font-semibold transition-colors duration-200"
+              className={`hidden sm:inline-flex items-center bg-gold text-ink hover:bg-ink hover:text-ivory px-5 py-2.5 text-[11px] uppercase font-semibold transition-colors duration-200 ${
+                language === 'en' ? 'tracking-[0.18em]' : 'tracking-[0.08em]'
+              }`}
             >
               {t.cta.bookTrial[language]}
             </a>
