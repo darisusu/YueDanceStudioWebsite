@@ -194,7 +194,7 @@ export default function Nav() {
         aria-label="Navigation menu"
         aria-hidden={!menuOpen || undefined}
         ref={(el) => { if (el) (el as HTMLElement & { inert: boolean }).inert = !menuOpen; }}
-        className={`fixed inset-0 z-[100] bg-ink flex flex-col overflow-y-auto p-8 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))] transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 z-[100] bg-ink flex flex-col overflow-y-auto p-6 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[max(1.25rem,env(safe-area-inset-bottom))] transition-all duration-300 ease-in-out ${
           menuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -224,7 +224,7 @@ export default function Nav() {
         </div>
 
         {/* Nav links */}
-        <nav className="flex flex-col gap-2 mt-14 flex-1" aria-label="Mobile navigation">
+        <nav className="flex flex-col gap-1 mt-6 flex-1 justify-center" aria-label="Mobile navigation">
           {navLinks.map(({ href, label }) => {
             const localized = localizedHref(href, language);
             return (
@@ -232,7 +232,7 @@ export default function Nav() {
                 key={href}
                 href={localized}
                 onClick={() => setMenuOpen(false)}
-                className={`font-display text-[2.6rem] leading-tight transition-colors duration-150 ${
+                className={`font-display text-[clamp(1.5rem,4.7vh,2.4rem)] leading-[1.15] transition-colors duration-150 ${
                   pathname === localized
                     ? 'text-gold'
                     : 'text-ivory/75 hover:text-ivory'
@@ -250,13 +250,13 @@ export default function Nav() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setMenuOpen(false)}
-          className="mt-8 inline-flex items-center justify-center bg-gold text-ink hover:bg-ivory px-6 py-4 text-xs tracking-[0.2em] uppercase font-semibold transition-colors duration-200"
+          className="mt-6 inline-flex items-center justify-center bg-gold text-ink hover:bg-ivory px-6 py-3.5 text-xs tracking-[0.2em] uppercase font-semibold transition-colors duration-200"
         >
           {t.cta.bookTrial[language]}
         </a>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-ivory/10 flex items-center justify-between">
+        <div className="pt-5 mt-6 border-t border-ivory/10 flex items-center justify-between">
           <div className="inline-flex items-center h-11 -my-2 text-[11px] tracking-[0.15em] text-ivory/50">
             <a
               href={enHref}
