@@ -23,6 +23,20 @@ export const performances: Performance[] = [
     images: ['/images/about/about-performance-10.jpg'],
   },
   {
+    year: '2023',
+    en: 'YUE Dance Rising I 《悦舞飞扬 I》',
+    zh: '《悦舞飞扬 I》',
+    subtitle: {
+      en: 'YUE Dance Studio · 5th Anniversary Teachers\' Original Video Works Recital',
+      zh: '悦舞坊五周年老师原创视频汇报演出',
+    },
+    desc: {
+      en: 'Our 5th Anniversary recital presenting teachers\' original video works, celebrating five years of artistry and community.',
+      zh: '五周年汇报演出，呈献老师原创视频作品，庆祝悦舞坊五载艺术与社群成长。',
+    },
+    images: ['/images/performances/recital/yue-dance-rising-1.jpg'],
+  },
+  {
     year: '2022',
     en: 'Mrs Singapore World 2022 Pageant',
     zh: '2022年新加坡世界夫人大赛',
@@ -73,7 +87,7 @@ export const performances: Performance[] = [
   {
     year: '2019',
     en: 'Dance Is Calling: 《阿里情》',
-    zh: '《舞动新加坡》：《阿里情》',
+    zh: '舞在召唤：《阿里情》',
     subtitle: {
       en: 'Presented by Tampines Art Troupe',
       zh: '由淡滨尼艺术团主办',
@@ -82,7 +96,7 @@ export const performances: Performance[] = [
       en: 'Performed 《阿里情》 in a diverse dance special organised by Tampines Art Troupe.',
       zh: '受淡滨尼艺术团之邀，于多元舞蹈专场演出《阿里情》。',
     },
-    images: ['/images/about/about-performance-5.jpeg'],
+    images: ['/images/performances/community/dance-is-calling.jpg'],
   },
   {
     year: '2019',
@@ -90,7 +104,7 @@ export const performances: Performance[] = [
     zh: '佛光山慈善演出',
     desc: {
       en: 'Performed alongside renowned Hong Kong artist Michelle Yim in a charitable concert.',
-      zh: '与香港知名艺人米雪Michelle同台，参与慈善演唱会义演。',
+      zh: '与香港知名艺人米雪Michelle同台，参与慈善义演。',
     },
     images: ['/images/about/about-performance-11.jpg'],
   },
