@@ -11,6 +11,7 @@ import { featuredTestimonials } from '@/data/testimonials';
 import ParallaxHero from '@/components/ParallaxHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import Marquee from '@/components/Marquee';
+import BlogTeaser from '@/components/BlogTeaser';
 import { REGISTRATION_URL, MAPS_URL, FACEBOOK_URL, INSTAGRAM_URL } from '@/data/config';
 
 const marqueeItems = [
@@ -633,6 +634,8 @@ export default function HomeContent() {
           </div>
         </ScrollReveal>
       </section>
+
+      <BlogTeaser lang={language} />
 
       {/* ── Join CTA ─────────────────────────────────────────── */}
       <section className="py-24 lg:py-32 px-6 lg:px-12">

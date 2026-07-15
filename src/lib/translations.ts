@@ -31,6 +31,7 @@ export const t = {
     readMore:   { en: 'Read',          zh: '阅读全文' },
     backToBlog: { en: '← All posts',   zh: '← 返回全部文章' },
     morePosts:  { en: 'More to read',  zh: '更多文章' },
+    viewAll:    { en: 'Read the journal →', zh: '阅读全部文章 →' },
     ctaHeading: { en: 'Come find the beauty in dance', zh: '来舞中寻美' },
     ctaBody: {
       en: 'Any class, $38 for a 1.5-hour session. Come see how it feels.',

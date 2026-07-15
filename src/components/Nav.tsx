@@ -35,6 +35,7 @@ const navLinks = [
   { href: '/courses',        label: t.nav.courses },
   { href: '/performances',   label: t.nav.performances },
   { href: '/voices',         label: t.nav.voices },
+  { href: '/blog',           label: t.nav.blog },
   { href: '/schedule',       label: t.nav.schedule },
   { href: '/contact',        label: t.nav.contact },
   { href: '/faq',            label: t.nav.faq },
