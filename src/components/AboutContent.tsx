@@ -13,81 +13,90 @@ export default function AboutContent() {
 
   return (
     <>
-      {/* ── Full-bleed page hero ──────────────────────────────── */}
-      <section className="relative h-[75vh] flex items-end overflow-hidden grain mt-16">
+      {/* ── Page hero: faces fill the screen, title banner pinned below.
+           Locked to one viewport (minus the 4rem fixed nav) so both photos
+           AND the title are always in view without scrolling, at any aspect.
+           svh keeps it within the smallest viewport (mobile chrome visible). */}
+      <section className="grain mt-16 flex flex-col h-[calc(100svh-4rem)]">
 
-        {/* Split founder portraits — stacked on mobile, side-by-side from lg */}
-        <div className="absolute inset-0 flex flex-col lg:flex-row">
+        {/* Founder portraits — side by side, flexing to fill whatever height
+            is left above the banner */}
+        <div className="relative flex flex-row flex-1 min-h-0 overflow-hidden">
 
           {/* Lin Jing — left */}
           <div className="relative flex-1 overflow-hidden">
             <Image
-              src="/images/instructors/clear-lin-jing.jpeg"
-              alt="Lin Jing, Co-founder of YUE Dance Studio"
+              src="/images/about/hero-lin-jing.jpeg"
+              alt="Janelle Lin Jing, Co-founder of YUE Dance Studio"
               fill
-              sizes="(max-width: 768px) 50vw, 50vw"
+              sizes="50vw"
               className="object-cover"
-              style={{ objectPosition: '50% 36%' }}
+              style={{ objectPosition: '50% 30%' }}
               priority
             />
             {/* top vignette for name legibility */}
             <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/65 to-transparent" />
-            {/* bottom gradient for headline legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+            {/* bottom fade blends the photo into the banner below */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink to-transparent" />
             {/* Founder name — top of panel */}
-            <div className="absolute top-5 left-5 lg:left-8 z-[2]">
+            <div className="absolute top-8 left-5 lg:left-8 z-[2]">
               <p className="text-[9px] lg:text-[8px] tracking-[0.4em] uppercase text-gold/90 mb-1">
                 {language === 'zh' ? '联合创办人' : 'Co-Founder'}
               </p>
-              <p className="font-display text-ivory text-sm lg:text-base leading-none">Lin Jing</p>
+              <p className="font-display text-ivory text-sm lg:text-base leading-none">Janelle Lin Jing</p>
             </div>
           </div>
 
-          {/* Han Tao — right */}
+          {/* Han Tao — right. Uses the same normalized crop + object-position
+              as Lin, so object-cover keeps the two faces locked in alignment
+              at every viewport aspect (no per-image nudging needed). */}
           <div className="relative flex-1 overflow-hidden">
             <Image
-              src="/images/instructors/clear-han-tao.jpeg"
-              alt="Han Tao, Co-founder of YUE Dance Studio"
+              src="/images/about/hero-han-tao.jpeg"
+              alt="Vicki Han Tao, Co-founder of YUE Dance Studio"
               fill
-              sizes="(max-width: 768px) 50vw, 50vw"
+              sizes="50vw"
               className="object-cover"
-              style={{ objectPosition: '50% 0%' }}
+              style={{ objectPosition: '50% 30%' }}
               priority
             />
             {/* top vignette for name legibility */}
             <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/65 to-transparent" />
-            {/* bottom gradient for headline legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+            {/* bottom fade blends the photo into the banner below */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink to-transparent" />
             {/* Founder name — top of panel */}
-            <div className="absolute top-5 left-5 lg:left-8 z-[2]">
+            <div className="absolute top-8 left-5 lg:left-8 z-[2]">
               <p className="text-[9px] lg:text-[8px] tracking-[0.4em] uppercase text-gold/90 mb-1">
                 {language === 'zh' ? '联合创办人' : 'Co-Founder'}
               </p>
-              <p className="font-display text-ivory text-sm lg:text-base leading-none">Han Tao</p>
+              <p className="font-display text-ivory text-sm lg:text-base leading-none">Vicki Han Tao</p>
             </div>
           </div>
+
+          {/* Vertical text — desktop only */}
+          <p
+            className="text-vertical absolute left-8 bottom-8 font-display text-[10px] tracking-[0.4em] text-ivory/25 select-none hidden lg:block z-[2]"
+            aria-hidden="true"
+          >
+            翔悦文艺
+          </p>
         </div>
 
-        {/* Vertical text — desktop only */}
-        <p
-          className="text-vertical absolute left-8 bottom-12 font-display text-[10px] tracking-[0.4em] text-ivory/25 select-none hidden lg:block z-[2]"
-          aria-hidden="true"
-        >
-          翔悦文艺
-        </p>
-
-        <div className="relative z-[2] max-w-7xl mx-auto px-6 lg:px-12 w-full pb-16">
-          <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-4">
-            {ab.label[language]}
-          </p>
-          <h1 className="font-display text-ivory text-[clamp(3.5rem,9vw,8rem)] leading-[0.9] whitespace-pre-line [text-shadow:0_2px_12px_rgba(0,0,0,0.5)]">
-            {ab.heading[language]}
-          </h1>
+        {/* Title banner — pinned below the faces, keeps its natural height */}
+        <div className="bg-ink grain shrink-0">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 py-8 lg:py-14">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-3">
+              {ab.label[language]}
+            </p>
+            <h1 className="font-display text-ivory text-[clamp(2.75rem,8vw,7rem)] leading-[0.9] whitespace-pre-line">
+              {ab.heading[language]}
+            </h1>
+          </div>
         </div>
       </section>
 
       {/* ── Story ────────────────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-10 lg:pt-14 pb-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Text */}
           <div className="lg:col-span-5 space-y-6 text-ink-light leading-relaxed text-base max-w-prose">

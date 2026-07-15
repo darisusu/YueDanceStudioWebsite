@@ -102,7 +102,7 @@ export const t = {
 
   about: {
     label:   { en: 'Our Story',            zh: '我们的故事' },
-    heading: { en: 'Born from a\nLove of Dance', zh: '热爱舞蹈而生' },
+    heading: { en: 'Born from a\nLove of Dance', zh: '源于对舞蹈的热爱' },
     body1:   { en: 'Founded in 2018, YUE Dance Studio, part of Xiang Yue Culture Arts, was born from a simple belief: that dance is for everyone, at every stage of life.', zh: '翔悦文艺旗下悦舞坊成立于2018年，始终秉持一个简单的信念：舞蹈属于每一个人，无论年龄，无论起点。' },
     body2:   { en: 'We began as a small community studio in Singapore, built on word of mouth and a genuine passion for movement. Today, YUE Dance Studio brings together adult learners of all backgrounds under the guidance of experienced, accomplished instructors, in classes ranging from Chinese classical dance and ballet to folk dance and contemporary forms.', zh: '我们从新加坡的一间小小社区舞室起步，凭借口碑与对舞蹈艺术的热忱，逐渐成长壮大。如今，悦舞坊汇聚了来自各行各业的成人学员，在专业导师的带领下，共同探索现当代舞、民族民间舞、芭蕾舞、华族舞、古典舞的世界。' },
     body3:   { en: 'We are not a studio that trains competitors. We are a place where working adults, retirees, and lifelong learners come to find rhythm, community, and the quiet joy of movement. Many of our students have never danced before. Many have danced their whole lives. All of them are welcome here.', zh: '我们不是培养竞技选手的训练机构，而是一个让职场人士、退休人员及终身学习者寻回节奏、融入社群、感受律动之美的地方。这里有初学者，有资深舞者，每一位都能在这里找到属于自己的位置。' },
