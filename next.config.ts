@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
+  // Let .mdx files (blog post bodies in src/content/blog) be imported as
+  // components; .tsx pages still resolve first.
+  pageExtensions: ["ts", "tsx", "md", "mdx"],
   images: {
     formats: ['image/avif', 'image/webp'],
   },
@@ -48,4 +52,13 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Plugin names are passed as strings so they work under Turbopack (functions
+// can't cross into the Rust compiler). remark-gfm adds tables, task lists,
+// strikethrough, and autolinks to post markdown.
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [["remark-gfm"]],
+  },
+});
+
+export default withMDX(nextConfig);

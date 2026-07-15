@@ -12,12 +12,30 @@ export const t = {
     contact:      { en: 'Contact',      zh: '联系我们' },
     faq:          { en: 'FAQ',          zh: '常见问题' },
     voices:       { en: 'Voices',       zh: '学员心声' },
+    blog:         { en: 'Blog',         zh: '博客' },
   },
 
   cta: {
     bookTrial:  { en: 'Book a Trial',  zh: '预约体验课' },
     register:   { en: 'Register',      zh: '立即报名' },
     trialBlurb: { en: 'New here? Try any class at just $38 for a 1.5-hour session.', zh: '初次到访？任选课程体验 · $38／1.5小时。' },
+  },
+
+  blog: {
+    label:    { en: 'Journal',         zh: '博客' },
+    heading:  { en: 'Notes on Dance',  zh: '习舞随笔' },
+    intro: {
+      en: 'Guides, culture, and reflections for adults finding their way into dance in Singapore.',
+      zh: '为在新加坡寻舞的成年人而写：入门指南、文化随笔与习舞心得。',
+    },
+    readMore:   { en: 'Read',          zh: '阅读全文' },
+    backToBlog: { en: '← All posts',   zh: '← 返回全部文章' },
+    morePosts:  { en: 'More to read',  zh: '更多文章' },
+    ctaHeading: { en: 'Come find the beauty in dance', zh: '来舞中寻美' },
+    ctaBody: {
+      en: 'Any class, $38 for a 1.5-hour session. Come see how it feels.',
+      zh: '任选课程，$38／1.5小时。来亲身体验。',
+    },
   },
 
   home: {

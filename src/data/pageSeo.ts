@@ -130,6 +130,23 @@ const PAGES_DATA = {
     },
     crumb: { en: 'Student Voices', zh: '学员心声' },
   },
+  blog: {
+    path: '/blog',
+    title: {
+      en: 'Blog | Adult Dance in Singapore',
+      zh: '博客 | 新加坡成人舞蹈',
+    },
+    description: {
+      en: 'Guides, culture, and reflections on adult dance in Singapore — Chinese dance, ballet and contemporary — from YUE Dance Studio.',
+      zh: '悦舞坊博客：新加坡成人舞蹈的入门指南、文化随笔与习舞心得，涵盖华族舞、芭蕾与当代舞。',
+    },
+    crumb: { en: 'Blog', zh: '博客' },
+    ogImage: '/images/hero/hero-banner-3.jpg',
+    ogAlt: {
+      en: 'The YUE Dance Studio blog',
+      zh: '悦舞坊博客',
+    },
+  },
 } satisfies Record<string, PageSeo>;
 
 export type PageSlug = keyof typeof PAGES_DATA;
