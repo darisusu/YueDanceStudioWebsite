@@ -15,7 +15,7 @@ export default function BlogTeaser({ lang }: { lang: Lang }) {
   const b = t.blog;
 
   return (
-    <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+    <section className="py-16 lg:py-24 px-6 lg:px-12 max-w-7xl mx-auto">
       <ScrollReveal>
         <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-4">{b.label[lang]}</p>
         <h2 className="font-display text-[clamp(2.4rem,5vw,4rem)] leading-[1.0] mb-12 lg:mb-16">

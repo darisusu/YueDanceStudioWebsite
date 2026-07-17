@@ -152,7 +152,7 @@ export default function HomeContent() {
       <Marquee items={marqueeItems} />
 
       {/* ── Courses ──────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-14 pb-16 lg:pt-20 lg:pb-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14 lg:mb-16">
           <div>
             <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-3">
@@ -267,7 +267,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Cultural identity section ─────────────────────────── */}
-      <section className="relative bg-ink py-32 lg:py-40 px-6 lg:px-12 overflow-hidden grain">
+      <section className="relative bg-ink py-24 lg:py-32 px-6 lg:px-12 overflow-hidden grain">
         {/* 悦 large ghost */}
         <span
           className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[40vw] leading-none text-ivory/[0.03] select-none pointer-events-none"
@@ -309,7 +309,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Instructor teaser ─────────────────────────────────── */}
-      <section className="pt-24 lg:pt-32 pb-12 lg:pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-16 lg:pt-24 pb-10 lg:pb-14 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="mb-14 lg:mb-16">
           <p className="text-[10px] tracking-[0.28em] uppercase text-ink-light mb-3">
             {t.instructors.label[language]}
@@ -340,7 +340,7 @@ export default function HomeContent() {
                 </div>
 
                 {/* Text */}
-                <div className="p-10 lg:p-16 flex flex-col justify-center relative overflow-hidden">
+                <div className="px-0 py-10 lg:p-16 flex flex-col justify-center relative overflow-hidden">
                   {/* Ghost name in background */}
                   <span
                     className="absolute -bottom-4 right-0 font-display text-[7rem] leading-none text-ink/[0.04] select-none pointer-events-none"
@@ -360,7 +360,7 @@ export default function HomeContent() {
                     <p className="text-[10px] tracking-[0.22em] uppercase text-gold-deep mb-6">
                       {instructor.title[language]}
                     </p>
-                    <p className="text-ink-light text-base leading-relaxed max-w-sm">
+                    <p className="text-ink-light text-base leading-relaxed max-w-none lg:max-w-sm">
                       {firstSentences(instructor.bio[language], language)}
                     </p>
                   </div>
@@ -419,7 +419,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Performances teaser ──────────────────────────────── */}
-      <section className="pt-0 lg:pt-2 pb-24 lg:pb-32 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-0 lg:pt-2 pb-16 lg:pb-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal className="mb-14 lg:mb-16">
           <p className="text-[10px] tracking-[0.28em] uppercase text-gold-deep mb-3">
             {perf.label[language]}
@@ -465,7 +465,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Testimonials — wall of voices ────────────────────── */}
-      <section className="relative bg-ink py-32 lg:py-40 px-6 lg:px-12 overflow-hidden grain">
+      <section className="relative bg-ink py-24 lg:py-32 px-6 lg:px-12 overflow-hidden grain">
         {/* background performance image */}
         <div className="absolute inset-0 opacity-[0.10]">
           <Image
@@ -538,7 +538,7 @@ export default function HomeContent() {
       </section>
 
       {/* ── Visit / Location ─────────────────────────────────── */}
-      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-16 lg:py-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <ScrollReveal>
           <p className="text-[10px] tracking-[0.3em] uppercase text-gold-deep mb-3">
             {visit.label[language]}
@@ -653,7 +653,7 @@ export default function HomeContent() {
       <BlogTeaser lang={language} />
 
       {/* ── Join CTA ─────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 px-6 lg:px-12">
+      <section className="py-16 lg:py-24 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="relative">
             <span
