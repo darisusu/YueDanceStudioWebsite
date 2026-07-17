@@ -38,6 +38,21 @@ function firstSentences(text: string, lang: 'en' | 'zh', count = 2) {
   return parts.slice(0, count).join(sep) + (parts.length ? end : '');
 }
 
+// Gild the trial price inside the blurb without duplicating the string across
+// translations — both locales share the "$38" token, so split on it and tint
+// the price gold to make the incentive the first thing the eye catches.
+function withGildedPrice(text: string) {
+  const [before, after] = text.split('$38');
+  if (after === undefined) return text;
+  return (
+    <>
+      {before}
+      <span className="text-gold font-semibold">$38</span>
+      {after}
+    </>
+  );
+}
+
 export default function HomeContent() {
   const { language } = useLanguage();
   const hero    = t.home.hero;
@@ -83,23 +98,23 @@ export default function HomeContent() {
           悦
         </span>
 
-        <div className="relative z-[3] max-w-7xl mx-auto px-6 lg:px-12 w-full pb-20 lg:pb-28">
+        <div className="relative z-[3] max-w-7xl mx-auto px-6 lg:px-12 w-full pb-16 lg:pb-20">
           {/* Label */}
-          <p className="text-[11px] tracking-[0.3em] uppercase text-ivory/85 mb-8 [text-shadow:0_1px_8px_rgba(0,0,0,0.85)]">
+          <p className="text-[11px] tracking-[0.3em] uppercase text-ivory/85 mb-6 lg:mb-8 [text-shadow:0_1px_8px_rgba(0,0,0,0.85)]">
             {hero.label[language]}
           </p>
 
           {/* Headline — massive, overlapping the image */}
-          <h1 className="font-display text-ivory leading-[0.95] lg:leading-[0.9] mb-12 sm:mb-14 [text-shadow:0_2px_16px_rgba(0,0,0,0.4)]">
-            <span className="block text-[clamp(3.25rem,12vw,10rem)] font-light">
+          <h1 className="font-display text-ivory leading-[0.95] lg:leading-[0.9] mb-8 sm:mb-10 lg:mb-12 [text-shadow:0_2px_16px_rgba(0,0,0,0.4)]">
+            <span className="block text-[clamp(3.25rem,min(12vw,16vh),8.5rem)] font-light">
               {hero.line1[language]}
             </span>
             {hero.line2[language] && (
-              <span className="block text-[clamp(3.25rem,12vw,10rem)] font-light lg:pl-[6vw] text-ivory/90">
+              <span className="block text-[clamp(3.25rem,min(12vw,16vh),8.5rem)] font-light lg:pl-[6vw] text-ivory/90">
                 {hero.line2[language]}
               </span>
             )}
-            <span className="block text-[clamp(3.25rem,12vw,10rem)] font-light lg:pl-[12vw] italic">
+            <span className="block text-[clamp(3.25rem,min(12vw,16vh),8.5rem)] font-light lg:pl-[12vw] italic">
               {hero.line3[language]}
             </span>
           </h1>
@@ -125,8 +140,8 @@ export default function HomeContent() {
                   {hero.cta[language]}
                 </Link>
               </div>
-              <p className="md:w-0 md:min-w-full text-ivory/80 text-base sm:text-lg leading-relaxed [text-shadow:0_1px_6px_rgba(0,0,0,0.85)]">
-                {t.cta.trialBlurb[language]}
+              <p className="md:w-0 md:min-w-full text-ivory/90 text-base sm:text-lg leading-relaxed [text-shadow:0_1px_6px_rgba(0,0,0,0.85)]">
+                {withGildedPrice(t.cta.trialBlurb[language])}
               </p>
             </div>
           </div>
