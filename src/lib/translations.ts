@@ -137,6 +137,11 @@ export const t = {
     sub:            { en: 'Five instructors spanning Chinese, contemporary, ballet, folk, and classical dance.', zh: '5位导师，涵盖华族舞、现当代舞、芭蕾舞、民族民间舞、古典舞' },
     teaches:        { en: 'Teaches',               zh: '教授课程' },
     qualifications: { en: 'Qualifications',        zh: '专业资质' },
+    scrollHint:     { en: 'Scroll for more',       zh: '向下滑动了解更多' },
+    clickForMore:   { en: 'Click for more',         zh: '点击了解更多' },
+    backLabel:      { en: 'Back to photo',          zh: '返回' },
+    prevLabel:      { en: 'Previous instructor',    zh: '上一位导师' },
+    nextLabel:      { en: 'Next instructor',        zh: '下一位导师' },
   },
 
   courses: {

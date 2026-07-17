@@ -103,6 +103,56 @@ a, button, [role="button"], input, select, textarea, label, summary {
   text-orientation: mixed;
 }
 
+/* ── Instructor wheel ─────────────────────────────────── */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Depth effect: neighbours sit "behind" the active card — smaller, dimmed,
+   softly blurred. Only transform/opacity/filter animate, so there is no
+   layout shift (CLS-safe). Card 0 is active on first paint (SSR/no-JS). */
+.wheel-card {
+  transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+  transform: scale(0.9);
+  opacity: 0.5;
+  filter: blur(1px) grayscale(0.5);
+}
+
+.wheel-card.is-active {
+  transform: none;
+  opacity: 1;
+  filter: none;
+}
+
+/* Flip card: front (photo + name) turns to reveal the back (bio + quals).
+   perspective on the wrapper, preserve-3d on the rotating inner, each face
+   hides its own backface. Reduced motion collapses the transition to instant. */
+.flip-card {
+  perspective: 1600px;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
 /* ── Page transitions ─────────────────────────────────── */
 ::view-transition-old(root) {
   animation: 220ms ease-in both page-fade-out;
@@ -142,6 +192,20 @@ a, button, [role="button"], input, select, textarea, label, summary {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  /* Keep the wheel legible without motion: no blur/scale, just a greyed dim. */
+  .wheel-card,
+  .wheel-card.is-active {
+    transform: none;
+  }
+  .wheel-card {
+    opacity: 0.55;
+    filter: grayscale(0.5);
+  }
+  .wheel-card.is-active {
+    opacity: 1;
+    filter: none;
   }
 
   ::view-transition-old(*),
