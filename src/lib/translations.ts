@@ -190,7 +190,7 @@ export const t = {
     directions: { en: 'Get directions →', zh: '查看路线 →' },
     whatsapp: { en: 'WhatsApp',          zh: 'WhatsApp' },
     wechat:   { en: 'WeChat',            zh: '微信' },
-    adminNote: { en: 'Finance enquiries: contact Vicky', zh: '费用咨询：请联系Vicky' },
+    adminNote: { en: 'Finance enquiries: contact Vicki', zh: '费用咨询：请联系Vicki' },
     register: {
       heading: { en: 'Ready to Join a Class?', zh: '准备好加入了吗？' },
       sub:     { en: 'Fill in our registration form and we\'ll be in touch soon.', zh: '填写报名表格，我们将尽快与您联系。' },
@@ -233,11 +233,11 @@ export const t = {
         items: [
           {
             q: { en: 'How much do dance classes cost?', zh: '舞蹈课程的费用是多少？' },
-            a: { en: 'A single drop-in class is $38, and a 1.5-hour trial class is also $38. Term-package fees are prorated based on when you join — contact our finance director Vicky at +65 9425 3833 for a quote.', zh: '散课每堂$38，1.5小时体验课同样为$38。学期套餐费用按加入时间按比例计算，详情请联系财务主任Vicky +65 9425 3833。' },
+            a: { en: 'A single drop-in class is $38, and a 1.5-hour trial class is also $38. Term-package fees are prorated based on when you join — contact our finance director Vicki at +65 9425 3833 for a quote.', zh: '散课每堂$38，1.5小时体验课同样为$38。学期套餐费用按加入时间按比例计算，详情请联系财务主任Vicki +65 9425 3833。' },
           },
           {
             q: { en: 'How are fees calculated if I join a course midway?', zh: '中途加入课程，费用如何计算？' },
-            a: { en: 'Fees are prorated on a case-by-case basis. Please contact our finance director Vicky (available daily before 4pm) at +65 94253833.', zh: '费用按实际情况按比例计算，请联系财务主任Vicky +65 94253833。' },
+            a: { en: 'Fees are prorated on a case-by-case basis. Please contact our finance director Vicki (available daily before 4pm) at +65 94253833.', zh: '费用按实际情况按比例计算，请联系财务主任Vicki +65 94253833。' },
           },
           {
             q: { en: 'Can I pay for a single class?', zh: '可以只付单堂课费用吗？' },

@@ -91,7 +91,7 @@ export const testimonials: Testimonial[] = [
       en: '"Beauty in life makes ordinary days a little different."',
       zh: '「生活有了美，平凡的日子也不一样了。」',
     },
-    attribution: { en: 'Vicky', zh: 'Vicky' },
+    attribution: { en: 'Vicki', zh: 'Vicki' },
     featured: true,
     tag: TAG_BEAUTY,
   },
@@ -182,14 +182,14 @@ export const testimonials: Testimonial[] = [
       en: '"Dance a piece resting on light —\nlike warm sunshine entering the heart,\nbrightening body and spirit.\nSo warm, so beautiful —\nand now there is light in your eyes."',
       zh: '「跳一曲枕着光，\n如暖阳照进心里，\n明媚了身心。\n如此温暖，如此美好，\n眼里有了光。」',
     },
-    attribution: { en: 'Vicky', zh: 'Vicky' },
+    attribution: { en: 'Vicki', zh: 'Vicki' },
   },
   {
     quote: {
       en: '"Thank you, Teacher, for the new session — fresh and captivating throughout. Releasing, free-spirited, subtle, inward-turning: every class is rich and wonderful."',
       zh: '「谢谢老师带来的新一期课堂，精彩而独特——或释放，或洒脱，或含蓄，或内敛，每一堂都丰富动人。」',
     },
-    attribution: { en: 'Vicky', zh: 'Vicky' },
+    attribution: { en: 'Vicki', zh: 'Vicki' },
   },
   {
     quote: {

@@ -590,7 +590,7 @@ export default function HomeContent() {
                   href="tel:+6594253833"
                   className="group flex items-center justify-between gap-4 h-12 px-4 border border-ink/15 hover:border-gold transition-colors duration-150"
                 >
-                  <span className="font-display text-lg text-ink group-hover:text-gold-deep transition-colors duration-150">Vicky</span>
+                  <span className="font-display text-lg text-ink group-hover:text-gold-deep transition-colors duration-150">Vicki</span>
                   <span className="text-sm tracking-wide text-ink-light">+65 9425 3833</span>
                 </a>
               </div>

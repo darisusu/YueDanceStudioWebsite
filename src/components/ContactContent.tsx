@@ -75,7 +75,7 @@ export default function ContactContent() {
                   </dd>
                 </div>
                 <div className="flex gap-1">
-                  <dt>Vicky:</dt>
+                  <dt>Vicki:</dt>
                   <dd>
                     <a href="tel:+6594253833" className="text-ink hover:text-gold-deep transition-colors duration-150">
                       +65 9425 3833
@@ -99,7 +99,7 @@ export default function ContactContent() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center h-10 px-4 border border-ink/15 hover:border-gold text-sm text-ink hover:text-gold-deep transition-colors duration-150"
                 >
-                  {tr.whatsapp[language]} · Vicky
+                  {tr.whatsapp[language]} · Vicki
                 </a>
               </div>
             </div>
