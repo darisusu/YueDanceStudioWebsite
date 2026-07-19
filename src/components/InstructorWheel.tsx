@@ -37,6 +37,7 @@ export default function InstructorWheel() {
   const [activePos, setActivePos] = useState(firstRealPos);
   const [flippedPos, setFlippedPos] = useState<number | null>(null);
   const activePosRef = useRef(firstRealPos);
+  const jumpingRef = useRef(false);
   const setActive = (pos: number) => {
     activePosRef.current = pos;
     setActivePos(pos);
@@ -51,6 +52,20 @@ export default function InstructorWheel() {
     const trackRect = track.getBoundingClientRect();
     const delta = cardRect.left + cardRect.width / 2 - (trackRect.left + trackRect.width / 2);
     track.scrollBy({ left: delta, behavior });
+  };
+
+  // Instantly re-centre a card with snapping momentarily OFF, so scroll-snap
+  // can't fight the reposition (boundary oscillation) or override the initial
+  // position (landing on the wrong card on mobile).
+  const jumpTo = (pos: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const prevSnap = track.style.scrollSnapType;
+    track.style.scrollSnapType = 'none';
+    centerPos(pos, 'auto');
+    requestAnimationFrame(() => {
+      track.style.scrollSnapType = prevSnap;
+    });
   };
 
   const centeredPos = (): number | null => {
@@ -70,9 +85,10 @@ export default function InstructorWheel() {
     return bestPos;
   };
 
-  // Centre the first real card before the first paint (no clone flash).
+  // Land on the first real card (Daniel) before the first paint, with snapping
+  // off so mandatory-snap can't override it back to a leftmost clone on mobile.
   useIsoLayoutEffect(() => {
-    centerPos(firstRealPos, 'auto');
+    jumpTo(firstRealPos);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -84,6 +100,26 @@ export default function InstructorWheel() {
     if (!track) return;
     let raf = 0;
     let settle: ReturnType<typeof setTimeout>;
+
+    const handleSettle = () => {
+      const pos = centeredPos();
+      if (pos === null) return;
+      const onClone = pos < firstRealPos || pos > lastRealPos;
+      if (!onClone) {
+        setFlippedPos(null);
+        return;
+      }
+      if (jumpingRef.current) return; // don't let our own jump trigger another
+      jumpingRef.current = true;
+      const real = pos < firstRealPos ? pos + n : pos - n;
+      jumpTo(real);
+      setActive(real);
+      setFlippedPos(null);
+      setTimeout(() => {
+        jumpingRef.current = false;
+      }, 120);
+    };
+
     const onScroll = () => {
       if (!raf) {
         raf = requestAnimationFrame(() => {
@@ -93,21 +129,9 @@ export default function InstructorWheel() {
         });
       }
       clearTimeout(settle);
-      settle = setTimeout(() => {
-        let pos = centeredPos();
-        if (pos === null) return;
-        if (pos < firstRealPos) {
-          pos += n;
-          centerPos(pos, 'auto');
-          setActive(pos);
-        } else if (pos > lastRealPos) {
-          pos -= n;
-          centerPos(pos, 'auto');
-          setActive(pos);
-        }
-        setFlippedPos(null);
-      }, 120);
+      settle = setTimeout(handleSettle, 150);
     };
+
     track.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       track.removeEventListener('scroll', onScroll);
