@@ -37,34 +37,46 @@ export default function InstructorWheel() {
   const [activePos, setActivePos] = useState(firstRealPos);
   const [flippedPos, setFlippedPos] = useState<number | null>(null);
   const activePosRef = useRef(firstRealPos);
-  const jumpingRef = useRef(false);
+  const programmaticRef = useRef(false);
   const setActive = (pos: number) => {
     activePosRef.current = pos;
     setActivePos(pos);
   };
 
-  const centerPos = (pos: number, behavior: ScrollBehavior) => {
+  // Absolute scrollLeft that centres the card at `pos`. Absolute (not a relative
+  // scrollBy) so rapid/overlapping navigations retarget the SAME destination
+  // instead of stacking deltas against an in-flight animation — the latter is
+  // what let the wheel overshoot onto a clone and oscillate between two cards.
+  const scrollTargetFor = (pos: number): number | null => {
     const track = trackRef.current;
-    if (!track) return;
+    if (!track) return null;
     const el = track.querySelector<HTMLElement>(`[data-pos="${pos}"]`);
-    if (!el) return;
+    if (!el) return null;
     const cardRect = el.getBoundingClientRect();
     const trackRect = track.getBoundingClientRect();
     const delta = cardRect.left + cardRect.width / 2 - (trackRect.left + trackRect.width / 2);
-    track.scrollBy({ left: delta, behavior });
+    return track.scrollLeft + delta;
   };
 
-  // Instantly re-centre a card with snapping momentarily OFF, so scroll-snap
+  const centerPos = (pos: number, behavior: ScrollBehavior) => {
+    const track = trackRef.current;
+    const left = scrollTargetFor(pos);
+    if (track && left !== null) track.scrollTo({ left, behavior });
+  };
+
+  // Instantly re-centre a card with snapping momentarily OFF, so mandatory-snap
   // can't fight the reposition (boundary oscillation) or override the initial
-  // position (landing on the wrong card on mobile).
+  // position (landing on the wrong card on mobile). Restore to '' so the Tailwind
+  // `snap-mandatory` class governs again — never a stale captured value that
+  // could leave snapping stuck off.
   const jumpTo = (pos: number) => {
     const track = trackRef.current;
-    if (!track) return;
-    const prevSnap = track.style.scrollSnapType;
+    const left = scrollTargetFor(pos);
+    if (!track || left === null) return;
     track.style.scrollSnapType = 'none';
-    centerPos(pos, 'auto');
+    track.scrollLeft = left;
     requestAnimationFrame(() => {
-      track.style.scrollSnapType = prevSnap;
+      track.style.scrollSnapType = '';
     });
   };
 
@@ -85,10 +97,19 @@ export default function InstructorWheel() {
     return bestPos;
   };
 
-  // Land on the first real card (Daniel) before the first paint, with snapping
-  // off so mandatory-snap can't override it back to a leftmost clone on mobile.
+  // Land on the first real card (Daniel) before first paint, then correct once
+  // more after layout settles — on mobile a late reflow (viewport units / URL
+  // bar) can shift the centre after the first pass and mandatory-snap re-snaps to
+  // a clone. Also keep the active card centred through resize/orientation change.
   useIsoLayoutEffect(() => {
     jumpTo(firstRealPos);
+    const raf = requestAnimationFrame(() => jumpTo(firstRealPos));
+    const onResize = () => jumpTo(activePosRef.current);
+    window.addEventListener('resize', onResize);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', onResize);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -104,26 +125,30 @@ export default function InstructorWheel() {
     const handleSettle = () => {
       const pos = centeredPos();
       if (pos === null) return;
+      programmaticRef.current = false;
       const onClone = pos < firstRealPos || pos > lastRealPos;
       if (!onClone) {
+        setActive(pos);
         setFlippedPos(null);
         return;
       }
-      if (jumpingRef.current) return; // don't let our own jump trigger another
-      jumpingRef.current = true;
+      // Settled on a clone → hop to the identical real card. jumpTo lands EXACTLY
+      // on it, so the scroll event it fires re-runs handleSettle on a real card
+      // and stops there — self-terminating, no clone/real ping-pong.
       const real = pos < firstRealPos ? pos + n : pos - n;
       jumpTo(real);
       setActive(real);
       setFlippedPos(null);
-      setTimeout(() => {
-        jumpingRef.current = false;
-      }, 120);
     };
 
     const onScroll = () => {
       if (!raf) {
         raf = requestAnimationFrame(() => {
           raf = 0;
+          // During a programmatic move, active is already the intended target;
+          // don't overwrite it with the transient mid-animation centre (that
+          // made rapid arrow taps read a moving position and misfire).
+          if (programmaticRef.current) return;
           const pos = centeredPos();
           if (pos !== null) setActive(pos);
         });
@@ -151,6 +176,10 @@ export default function InstructorWheel() {
   const go = (dir: 1 | -1) => {
     setFlippedPos(null);
     const target = Math.max(0, Math.min(lastPos, activePosRef.current + dir));
+    // Commit the target up front so a quick second tap steps from HERE (2→3→4),
+    // not from wherever the animation happens to be.
+    programmaticRef.current = true;
+    setActive(target);
     centerPos(target, 'smooth');
   };
 
@@ -159,6 +188,9 @@ export default function InstructorWheel() {
     if (pos === activePosRef.current) {
       setFlippedPos((prev) => (prev === pos ? null : pos));
     } else {
+      setFlippedPos(null);
+      programmaticRef.current = true;
+      setActive(pos);
       centerPos(pos, 'smooth');
     }
   };
